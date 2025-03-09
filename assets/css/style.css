@@ -16,7 +16,7 @@ body {
   align-items: center;
   position: fixed;
   width: 100%;
-  height: 100px; /* Tinggi navbar dikurangi */
+  height: 78px; /* Tinggi navbar dikurangi */
   background: white;
   box-shadow: 0px 3px 16px rgba(0, 0, 0, 0.1);
   z-index: 999;
@@ -160,11 +160,9 @@ body {
   background: #444;
   transform: scale(1.1);
 }
-
 .social-links {
   margin: 20px 0;
 }
-
 .social-link {
   display: inline-block;
   font-size: 24px;
@@ -173,32 +171,27 @@ body {
   text-decoration: none;
   transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
 }
-
 .social-link:hover {
   color: blueviolet;
   transform: scale(1.2);
 }
-
 .about-section,
 .projects-section,
 .contact-section {
   text-align: center;
   padding: 50px 20px;
 }
-
 .projects-title,
 .about-title,
 .contact-title {
   font-size: 2em;
 }
-
 .project-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
   margin-top: 20px;
 }
-
 .project-card {
   background: #fff;
   border-radius: 10px;
@@ -207,20 +200,17 @@ body {
   text-align: center;
   padding: 20px;
 }
-
 .project-image {
   width: 100%;
   height: 200px;
   object-fit: cover;
   border-radius: 10px;
 }
-
 .contact-form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 .form-input,
 .form-textarea {
   width: 100%;
@@ -230,7 +220,6 @@ body {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-
 .btn-submit {
   background: blueviolet;
   color: white;
@@ -239,22 +228,137 @@ body {
   cursor: pointer;
   transition: background 0.3s ease-in-out;
 }
-
 .btn-submit:hover {
   background: darkviolet;
 }
-
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
-
 .fade-in.show {
   opacity: 1;
   transform: translateY(0);
 }
+.typing-text {
+  border-right: 3px solid;
+  animation: cursor 1s step-end infinite;
+  white-space: nowrap;
+  overflow: hidden;
+}
 
+@keyframes cursor {
+  50% { border-color: transparent; }
+}
+.footer {
+  color: #fff;
+  text-align: center;
+  padding: 15px 0;
+  background: blueviolet;
+}
+/* Dark Mode Styles */
+.dark-mode {
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+.dark-mode .navbar,
+.dark-mode .sidebar {
+  background: #2d2d2d;
+}
+
+.dark-mode .navbar-link,
+.dark-mode .navbar-link-name,
+.dark-mode .sidebar-link {
+  color: #fff;
+}
+
+.dark-mode .project-card {
+  background: #2d2d2d;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: blueviolet;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Progress Skills */
+.skill-progress {
+  width: 100%;
+  max-width: 500px;
+  margin: 10px auto;
+}
+
+.skill-bar {
+  background: #f0f0f0;
+  height: 10px;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.skill-fill {
+  background: blueviolet;
+  height: 100%;
+  border-radius: 5px;
+  transition: width 1s ease-in-out;
+}
+
+/* Timeline */
+.timeline {
+  max-width: 800px;
+  margin: 40px auto;
+  position: relative;
+}
+
+.timeline-item {
+  padding: 20px;
+  margin: 20px 0;
+  border-left: 2px solid blueviolet;
+  position: relative;
+  text-align: left;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 24px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: blueviolet;
+}
+
+/* Certificate Section */
+.certificates {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.certificate-card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.certificate-card:hover {
+  transform: translateY(-5px);
+}
 .footer {
   color: #fff;
   text-align: center;

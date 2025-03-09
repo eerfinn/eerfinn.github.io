@@ -16,73 +16,137 @@
     <ul class="sidebar-list">
       <li class="sidebar-item"><a href="#home" class="sidebar-link">Home</a></li>
       <li class="sidebar-item"><a href="#about" class="sidebar-link">About</a></li>
+      <li class="sidebar-item"><a href="#skills" class="sidebar-link">Skills</a></li>
+      <li class="sidebar-item"><a href="#experience" class="sidebar-link">Experience</a></li>
       <li class="sidebar-item"><a href="#projects" class="sidebar-link">Projects</a></li>
+      <li class="sidebar-item"><a href="#certificates" class="sidebar-link">Certificates</a></li>
       <li class="sidebar-item"><a href="#contact" class="sidebar-link">Contact</a></li>
     </ul>
   </div>
-
   <!-- Navbar -->
   <nav class="navbar">
     <div class="navbar-name"><a href="#home" class="navbar-link-name">PING</a></div>
     <ul class="navbar-list">
       <li class="navbar-item"><a href="#home" class="navbar-link">Home</a></li>
       <li class="navbar-item"><a href="#about" class="navbar-link">About</a></li>
+      <li class="navbar-item"><a href="#skills" class="navbar-link">Skills</a></li>
+      <li class="navbar-item"><a href="#experience" class="navbar-link">Experience</a></li>
       <li class="navbar-item"><a href="#projects" class="navbar-link">Projects</a></li>
+      <li class="navbar-item"><a href="#certificates" class="navbar-link">Certificates</a></li>
       <li class="navbar-item"><a href="#contact" class="navbar-link">Contact</a></li>
     </ul>
     <button class="menu-btn" id="menu-btn"><i class="fas fa-bars"></i></button>
   </nav>
-
-  <!-- Konten -->
-  <section id="home" class="hero-section fade-in">
-    <h1 class="hero-title">Hello World!</h1>
-    <p class="hero-subtitle">Berbesar hati</p>
-    <div class="social-links">
-      <a href="https://github.com/eerfinn" target="_blank" class="social-link"><i class="fa-brands fa-github"></i></a>
-      <a href="https://x.com/eerfinn_" target="_blank" class="social-link"><i class="fa-brands fa-twitter"></i></a>
-      <a href="https://www.youtube.com/@eerfinn" target="_blank" class="social-link"><i
-          class="fa-brands fa-youtube"></i></a>
-    </div>
-    <a href="#about" class="btn btn-primary">About</a>
-  </section>
-
-  <section id="about" class="about-section fade-in">
-    <h2 class="about-title">About</h2>
-    <p class="about-description">Saya.</p>
-  </section>
-
-  <section id="projects" class="projects-section fade-in">
-    <h2 class="projects-title">Projects</h2>
-    <div class="project-list">
-      <div class="project-card">
-        <img src="#" alt="Project 1" class="project-image" />
-        <h3 class="project-title">Project 1</h3>
-        <p class="project-description">.</p>
-        <a href="#" class="btn btn-secondary">View Project</a>
+  <!-- Main Content Sections -->
+  <main>
+    <!-- Hero Section (Keep as first section) -->
+    <section id="home" class="hero-section fade-in">
+      <h1 class="hero-title">Hello World!</h1>
+      <p class="hero-subtitle typing-text"></p>
+      <div class="social-links">
+        <a href="https://github.com/eerfinn" target="_blank" class="social-link"><i class="fa-brands fa-github"></i></a>
+        <a href="https://x.com/eerfinn_" target="_blank" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+        <a href="https://www.youtube.com/@eerfinn" target="_blank" class="social-link"><i
+            class="fa-brands fa-youtube"></i></a>
       </div>
-      <div class="project-card">
-        <img src="#" alt="Project 2" class="project-image" />
-        <h3 class="project-title">Project 2</h3>
-        <p class="project-description">.</p>
-        <a href="#" class="btn btn-secondary">View Project</a>
+      <a href="#about" class="btn btn-primary">About Me</a>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="about-section fade-in">
+      <h2 class="about-title">About Me</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>I'm a passionate web developer with expertise in creating beautiful and functional websites. I love turning ideas into reality through code.</p>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <section id="contact" class="contact-section fade-in">
-    <h2 class="contact-title">Contact</h2>
-    <form class="contact-form">
-      <input type="text" placeholder="Nama" required class="form-input" />
-      <input type="email" placeholder="Email" required class="form-input" />
-      <textarea placeholder="Pesan" required class="form-textarea"></textarea>
-      <button type="submit" class="btn btn-submit">Send</button>
-    </form>
-  </section>
-
+    </section>
+    
+    <!-- Skills Section (Move after About) -->
+    <section id="skills" class="skills-section fade-in">
+      <h2 class="skills-title">Technical Skills</h2>
+      <div class="skill-progress">
+          <h4>HTML/CSS</h4>
+          <div class="skill-bar">
+              <div class="skill-fill" style="width: 90%"></div>
+          </div>
+      </div>
+      <div class="skill-progress">
+          <h4>JavaScript</h4>
+          <div class="skill-bar">
+              <div class="skill-fill" style="width: 85%"></div>
+          </div>
+      </div>
+      <!-- Add more skills as needed -->
+    </section>
+    
+    <!-- Experience Section (Move after Skills) -->
+    <section id="experience" class="experience-section fade-in">
+      <h2 class="experience-title">Experience</h2>
+      <div class="timeline">
+          <div class="timeline-item">
+              <h3>Position Title</h3>
+              <p class="timeline-date">2023 - Present</p>
+              <p>Description of your role and achievements</p>
+          </div>
+          <div class="timeline-item">
+              <h3>Previous Position</h3>
+              <p class="timeline-date">2021 - 2023</p>
+              <p>Description of your previous role</p>
+          </div>
+      </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section fade-in">
+      <h2 class="projects-title">Projects</h2>
+      <div class="project-list">
+        <div class="project-card">
+          <img src="#" alt="Project 1" class="project-image" />
+          <h3 class="project-title">Project 1</h3>
+          <p class="project-description">.</p>
+          <a href="#" class="btn btn-secondary">View Project</a>
+        </div>
+        <div class="project-card">
+          <img src="#" alt="Project 2" class="project-image" />
+          <h3 class="project-title">Project 2</h3>
+          <p class="project-description">.</p>
+          <a href="#" class="btn btn-secondary">View Project</a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Certificates Section -->
+    <section id="certificates" class="certificates-section fade-in">
+      <h2 class="certificates-title">Certificates</h2>
+      <div class="certificates">
+          <div class="certificate-card">
+              <h3>Certificate Name</h3>
+              <p>Issuing Organization</p>
+              <p>Date Earned: January 2024</p>
+          </div>
+          <!-- Add more certificates -->
+      </div>
+    </section>
+    
+    <!-- Contact Section (Keep as last section) -->
+    <section id="contact" class="contact-section fade-in">
+      <h2 class="contact-title">Contact</h2>
+      <form class="contact-form">
+        <input type="text" placeholder="Nama" required class="form-input" />
+        <input type="email" placeholder="Email" required class="form-input" />
+        <textarea placeholder="Pesan" required class="form-textarea"></textarea>
+        <button type="submit" class="btn btn-submit">Send</button>
+      </form>
+    </section>
+  </main>
+  <!-- Add dark mode toggle button before closing body tag -->
+  <button class="dark-mode-toggle" id="darkModeToggle">
+      <i class="fas fa-moon"></i>
+  </button>
   <footer class="footer">
     <p>&copy; 2025 eerfinn. All rights reserved.</p>
   </footer>
-
   <script src="/assets/js/script.js"></script>
 </body>
 
