@@ -63,7 +63,7 @@ function typeWriter(element, text, speed = 100) {
 // Start typing animation when page loads
 window.addEventListener('load', () => {
   const heroSubtitle = document.querySelector('.hero-subtitle');
-  typeWriter(heroSubtitle, "Web Developer | Designer | Creative Thinker");
+  typeWriter(heroSubtitle, "Berbesar Hati");
 });
 
 // Add after existing code
