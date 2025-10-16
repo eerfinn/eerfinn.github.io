@@ -292,11 +292,18 @@ function openProjectModal(projectId) {
   
   switchTab('overview');
   panel.classList.add('active');
+  document.body.classList.add('panel-open');
+  
+  const panelContent = document.querySelector('.panel-content');
+  if (panelContent) {
+    panelContent.scrollTop = 0;
+  }
 }
 
 function closeProjectModal() {
   const panel = document.getElementById('projectPanel');
   panel.classList.remove('active');
+  document.body.classList.remove('panel-open');
 }
 
 function switchTab(tabName) {
