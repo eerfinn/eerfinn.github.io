@@ -1,42 +1,32 @@
-/* ============================================
-   SIDEBAR FUNCTIONALITY
-   ============================================ */
 const menuBtn = document.getElementById("menu-btn");
 const closeBtn = document.getElementById("close-btn");
 const sidebar = document.getElementById("sidebar");
 
-// Open sidebar
 menuBtn.addEventListener("click", () => {
   sidebar.classList.add("show");
 });
 
-// Close sidebar
 closeBtn.addEventListener("click", () => {
   sidebar.classList.remove("show");
 });
 
-// Close sidebar when clicking outside
 document.addEventListener("click", (e) => {
   if (!sidebar.contains(e.target) && !menuBtn.contains(e.target) && sidebar.classList.contains("show")) {
     sidebar.classList.remove("show");
   }
 });
 
-// Close sidebar when clicking links
 document.querySelectorAll(".sidebar-link").forEach((link) => {
   link.addEventListener("click", () => {
     sidebar.classList.remove("show");
   });
 });
 
-/* ============================================
-   SMOOTH SCROLLING
-   ============================================ */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute('href'));
-    const offset = 70; // Height of navbar
+    const offset = 70;
     const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
     
     window.scrollTo({
@@ -46,9 +36,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-/* ============================================
-   FADE-IN ANIMATION
-   ============================================ */
 const fadeElements = document.querySelectorAll(".fade-in");
 const observerOptions = {
   threshold: 0.2,
@@ -67,9 +54,6 @@ const fadeObserver = new IntersectionObserver((entries) => {
 
 fadeElements.forEach((el) => fadeObserver.observe(el));
 
-/* ============================================
-   TYPING ANIMATION
-   ============================================ */
 function typeWriter(element, text, speed = 100) {
   let i = 0;
   element.innerHTML = '';
@@ -81,7 +65,6 @@ function typeWriter(element, text, speed = 100) {
       i++;
       setTimeout(type, speed);
     } else {
-      // Add blinking cursor class after typing
       element.classList.add('typing-cursor');
     }
   }
@@ -89,7 +72,6 @@ function typeWriter(element, text, speed = 100) {
   type();
 }
 
-// Multiple text rotation for hero subtitle
 const heroTexts = [
   "Frontend Developer",
   "UI/UX Designer",
@@ -106,64 +88,20 @@ function rotateText() {
   currentTextIndex = (currentTextIndex + 1) % heroTexts.length;
 }
 
-// Start typing animation when page loads
 window.addEventListener('load', () => {
   rotateText();
-  setInterval(rotateText, 4000); // Rotate text every 4 seconds
+  setInterval(rotateText, 4000);
 });
 
-/* ============================================
-   DARK MODE TOGGLE
-   ============================================ */
-const darkModeToggle = document.getElementById('darkModeToggle');
-const body = document.body;
+const backToTopBtn = document.getElementById('backToTop');
 
-// Add transition class for smooth color changes
-body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
-
-// Check for saved preference or system preference
-const savedMode = localStorage.getItem('darkMode');
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-// Initialize mode
-if (savedMode === 'enabled' || (savedMode === null && prefersDark)) {
-  body.classList.add('dark-mode');
-  updateDarkModeIcon(true);
-} else {
-  body.classList.remove('dark-mode');
-  updateDarkModeIcon(false);
-}
-
-// Toggle dark mode
-darkModeToggle.addEventListener('click', () => {
-  body.classList.toggle('dark-mode');
-  const isDarkMode = body.classList.contains('dark-mode');
-  updateDarkModeIcon(isDarkMode);
-  
-  // Save preference
-  localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
-  
-  // Add animation effect
-  darkModeToggle.style.transform = 'scale(0.9)';
-  setTimeout(() => {
-    darkModeToggle.style.transform = 'scale(1)';
-  }, 150);
+backToTopBtn.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
 });
 
-function updateDarkModeIcon(isDarkMode) {
-  const icon = darkModeToggle.querySelector('i');
-  if (isDarkMode) {
-    icon.classList.remove('fa-moon');
-    icon.classList.add('fa-sun');
-  } else {
-    icon.classList.remove('fa-sun');
-    icon.classList.add('fa-moon');
-  }
-}
-
-/* ============================================
-   TECH STACK ANIMATION
-   ============================================ */
 const techCards = document.querySelectorAll('.tech-card');
 const techObserver = new IntersectionObserver(
   (entries) => {
@@ -186,20 +124,21 @@ techCards.forEach(card => {
   techObserver.observe(card);
 });
 
-/* ============================================
-   PARALLAX EFFECT
-   ============================================ */
 const heroSection = document.querySelector('.hero-section');
 window.addEventListener('scroll', () => {
   const scrolled = window.pageYOffset;
+  
   if (heroSection) {
     heroSection.style.backgroundPositionY = `${scrolled * 0.5}px`;
   }
+  
+  if (scrolled > 300) {
+    backToTopBtn.classList.add('show');
+  } else {
+    backToTopBtn.classList.remove('show');
+  }
 });
 
-/* ============================================
-   CONTACT CARDS HOVER
-   ============================================ */
 const contactCards = document.querySelectorAll('.contact-card');
 contactCards.forEach(card => {
   card.addEventListener('mouseenter', () => {
@@ -211,172 +150,220 @@ contactCards.forEach(card => {
   });
 });
 
-/* ============================================
-   DYNAMIC PROJECTS RENDERING
-   ============================================ */
+let currentFilter = 'all';
 
-// Immediate check for projectsData
-console.log('🔍 Script.js loaded, checking projectsData...');
-console.log('projectsData type:', typeof projectsData);
-if (typeof projectsData !== 'undefined') {
-  console.log('✅ projectsData is available:', projectsData);
-} else {
-  console.log('❌ projectsData is NOT available');
-}
-function updateDebugInfo(message, isError = false) {
-  const debugInfo = document.getElementById('debug-info');
-  const debugText = document.getElementById('debug-text');
+function renderProjects(filter = 'all') {
+  const projectsGrid = document.getElementById('projectsGrid');
   
-  if (debugInfo && debugText) {
-    debugInfo.style.display = 'block';
-    debugInfo.style.background = isError ? 'rgba(255,0,0,0.1)' : 'rgba(0,255,0,0.1)';
-    debugText.innerHTML = message;
+  if (!projectsGrid || typeof projectsData === 'undefined') {
+    return;
+  }
+  
+  projectsGrid.innerHTML = '';
+  
+  const filteredProjects = filter === 'all' 
+    ? projectsData 
+    : projectsData.filter(project => project.category === filter);
+  
+  filteredProjects.forEach((project, index) => {
+    const projectCard = document.createElement('div');
+    projectCard.className = 'project-card fade-in';
+    projectCard.dataset.category = project.category;
+    projectCard.style.animationDelay = `${index * 0.1}s`;
     
-    // Hide debug info after 5 seconds if successful
-    if (!isError) {
-      setTimeout(() => {
-        debugInfo.style.display = 'none';
-      }, 5000);
-    }
-  }
-}
-
-function renderProjects() {
-  console.log('🎨 renderProjects() called');
-  const projectList = document.getElementById('projectList');
-  
-  // Check if container exists
-  if (!projectList) {
-    const error = 'Projects container not found';
-    console.error('❌', error);
-    updateDebugInfo(`❌ ${error}`, true);
-    return;
-  }
-  
-  // Check if data is loaded
-  if (typeof projectsData === 'undefined') {
-    const error = 'Projects data not loaded. Make sure projects-data.js is included before script.js';
-    console.error('❌', error);
-    updateDebugInfo(`❌ ${error}`, true);
-    return;
-  }
-  
-  console.log('📊 Rendering', projectsData.length, 'projects');
-  
-  // Clear existing content
-  projectList.innerHTML = '';
-  
-  try {
-    // Render each project
-    projectsData.forEach((project, index) => {
-      console.log(`🔨 Creating project card ${index + 1}:`, project.title);
-      const projectCard = document.createElement('div');
-      projectCard.className = 'project-card';
-      
-      // Build tags HTML
-      const tagsHTML = project.tags.map(tag => 
-        `<span class="tag">${tag}</span>`
-      ).join('');
-      
-      // Build project card HTML
-      projectCard.innerHTML = `
-        <div class="project-image">
-          <img src="${project.image}" alt="${project.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x250/6366f1/ffffff?text=Image+Not+Found'" />
+    const tagsHTML = project.tags.slice(0, 4).map(tag => 
+      `<span class="project-card-tag">${tag}</span>`
+    ).join('');
+    
+    const statusClass = project.status.toLowerCase().replace(' ', '-');
+    
+    const iconMap = {
+      'Full Stack': 'fa-layer-group',
+      'Frontend': 'fa-palette',
+      'Backend': 'fa-server'
+    };
+    const icon = iconMap[project.category] || 'fa-code';
+    
+    projectCard.innerHTML = `
+      <div class="project-card-image-wrapper">
+        <img src="${project.image}" alt="${project.title}" class="project-card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/6366f1/ffffff?text=Image+Not+Found'" />
+        <div class="project-card-badge">${project.category}</div>
+        <div class="project-card-overlay">
+          <button class="project-card-quick-view" onclick="openProjectModal(${project.id})">
+            <i class="fas fa-eye"></i>
+            Quick View
+          </button>
         </div>
-        <h3 class="project-title">${project.title}</h3>
-        <p class="project-description">${project.description}</p>
-        <div class="project-tags">
+      </div>
+      <div class="project-card-content">
+        <div class="project-card-header">
+          <h3 class="project-card-title">
+            <i class="fas ${icon}"></i>
+            ${project.title}
+          </h3>
+        </div>
+        <p class="project-card-description">${project.shortDescription}</p>
+        <div class="project-card-tags">
           ${tagsHTML}
         </div>
-        <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-          <i class="fas fa-external-link-alt"></i> View Project
-        </a>
-      `;
-      
-      projectList.appendChild(projectCard);
-      console.log(`✅ Added project card ${index + 1} to DOM`);
-    });
+        <div class="project-card-footer">
+          <div class="project-card-status">
+            <span class="project-card-status-dot ${statusClass}"></span>
+            <span>${project.status}</span>
+          </div>
+          <button class="project-card-view-btn" onclick="openProjectModal(${project.id})">
+            <span>View Details</span>
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    `;
     
-    const successMsg = `✅ Successfully loaded ${projectsData.length} projects`;
-    console.log(successMsg);
-    updateDebugInfo(successMsg, false);
-    
-    // Force a repaint
-    projectList.style.display = 'none';
-    projectList.offsetHeight; // Trigger reflow
-    projectList.style.display = '';
-    
-  } catch (error) {
-    const errorMsg = `Render error: ${error.message}`;
-    console.error('❌', errorMsg, error);
-    updateDebugInfo(`❌ ${errorMsg}`, true);
-  }
+    projectsGrid.appendChild(projectCard);
+  });
 }
 
-// Initialize projects with multiple fallbacks
-function initializeProjects() {
-  console.log('🚀 Initializing projects...');
-  console.log('DOM ready state:', document.readyState);
-  console.log('projectsData available:', typeof projectsData !== 'undefined');
+function filterProjects(filter) {
+  currentFilter = filter;
   
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  filterBtns.forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.filter === filter);
+  });
+  
+  renderProjects(filter);
+}
+
+function openProjectModal(projectId) {
+  const project = projectsData.find(p => p.id === projectId);
+  if (!project) return;
+  
+  const panel = document.getElementById('projectPanel');
+  
+  document.getElementById('panelImage').src = project.image;
+  document.getElementById('panelTitle').textContent = project.title;
+  document.getElementById('panelCategory').querySelector('span').textContent = project.category;
+  document.getElementById('panelDuration').querySelector('span').textContent = project.duration;
+  document.getElementById('panelStatus').querySelector('span').textContent = project.status;
+  document.getElementById('panelDescription').textContent = project.fullDescription;
+  
+  const panelTags = document.getElementById('panelTags');
+  panelTags.innerHTML = project.tags.map(tag => 
+    `<span class="panel-tag">${tag}</span>`
+  ).join('');
+  
+  const panelFeatures = document.getElementById('panelFeatures');
+  panelFeatures.innerHTML = project.features.map((feature, index) => 
+    `<div class="feature-item">
+      <div class="feature-icon">
+        <i class="fas fa-check"></i>
+      </div>
+      <div class="feature-text">${feature}</div>
+    </div>`
+  ).join('');
+  
+  const panelTechStack = document.getElementById('panelTechStack');
+  panelTechStack.innerHTML = '';
+  
+  Object.entries(project.techStack).forEach(([category, technologies]) => {
+    const techCategory = document.createElement('div');
+    techCategory.className = 'tech-category';
+    techCategory.innerHTML = `
+      <h4><i class="fas fa-layer-group"></i> ${category}</h4>
+      <div class="tech-list">
+        ${technologies.map(tech => `<span class="tech-item">${tech}</span>`).join('')}
+      </div>
+    `;
+    panelTechStack.appendChild(techCategory);
+  });
+  
+  const panelLinks = document.getElementById('panelLinks');
+  panelLinks.innerHTML = `
+    <a href="${project.links.github}" target="_blank" class="project-link github">
+      <i class="fab fa-github"></i> View on GitHub
+    </a>
+    <a href="${project.links.live}" target="_blank" class="project-link">
+      <i class="fas fa-external-link-alt"></i> Live Demo
+    </a>
+    <a href="${project.links.documentation}" target="_blank" class="project-link documentation">
+      <i class="fas fa-book"></i> Documentation
+    </a>
+  `;
+  
+  switchTab('overview');
+  panel.classList.add('active');
+}
+
+function closeProjectModal() {
+  const panel = document.getElementById('projectPanel');
+  panel.classList.remove('active');
+}
+
+function switchTab(tabName) {
+  const navBtns = document.querySelectorAll('.nav-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
+  
+  navBtns.forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.tab === tabName);
+  });
+  
+  tabContents.forEach(content => {
+    content.classList.toggle('active', content.id === `${tabName}-tab`);
+  });
+}
+
+function initializeProjects() {
   if (typeof projectsData !== 'undefined') {
-    console.log('✅ projectsData found:', projectsData);
-    console.log('📊 Number of projects:', projectsData.length);
-    renderProjects();
+    renderProjects('all');
+    
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterProjects(btn.dataset.filter);
+      });
+    });
   } else {
-    console.warn('⚠️ projectsData not available, retrying in 100ms...');
     setTimeout(initializeProjects, 100);
   }
 }
 
-// Multiple initialization methods for reliability
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initializeProjects);
 } else {
   initializeProjects();
 }
 
-// Fallback: Try again after window load
+
 window.addEventListener('load', function() {
-  const projectContainer = document.getElementById('projectList');
-  if (projectContainer && projectContainer.children.length <= 1) { // Changed from 0 to 1 to account for loading div
-    console.log('🔄 Projects not loaded, trying fallback...');
+  const projectsGrid = document.getElementById('projectsGrid');
+  if (projectsGrid && projectsGrid.children.length === 0) {
     initializeProjects();
   }
+  
+  const panelClose = document.getElementById('panelClose');
+  const panel = document.getElementById('projectPanel');
+  
+  if (panelClose) panelClose.addEventListener('click', closeProjectModal);
+  
+  if (panel) {
+    panel.addEventListener('click', (e) => {
+      if (e.target === panel) {
+        closeProjectModal();
+      }
+    });
+  }
+  
+  const navBtns = document.querySelectorAll('.nav-btn');
+  navBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      switchTab(btn.dataset.tab);
+    });
+  });
+  
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeProjectModal();
+    }
+  });
 });
 
-// Additional fallback with interval checking
-let retryCount = 0;
-const maxRetries = 10;
-const retryInterval = setInterval(() => {
-  retryCount++;
-  console.log(`🔄 Retry attempt ${retryCount}/${maxRetries}`);
-  
-  if (typeof projectsData !== 'undefined') {
-    console.log('✅ projectsData found on retry, rendering...');
-    renderProjects();
-    clearInterval(retryInterval);
-  } else if (retryCount >= maxRetries) {
-    console.log('❌ Max retries reached, projectsData still not available');
-    updateDebugInfo('❌ Failed to load projects after multiple attempts', true);
-    clearInterval(retryInterval);
-  }
-}, 200);
-
-// Manual trigger function for debugging
-window.debugRenderProjects = function() {
-  console.log('🔧 Manual debug render triggered');
-  renderProjects();
-};
-
-// Force immediate execution after a short delay
-setTimeout(() => {
-  console.log('🔄 Force checking projects after 500ms...');
-  if (typeof projectsData !== 'undefined') {
-    console.log('✅ Force render: projectsData found');
-    renderProjects();
-  } else {
-    console.log('❌ Force render: projectsData still not available');
-    updateDebugInfo('❌ projectsData not loaded after 500ms', true);
-  }
-}, 500);

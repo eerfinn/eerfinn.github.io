@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio | PING</title>
+  <title>Hi I'm Erfin Jauhari Dwi Brian</title>
   <link rel="stylesheet" href="./assets/css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -18,7 +18,7 @@
       <li class="sidebar-item"><a href="#home" class="sidebar-link">Home</a></li>
       <li class="sidebar-item"><a href="#about" class="sidebar-link">About</a></li>
       <li class="sidebar-item"><a href="#tech-stack" class="sidebar-link">Tech Stack</a></li>
-      <li class="sidebar-item"><a href="#experience" class="sidebar-link">Experience</a></li>
+      <li class="sidebar-item"><a href="#experience" class="sidebar-link">Journey</a></li>
       <li class="sidebar-item"><a href="#projects" class="sidebar-link">Projects</a></li>
       <li class="sidebar-item"><a href="#contact" class="sidebar-link">Contact</a></li>
     </ul>
@@ -31,7 +31,7 @@
       <li class="navbar-item"><a href="#home" class="navbar-link">Home</a></li>
       <li class="navbar-item"><a href="#about" class="navbar-link">About</a></li>
       <li class="navbar-item"><a href="#tech-stack" class="navbar-link">Tech Stack</a></li>
-      <li class="navbar-item"><a href="#experience" class="navbar-link">Experience</a></li>
+      <li class="navbar-item"><a href="#experience" class="navbar-link">Journey</a></li>
       <li class="navbar-item"><a href="#projects" class="navbar-link">Projects</a></li>
       <li class="navbar-item"><a href="#contact" class="navbar-link">Contact</a></li>
     </ul>
@@ -159,24 +159,76 @@
       </div>
     </section>
     
-    <!-- Experience Section -->
-    <section id="experience" class="experience-section fade-in">
-      <h2 class="section-title">Experience</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <h3>Senior Developer</h3>
-          <p class="timeline-date">2023 - Present</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <!-- Journey & Milestones Section -->
+    <section id="experience" class="journey-section fade-in">
+      <h2 class="section-title">My Journey & Milestones</h2>
+      <p class="journey-description">Every step in my career has been a building block towards becoming a better developer</p>
+      
+      <div class="journey-container">
+        <div class="journey-path"></div>
+        
+        <div class="milestone-card" data-year="2019">
+          <div class="milestone-icon">
+            <i class="fas fa-rocket"></i>
+          </div>
+          <div class="milestone-content">
+            <h3>The Beginning</h3>
+            <span class="milestone-year">2019</span>
+            <p>Started my coding journey with passion and curiosity. First steps into the world of web development.</p>
+            <div class="milestone-tags">
+              <span class="milestone-tag">HTML</span>
+              <span class="milestone-tag">CSS</span>
+              <span class="milestone-tag">JavaScript</span>
+            </div>
+          </div>
         </div>
-        <div class="timeline-item">
-          <h3>Full Stack Developer</h3>
-          <p class="timeline-date">2021 - 2023</p>
-          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+        <div class="milestone-card" data-year="2021">
+          <div class="milestone-icon">
+            <i class="fas fa-code"></i>
+          </div>
+          <div class="milestone-content">
+            <h3>Full Stack Explorer</h3>
+            <span class="milestone-year">2021</span>
+            <p>Expanded into full-stack development, mastering both frontend and backend technologies.</p>
+            <div class="milestone-tags">
+              <span class="milestone-tag">React</span>
+              <span class="milestone-tag">Node.js</span>
+              <span class="milestone-tag">MongoDB</span>
+            </div>
+          </div>
         </div>
-        <div class="timeline-item">
-          <h3>Junior Developer</h3>
-          <p class="timeline-date">2019 - 2021</p>
-          <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+
+        <div class="milestone-card" data-year="2023">
+          <div class="milestone-icon">
+            <i class="fas fa-crown"></i>
+          </div>
+          <div class="milestone-content">
+            <h3>Senior Developer</h3>
+            <span class="milestone-year">2023 - Present</span>
+            <p>Leading projects and mentoring junior developers while continuously learning new technologies.</p>
+            <div class="milestone-tags">
+              <span class="milestone-tag">Leadership</span>
+              <span class="milestone-tag">Architecture</span>
+              <span class="milestone-tag">Mentoring</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="milestone-card future" data-year="Future">
+          <div class="milestone-icon">
+            <i class="fas fa-infinity"></i>
+          </div>
+          <div class="milestone-content">
+            <h3>Continuous Growth</h3>
+            <span class="milestone-year">Future</span>
+            <p>Always learning, always growing. The journey never ends in the world of technology.</p>
+            <div class="milestone-tags">
+              <span class="milestone-tag">AI/ML</span>
+              <span class="milestone-tag">Innovation</span>
+              <span class="milestone-tag">Impact</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -184,21 +236,107 @@
     <!-- Projects Section -->
     <section id="projects" class="projects-section fade-in">
       <h2 class="section-title">Featured Projects</h2>
+      <p class="projects-description">Explore my latest work and creative solutions</p>
       
-      <!-- Debug info (remove after testing) -->
-      <div id="debug-info" style="background: rgba(255,0,0,0.1); padding: 10px; margin: 10px 0; border-radius: 8px; font-family: monospace; font-size: 12px; display: block;">
-        <strong>🔍 Debug Info:</strong><br>
-        <span id="debug-text">Loading...</span>
+      <!-- Project Filter -->
+      <div class="project-filters">
+        <button class="filter-btn active" data-filter="all">
+          <i class="fas fa-th"></i>
+          <span>All Projects</span>
+        </button>
+        <button class="filter-btn" data-filter="Full Stack">
+          <i class="fas fa-layer-group"></i>
+          <span>Full Stack</span>
+        </button>
+        <button class="filter-btn" data-filter="Frontend">
+          <i class="fas fa-palette"></i>
+          <span>Frontend</span>
+        </button>
       </div>
       
-      <div class="project-list" id="projectList">
-        <!-- Projects will be loaded dynamically from projects-data.js -->
-        <div style="text-align: center; padding: 40px; color: #666;">
-          <i class="fas fa-spinner fa-spin" style="font-size: 2rem; margin-bottom: 10px;"></i>
-          <p>Loading projects...</p>
-        </div>
+      <!-- Projects Grid -->
+      <div class="projects-grid" id="projectsGrid">
+        <!-- Project cards will be loaded here -->
       </div>
     </section>
+    
+    <!-- Project Detail Side Panel -->
+    <div class="side-panel-overlay" id="projectPanel">
+      <div class="side-panel">
+        <div class="panel-header">
+          <button class="panel-close" id="panelClose">
+            <i class="fas fa-times"></i>
+          </button>
+          <div class="panel-nav">
+            <button class="nav-btn active" data-tab="overview">
+              <i class="fas fa-info-circle"></i>
+              <span>Overview</span>
+            </button>
+            <button class="nav-btn" data-tab="features">
+              <i class="fas fa-star"></i>
+              <span>Features</span>
+            </button>
+            <button class="nav-btn" data-tab="tech">
+              <i class="fas fa-code"></i>
+              <span>Tech Stack</span>
+            </button>
+            <button class="nav-btn" data-tab="links">
+              <i class="fas fa-link"></i>
+              <span>Links</span>
+            </button>
+          </div>
+        </div>
+        
+        <div class="panel-content">
+          <!-- Overview Tab -->
+          <div class="tab-content active" id="overview-tab">
+            <div class="project-hero">
+              <img class="panel-image" id="panelImage" src="" alt="">
+              <div class="project-info">
+                <h2 class="panel-title" id="panelTitle"></h2>
+                <div class="project-meta">
+                  <span class="meta-item" id="panelCategory">
+                    <i class="fas fa-folder"></i>
+                    <span></span>
+                  </span>
+                  <span class="meta-item" id="panelDuration">
+                    <i class="fas fa-clock"></i>
+                    <span></span>
+                  </span>
+                  <span class="meta-item" id="panelStatus">
+                    <i class="fas fa-check-circle"></i>
+                    <span></span>
+                  </span>
+                </div>
+                <div class="panel-tags" id="panelTags"></div>
+              </div>
+            </div>
+            <div class="project-description">
+              <h3><i class="fas fa-file-alt"></i> Project Description</h3>
+              <p id="panelDescription"></p>
+            </div>
+          </div>
+          
+          <!-- Features Tab -->
+          <div class="tab-content" id="features-tab">
+            <h3><i class="fas fa-star"></i> Key Features</h3>
+            <div class="features-grid" id="panelFeatures"></div>
+          </div>
+          
+          <!-- Tech Stack Tab -->
+          <div class="tab-content" id="tech-tab">
+            <h3><i class="fas fa-code"></i> Technology Stack</h3>
+            <div class="tech-stack-panel" id="panelTechStack"></div>
+          </div>
+          
+          <!-- Links Tab -->
+          <div class="tab-content" id="links-tab">
+            <h3><i class="fas fa-link"></i> Project Links</h3>
+            <div class="links-grid" id="panelLinks"></div>
+          </div>
+        </div>
+      </div>
+    </div>
     
     
     <!-- Contact Section -->
@@ -242,27 +380,16 @@
     </section>
   </main>
 
-  <!-- Dark mode toggle -->
-  <button class="dark-mode-toggle" id="darkModeToggle">
-    <i class="fas fa-moon"></i>
+  <!-- Back to top button -->
+  <button class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
   </button>
 
   <footer class="footer">
     <p>&copy; 2024 PING. All rights reserved.</p>
   </footer>
 
-  <!-- Load projects data first, then main script -->
   <script src="./assets/js/projects-data.js"></script>
-  <script>
-    // Immediate check after projects-data.js loads
-    console.log('🔍 Checking projectsData immediately after loading...');
-    console.log('projectsData type:', typeof projectsData);
-    if (typeof projectsData !== 'undefined') {
-      console.log('✅ projectsData loaded successfully:', projectsData.length, 'projects');
-    } else {
-      console.log('❌ projectsData not loaded');
-    }
-  </script>
   <script src="./assets/js/script.js"></script>
 </body>
 
