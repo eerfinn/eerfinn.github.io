@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio | PING</title>
-  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -17,10 +17,9 @@
     <ul class="sidebar-list">
       <li class="sidebar-item"><a href="#home" class="sidebar-link">Home</a></li>
       <li class="sidebar-item"><a href="#about" class="sidebar-link">About</a></li>
-      <li class="sidebar-item"><a href="#skills" class="sidebar-link">Skills</a></li>
+      <li class="sidebar-item"><a href="#tech-stack" class="sidebar-link">Tech Stack</a></li>
       <li class="sidebar-item"><a href="#experience" class="sidebar-link">Experience</a></li>
       <li class="sidebar-item"><a href="#projects" class="sidebar-link">Projects</a></li>
-      <li class="sidebar-item"><a href="#certificates" class="sidebar-link">Certificates</a></li>
       <li class="sidebar-item"><a href="#contact" class="sidebar-link">Contact</a></li>
     </ul>
   </div>
@@ -31,10 +30,9 @@
     <ul class="navbar-list">
       <li class="navbar-item"><a href="#home" class="navbar-link">Home</a></li>
       <li class="navbar-item"><a href="#about" class="navbar-link">About</a></li>
-      <li class="navbar-item"><a href="#skills" class="navbar-link">Skills</a></li>
+      <li class="navbar-item"><a href="#tech-stack" class="navbar-link">Tech Stack</a></li>
       <li class="navbar-item"><a href="#experience" class="navbar-link">Experience</a></li>
       <li class="navbar-item"><a href="#projects" class="navbar-link">Projects</a></li>
-      <li class="navbar-item"><a href="#certificates" class="navbar-link">Certificates</a></li>
       <li class="navbar-item"><a href="#contact" class="navbar-link">Contact</a></li>
     </ul>
     <button class="menu-btn" id="menu-btn"><i class="fas fa-bars"></i></button>
@@ -68,33 +66,95 @@
       </div>
     </section>
     
-    <!-- Skills Section -->
-    <section id="skills" class="skills-section fade-in">
-      <h2 class="section-title">Technical Skills</h2>
-      <div class="skills-container">
-        <div class="skill-progress">
-          <h4>Frontend Development</h4>
-          <div class="skill-bar" data-progress="90%">
-            <div class="skill-fill"></div>
+    <!-- Tech Stack Section -->
+    <section id="tech-stack" class="tech-stack-section fade-in">
+      <h2 class="section-title">Tech Stack</h2>
+      <p class="tech-stack-description">Technologies and tools I work with to bring ideas to life</p>
+      
+      <div class="tech-grid">
+        <!-- Frontend -->
+        <div class="tech-card">
+          <div class="tech-icon">
+            <i class="fab fa-html5"></i>
           </div>
+          <h3>HTML5</h3>
         </div>
-        <div class="skill-progress">
-          <h4>Backend Development</h4>
-          <div class="skill-bar" data-progress="85%">
-            <div class="skill-fill"></div>
+
+        <div class="tech-card">
+          <div class="tech-icon">
+            <i class="fab fa-css3-alt"></i>
           </div>
+          <h3>CSS3</h3>
         </div>
-        <div class="skill-progress">
-          <h4>UI/UX Design</h4>
-          <div class="skill-bar" data-progress="80%">
-            <div class="skill-fill"></div>
+
+        <div class="tech-card">
+          <div class="tech-icon">
+            <i class="fab fa-js"></i>
           </div>
+          <h3>JavaScript</h3>
         </div>
-        <div class="skill-progress">
-          <h4>Mobile Development</h4>
-          <div class="skill-bar" data-progress="75%">
-            <div class="skill-fill"></div>
+
+        <div class="tech-card">
+          <div class="tech-icon">
+            <i class="fab fa-react"></i>
           </div>
+          <h3>React</h3>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-icon">
+            <i class="fab fa-vuejs"></i>
+          </div>
+          <h3>Vue.js</h3>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-icon">
+            <i class="fab fa-node"></i>
+          </div>
+          <h3>Node.js</h3>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-icon">
+            <i class="fab fa-python"></i>
+          </div>
+          <h3>Python</h3>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-icon">
+            <i class="fab fa-git-alt"></i>
+          </div>
+          <h3>Git</h3>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-icon">
+            <i class="fab fa-github"></i>
+          </div>
+          <h3>GitHub</h3>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-icon">
+            <i class="fab fa-figma"></i>
+          </div>
+          <h3>Figma</h3>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-icon">
+            <i class="fab fa-docker"></i>
+          </div>
+          <h3>Docker</h3>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-icon">
+            <i class="fas fa-database"></i>
+          </div>
+          <h3>MongoDB</h3>
         </div>
       </div>
     </section>
@@ -124,70 +184,61 @@
     <!-- Projects Section -->
     <section id="projects" class="projects-section fade-in">
       <h2 class="section-title">Featured Projects</h2>
-      <div class="project-list">
-        <div class="project-card">
-          <div class="project-image">
-            <img src="https://via.placeholder.com/300x200" alt="Project 1" />
-          </div>
-          <h3 class="project-title">Lorem Project</h3>
-          <p class="project-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
-          <div class="project-tags">
-            <span class="tag">React</span>
-            <span class="tag">Node.js</span>
-            <span class="tag">MongoDB</span>
-          </div>
-          <a href="#" class="btn btn-secondary">View Project</a>
-        </div>
-        <div class="project-card">
-          <div class="project-image">
-            <img src="https://via.placeholder.com/300x200" alt="Project 2" />
-          </div>
-          <h3 class="project-title">Ipsum Project</h3>
-          <p class="project-description">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-          <div class="project-tags">
-            <span class="tag">Vue.js</span>
-            <span class="tag">Express</span>
-            <span class="tag">PostgreSQL</span>
-          </div>
-          <a href="#" class="btn btn-secondary">View Project</a>
+      
+      <!-- Debug info (remove after testing) -->
+      <div id="debug-info" style="background: rgba(255,0,0,0.1); padding: 10px; margin: 10px 0; border-radius: 8px; font-family: monospace; font-size: 12px; display: block;">
+        <strong>🔍 Debug Info:</strong><br>
+        <span id="debug-text">Loading...</span>
+      </div>
+      
+      <div class="project-list" id="projectList">
+        <!-- Projects will be loaded dynamically from projects-data.js -->
+        <div style="text-align: center; padding: 40px; color: #666;">
+          <i class="fas fa-spinner fa-spin" style="font-size: 2rem; margin-bottom: 10px;"></i>
+          <p>Loading projects...</p>
         </div>
       </div>
     </section>
     
-    <!-- Certificates Section -->
-    <section id="certificates" class="certificates-section fade-in">
-      <h2 class="section-title">Certificates</h2>
-      <div class="certificates">
-        <div class="certificate-card">
-          <i class="fas fa-certificate certificate-icon"></i>
-          <h3>Lorem Certificate</h3>
-          <p>Lorem Ipsum Institute</p>
-          <p class="certificate-date">January 2024</p>
-        </div>
-        <div class="certificate-card">
-          <i class="fas fa-certificate certificate-icon"></i>
-          <h3>Ipsum Certificate</h3>
-          <p>Dolor Sit Academy</p>
-          <p class="certificate-date">December 2023</p>
-        </div>
-      </div>
-    </section>
     
     <!-- Contact Section -->
     <section id="contact" class="contact-section fade-in">
       <h2 class="section-title">Get In Touch</h2>
-      <form class="contact-form">
-        <div class="form-group">
-          <input type="text" placeholder="Your Name" required class="form-input" />
-        </div>
-        <div class="form-group">
-          <input type="email" placeholder="Your Email" required class="form-input" />
-        </div>
-        <div class="form-group">
-          <textarea placeholder="Your Message" required class="form-textarea"></textarea>
-        </div>
-        <button type="submit" class="btn btn-submit">Send Message</button>
-      </form>
+      <p class="contact-description">Feel free to reach out to me through any of these platforms. I'm always open to discussing new projects, creative ideas or opportunities.</p>
+      
+      <div class="contact-grid">
+        <a href="mailto:your.email@example.com" class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <h3>Email</h3>
+          <p>your.email@example.com</p>
+        </a>
+
+        <a href="https://github.com/eerfinn" target="_blank" class="contact-card">
+          <div class="contact-icon">
+            <i class="fab fa-github"></i>
+          </div>
+          <h3>GitHub</h3>
+          <p>@eerfinn</p>
+        </a>
+
+        <a href="https://x.com/eerfinn_" target="_blank" class="contact-card">
+          <div class="contact-icon">
+            <i class="fab fa-twitter"></i>
+          </div>
+          <h3>Twitter</h3>
+          <p>@eerfinn_</p>
+        </a>
+
+        <a href="https://www.youtube.com/@eerfinn" target="_blank" class="contact-card">
+          <div class="contact-icon">
+            <i class="fab fa-youtube"></i>
+          </div>
+          <h3>YouTube</h3>
+          <p>@eerfinn</p>
+        </a>
+      </div>
     </section>
   </main>
 
@@ -200,7 +251,19 @@
     <p>&copy; 2024 PING. All rights reserved.</p>
   </footer>
 
-  <script src="/assets/js/script.js"></script>
+  <!-- Load projects data first, then main script -->
+  <script src="./assets/js/projects-data.js"></script>
+  <script>
+    // Immediate check after projects-data.js loads
+    console.log('🔍 Checking projectsData immediately after loading...');
+    console.log('projectsData type:', typeof projectsData);
+    if (typeof projectsData !== 'undefined') {
+      console.log('✅ projectsData loaded successfully:', projectsData.length, 'projects');
+    } else {
+      console.log('❌ projectsData not loaded');
+    }
+  </script>
+  <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
