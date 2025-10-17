@@ -150,9 +150,7 @@ contactCards.forEach(card => {
   });
 });
 
-let currentFilter = 'all';
-
-function renderProjects(filter = 'all') {
+function renderProjects() {
   const projectsGrid = document.getElementById('projectsGrid');
   
   if (!projectsGrid || typeof projectsData === 'undefined') {
@@ -161,11 +159,7 @@ function renderProjects(filter = 'all') {
   
   projectsGrid.innerHTML = '';
   
-  const filteredProjects = filter === 'all' 
-    ? projectsData 
-    : projectsData.filter(project => project.category === filter);
-  
-  filteredProjects.forEach((project, index) => {
+  projectsData.forEach((project, index) => {
     const projectCard = document.createElement('div');
     projectCard.className = 'project-card fade-in';
     projectCard.dataset.category = project.category;
@@ -188,12 +182,6 @@ function renderProjects(filter = 'all') {
       <div class="project-card-image-wrapper">
         <img src="${project.image}" alt="${project.title}" class="project-card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/6366f1/ffffff?text=Image+Not+Found'" />
         <div class="project-card-badge">${project.category}</div>
-        <div class="project-card-overlay">
-          <button class="project-card-quick-view" onclick="openProjectModal(${project.id})">
-            <i class="fas fa-eye"></i>
-            Quick View
-          </button>
-        </div>
       </div>
       <div class="project-card-content">
         <div class="project-card-header">
@@ -221,17 +209,6 @@ function renderProjects(filter = 'all') {
     
     projectsGrid.appendChild(projectCard);
   });
-}
-
-function filterProjects(filter) {
-  currentFilter = filter;
-  
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  filterBtns.forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.filter === filter);
-  });
-  
-  renderProjects(filter);
 }
 
 function openProjectModal(projectId) {
@@ -321,14 +298,7 @@ function switchTab(tabName) {
 
 function initializeProjects() {
   if (typeof projectsData !== 'undefined') {
-    renderProjects('all');
-    
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterProjects(btn.dataset.filter);
-      });
-    });
+    renderProjects();
   } else {
     setTimeout(initializeProjects, 100);
   }
