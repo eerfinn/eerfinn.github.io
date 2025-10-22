@@ -16,24 +16,29 @@
     <button class="close-btn" id="close-btn">&times;</button>
     <ul class="sidebar-list">
       <li class="sidebar-item"><a href="#home" class="sidebar-link">Home</a></li>
-      <li class="sidebar-item"><a href="#about" class="sidebar-link">About</a></li>
+      <li class="sidebar-item"><a href="#about" class="sidebar-link">About Me</a></li>
       <li class="sidebar-item"><a href="#tech-stack" class="sidebar-link">Tech Stack</a></li>
       <li class="sidebar-item"><a href="#projects" class="sidebar-link">Projects</a></li>
       <li class="sidebar-item"><a href="#contact" class="sidebar-link">Contact</a></li>
     </ul>
   </div>
 
+
   <!-- Navbar -->
   <nav class="navbar">
-    <div class="navbar-name"><a href="#home" class="navbar-link-name">Hi I'm Erfin Jauhari Dwi Brian</a></div>
-    <ul class="navbar-list">
-      <li class="navbar-item"><a href="#home" class="navbar-link">Home</a></li>
-      <li class="navbar-item"><a href="#about" class="navbar-link">About</a></li>
-      <li class="navbar-item"><a href="#tech-stack" class="navbar-link">Tech Stack</a></li>
-      <li class="navbar-item"><a href="#projects" class="navbar-link">Projects</a></li>
-      <li class="navbar-item"><a href="#contact" class="navbar-link">Contact</a></li>
-    </ul>
-    <button class="menu-btn" id="menu-btn"><i class="fas fa-bars"></i></button>
+    <div class="navbar-container">
+      <div class="navbar-brand">
+        <div class="navbar-name"><a href="#home" class="navbar-link-name">Hi I'm Welcome </a></div>
+      </div>
+      <ul class="navbar-list">
+        <li class="navbar-item"><a href="#home" class="navbar-link" data-section="home">Home</a></li>
+        <li class="navbar-item"><a href="#about" class="navbar-link" data-section="about">About Me</a></li>
+        <li class="navbar-item"><a href="#tech-stack" class="navbar-link" data-section="tech-stack">Tech Stack</a></li>
+        <li class="navbar-item"><a href="#projects" class="navbar-link" data-section="projects">Projects</a></li>
+        <li class="navbar-item"><a href="#contact" class="navbar-link" data-section="contact">Contact</a></li>
+      </ul>
+      <button class="menu-btn" id="menu-btn"><i class="fas fa-bars"></i></button>
+    </div>
   </nav>
 
   <!-- Main Content Sections -->
@@ -261,33 +266,38 @@
     <!-- Contact Section -->
     <section id="contact" class="contact-section fade-in">
       <div class="blurred-top"></div>
-      <h2 class="section-title">Get In Touch</h2>
-      <p class="contact-description">Feel free to reach out to me through any of these platforms. I'm always open to discussing new projects, creative ideas or opportunities.</p>
-      
-      <div class="contact-grid">
-        <a href="mailto:kamajayajauhari@gmail.com" class="contact-card">
-          <div class="contact-icon">
-            <i class="fas fa-envelope"></i>
-          </div>
-          <h3>Email</h3>
-          <p>kamajayajauhari@gmail.com</p>
+      <div class="contact-container">
+        <h2 class="contact-title">Let’s Connect</h2>
+        <p class="contact-tagline">Have a project or idea you’d like to discuss? <br> I’m always open to new opportunities and collaborations.</p>
+        
+        <a href="mailto:kamajayajauhari@gmail.com" class="contact-cta-button">
+          <i class="fas fa-envelope"></i> 
+          <span>Send Me an Email</span>
+          <i class="fas fa-arrow-right"></i>
         </a>
-
-        <a href="https://github.com/eerfinn" target="_blank" class="contact-card">
-          <div class="contact-icon">
+        
+        <div class="contact-divider">
+          <span>or connect with me on</span>
+        </div>
+        
+        <div class="contact-social-links">
+          <a href="https://github.com/eerfinn" target="_blank" class="contact-social-link" title="GitHub">
             <i class="fab fa-github"></i>
-          </div>
-          <h3>GitHub</h3>
-          <p>@eerfinn</p>
-        </a>
-
-        <a href="https://x.com/eerfinn_" target="_blank" class="contact-card">
-          <div class="contact-icon">
+            <span>GitHub</span>
+          </a>
+          <a href="https://x.com/eerfinn_" target="_blank" class="contact-social-link" title="Twitter">
             <i class="fab fa-twitter"></i>
-          </div>
-          <h3>Twitter</h3>
-          <p>@eerfinn_</p>
-        </a>
+            <span>Twitter</span>
+          </a>
+          <a href="https://www.linkedin.com/in/eerfinn" target="_blank" class="contact-social-link" title="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+            <span>LinkedIn</span>
+          </a>
+          <a href="https://www.youtube.com/@eerfinn" target="_blank" class="contact-social-link" title="YouTube">
+            <i class="fab fa-youtube"></i>
+            <span>YouTube</span>
+          </a>
+        </div>
       </div>
     </section>
   </main>
@@ -297,9 +307,6 @@
     <i class="fas fa-arrow-up"></i>
   </button>
 
-  <footer class="footer">
-    <p>&copy; 2024 PING. All rights reserved.</p>
-  </footer>
 
   <script src="./assets/js/projects-data.js"></script>
   <script src="./assets/js/script.js"></script>
