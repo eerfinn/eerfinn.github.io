@@ -54,24 +54,7 @@ const fadeObserver = new IntersectionObserver((entries) => {
 
 fadeElements.forEach((el) => fadeObserver.observe(el));
 
-function typeWriter(element, text, speed = 100) {
-  let i = 0;
-  element.innerHTML = '';
-  element.style.borderRight = '3px solid';
-  
-  function type() {
-    if (i < text.length) {
-      element.innerHTML += text.charAt(i);
-      i++;
-      setTimeout(type, speed);
-    } else {
-      element.classList.add('typing-cursor');
-    }
-  }
-  
-  type();
-}
-
+// Array teks untuk subtitle hero
 const heroTexts = [
   "Frontend Developer",
   "UI/UX Designer",
@@ -79,18 +62,48 @@ const heroTexts = [
   "Problem Solver"
 ];
 
-let currentTextIndex = 0;
+// Array style untuk rotasi tampilan
+const subtitleStyles = [
+  'subtitle-badge', 
+  'subtitle-gradient',
+  'subtitle-highlight',
+  'subtitle-slide-in'
+];
 
-function rotateText() {
+let currentTextIndex = 0;
+let currentStyleIndex = 0;
+
+// Fungsi untuk rotasi teks dan gaya subtitle
+function rotateSubtitle() {
   const heroSubtitle = document.querySelector('.hero-subtitle');
-  heroSubtitle.classList.remove('typing-cursor');
-  typeWriter(heroSubtitle, heroTexts[currentTextIndex]);
-  currentTextIndex = (currentTextIndex + 1) % heroTexts.length;
+  const text = heroTexts[currentTextIndex];
+  const style = subtitleStyles[currentStyleIndex];
+  
+  // Hapus kelas sebelumnya
+  heroSubtitle.className = 'hero-subtitle';
+  heroSubtitle.style.opacity = '0';
+  
+  setTimeout(() => {
+    // Tambahkan style baru
+    heroSubtitle.className = `hero-subtitle ${style}`;
+    
+    if (style === 'subtitle-slide-in') {
+      heroSubtitle.innerHTML = `<span class="subtitle-text">${text}</span>`;
+    } else {
+      heroSubtitle.textContent = text;
+    }
+    
+    heroSubtitle.style.opacity = '1';
+    
+    // Increment indeks
+    currentTextIndex = (currentTextIndex + 1) % heroTexts.length;
+    currentStyleIndex = (currentStyleIndex + 1) % subtitleStyles.length;
+  }, 500);
 }
 
 window.addEventListener('load', () => {
-  rotateText();
-  setInterval(rotateText, 4000);
+  rotateSubtitle();
+  setInterval(rotateSubtitle, 4000);
 });
 
 const backToTopBtn = document.getElementById('backToTop');
@@ -416,5 +429,7 @@ window.addEventListener('load', function() {
       closeProjectModal();
     }
   });
+  
+  // Clean solid theme - no floating dots needed
 });
 

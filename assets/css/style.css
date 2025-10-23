@@ -17,13 +17,13 @@
   --accent-light: #3b82f6;
   --accent-dark: #1d4ed8;
   
-  /* Dark theme (default) */
-  --bg-primary: #0a0e1a;
-  --bg-secondary: #1a1f2e;
-  --bg-card: #151922;
-  --bg-primary-rgb: 10, 14, 26;
-  --bg-secondary-rgb: 26, 31, 46;
-  --bg-card-rgb: 21, 25, 34;
+  /* Dark theme (default) - Clean & Dark Style */
+  --bg-primary: #070809;
+  --bg-secondary: #0e1015;
+  --bg-card: #13151d;
+  --bg-primary-rgb: 7, 8, 9;
+  --bg-secondary-rgb: 14, 16, 21;
+  --bg-card-rgb: 19, 21, 29;
   
   --text-primary: #e2e8f0;
   --text-secondary: #94a3b8;
@@ -41,11 +41,11 @@
   --solid-accent: #3b82f6;
   --solid-cta: #6d28d9;
   
-  /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #2563eb 100%);
-  --gradient-secondary: linear-gradient(135deg, #2563eb 0%, #4f46e5 50%, #6d28d9 100%);
-  --gradient-accent: linear-gradient(135deg, #7c3aed 0%, #4f46e5 50%, #2563eb 100%);
-  --gradient-bg: linear-gradient(180deg, var(--bg-primary) 0%, rgba(10, 14, 26, 0.95) 50%, var(--bg-primary) 100%);
+  /* Solid colors instead of gradients */
+  --gradient-primary: var(--solid-primary);
+  --gradient-secondary: var(--solid-secondary);
+  --gradient-accent: var(--solid-accent);
+  --gradient-bg: var(--bg-primary);
   
   /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -57,17 +57,27 @@
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-fast: all 0.2s ease;
   --transition-slow: all 0.5s ease;
+
+  /* Clean & Dark Theme Special Elements */
+  --dark-gradient-subtle: linear-gradient(135deg, rgba(21, 24, 34, 0.4) 0%, rgba(16, 19, 28, 0.2) 100%);
+  --dark-dot-pattern: radial-gradient(rgba(79, 70, 229, 0.12) 1px, transparent 1px);
+  --curve-transition: cubic-bezier(0.4, 0, 0.2, 1);
+  --dot-size: 1px;
+  --dot-space: 24px;
+  --section-transition-height: 120px;
+  --section-transition-dark: var(--bg-primary);
+  --section-transition-light: var(--bg-primary);
 }
 
 /* Theme variables */
 /* Dark mode is default, light mode is applied when .dark-mode is not present */
 body:not(.dark-mode) {
   /* Light theme */
-  --bg-primary: #f5f7fa;
-  --bg-secondary: #ffffff;
+  --bg-primary: #edf2f7;
+  --bg-secondary: #f8fafc;
   --bg-card: #ffffff;
-  --bg-primary-rgb: 245, 247, 250;
-  --bg-secondary-rgb: 255, 255, 255;
+  --bg-primary-rgb: 237, 242, 247;
+  --bg-secondary-rgb: 248, 250, 252;
   --bg-card-rgb: 255, 255, 255;
   
   /* Text colors */
@@ -88,8 +98,8 @@ body:not(.dark-mode) {
   --shadow-lg: 0 10px 25px -3px rgba(15, 23, 42, 0.12), 0 8px 16px -4px rgba(15, 23, 42, 0.07);
   --shadow-xl: 0 20px 40px -5px rgba(15, 23, 42, 0.1), 0 12px 20px -6px rgba(15, 23, 42, 0.05);
   
-  /* Adjusted gradient for light theme */
-  --gradient-bg: linear-gradient(180deg, var(--bg-primary) 0%, rgba(245, 247, 250, 0.95) 50%, var(--bg-primary) 100%);
+  /* Solid background for light theme */
+  --gradient-bg: var(--bg-primary);
 }
 
 body {
@@ -98,6 +108,15 @@ body {
   font-family: 'Poppins', sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
+  position: relative;
+}
+
+/* Clean & Dark Theme - Subtle dot pattern */
+/* Removed pattern background for cleaner look */
+
+@keyframes patternShift {
+  0% { background-position: 0 0; }
+  100% { background-position: var(--dot-space) var(--dot-space); }
 }
 
 html {
@@ -115,7 +134,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--gradient-primary);
+  background: var(--solid-primary);
   border-radius: 5px;
 }
 
@@ -430,6 +449,8 @@ html {
   position: relative;
   background: var(--bg-primary);
   overflow: hidden;
+  /* Menandai section dengan background gradient */
+  --section-style: gradient;
 }
 
 .hero-section::after {
@@ -438,28 +459,13 @@ html {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 150px;
-  background: linear-gradient(to bottom, transparent 0%, var(--bg-primary) 100%);
+  height: var(--section-transition-height);
+  background: var(--bg-primary);
   pointer-events: none;
   z-index: 1;
 }
 
-.hero-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(ellipse at top left, rgba(79, 70, 229, 0.22) 0%, transparent 50%),
-    radial-gradient(ellipse at bottom right, rgba(124, 58, 237, 0.20) 0%, transparent 55%),
-    radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.18) 0%, transparent 60%),
-    radial-gradient(ellipse at 70% 30%, rgba(79, 70, 229, 0.10) 0%, transparent 50%),
-    linear-gradient(135deg, rgba(124, 58, 237, 0.08) 0%, transparent 50%);
-  pointer-events: none;
-  animation: gradientShift 20s ease infinite;
-}
+/* Hero section uses clean solid background */
 
 @keyframes gradientShift {
   0%, 100% { opacity: 1; }
@@ -479,11 +485,98 @@ html {
   letter-spacing: -0.02em;
 }
 
+/* Subtitle Base Style */
 .hero-subtitle {
+  transition: opacity 0.5s ease;
   font-size: 1.2em;
   margin-bottom: 30px;
   color: var(--solid-primary);
   font-weight: 600;
+  display: inline-block;
+  position: relative;
+}
+
+/* Slide In Text Animation */
+.subtitle-slide-in {
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+}
+
+.subtitle-slide-in .subtitle-text {
+  display: block;
+  animation: slideUp 0.6s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade Animation with Badge Style */
+.subtitle-badge {
+  position: relative;
+  padding: 5px 15px;
+  border-radius: 50px;
+  background-color: rgba(85, 81, 255, 0.1);
+  border: 1px solid rgba(85, 81, 255, 0.3);
+  overflow: hidden;
+  display: inline-block;
+}
+
+.subtitle-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background-color: var(--solid-primary);
+}
+
+/* Gradient Text Effect */
+.subtitle-gradient {
+  background-image: linear-gradient(90deg, var(--solid-primary), var(--solid-secondary));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  position: relative;
+  display: inline-block;
+  animation: gradientFlow 8s infinite alternate;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* Highlight Animation */
+.subtitle-highlight {
+  position: relative;
+  z-index: 1;
+}
+
+.subtitle-highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  background-color: rgba(85, 81, 255, 0.2);
+  z-index: -1;
+  transform-origin: bottom left;
+  animation: highlightExpand 0.6s ease forwards;
+  border-radius: 2px;
+}
+
+@keyframes highlightExpand {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }
 
 .social-links {
@@ -568,13 +661,14 @@ section {
 }
 
 .section-title {
-  font-size: 2.5em;
+  font-size: 2.6rem;
   margin-bottom: 40px;
   text-align: center;
   position: relative;
   color: var(--text-heading);
   font-weight: 700;
   letter-spacing: -0.02em;
+  z-index: 1;
 }
 
 .section-title::after {
@@ -596,19 +690,26 @@ section {
   z-index: 0;
   padding-top: 90px;
   margin-top: 0;
+  /* Menandai section dengan background solid */
+  --section-style: solid;
 }
 
-.about-section::before {
+/* Add top gradient for smooth transition from previous section */
+.about-section .top-gradient {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-  background: transparent;
+  height: 150px;
+  background: var(--bg-primary);
   pointer-events: none;
-  z-index: -1;
+  z-index: 1;
 }
+
+/* About section uses clean solid background */
+
+/* Removed pattern overlay for cleaner look */
 
 .about-section::after {
   content: '';
@@ -616,8 +717,8 @@ section {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 150px;
-  background: linear-gradient(to bottom, transparent 0%, var(--bg-primary) 100%);
+  height: var(--section-transition-height);
+  background: var(--bg-primary);
   pointer-events: none;
   z-index: 2;
 }
@@ -709,21 +810,28 @@ section {
   background: var(--bg-primary);
   position: relative;
   overflow: hidden;
-  padding: 90px 5%;
+  padding: 90px 5% 120px; /* Menambah padding bottom */
   margin-top: 0;
+  /* Menandai section dengan background solid */
+  --section-style: solid;
 }
 
-.projects-section::before {
+/* Add top gradient for smooth transition from previous section */
+.projects-section .top-gradient {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-  background: transparent;
+  height: 150px;
+  background: var(--bg-primary);
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
 }
+
+/* Projects section uses clean solid background */
+
+/* Removed floating dots for cleaner look */
 
 .projects-section::after {
   content: '';
@@ -731,8 +839,8 @@ section {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 150px;
-  background: linear-gradient(to bottom, transparent 0%, var(--bg-primary) 100%);
+  height: var(--section-transition-height);
+  background: var(--bg-primary);
   pointer-events: none;
   z-index: 2;
 }
@@ -744,6 +852,13 @@ section {
 @keyframes float {
   0%, 100% { transform: translate(0, 0); }
   50% { transform: translate(-30px, -30px); }
+}
+
+@keyframes floatAnimation {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(10px, -15px); }
+  50% { transform: translate(15px, 10px); }
+  75% { transform: translate(-10px, 15px); }
 }
 
 @keyframes slideInUp {
@@ -769,23 +884,26 @@ section {
   z-index: 0;
   padding-top: 90px;
   margin-top: 0;
+  /* Menandai section dengan background gradient */
+  --section-style: gradient;
 }
 
-.tech-stack-section::before {
+/* Add top gradient for smooth transition from previous section */
+.tech-stack-section .top-gradient {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-  background:
-    radial-gradient(ellipse at left center, rgba(37, 99, 235, 0.20) 0%, transparent 50%),
-    radial-gradient(ellipse at right center, rgba(124, 58, 237, 0.18) 0%, transparent 50%),
-    radial-gradient(circle at center, rgba(79, 70, 229, 0.15) 0%, transparent 60%),
-    linear-gradient(to bottom, transparent 0%, rgba(79, 70, 229, 0.08) 50%, transparent 100%);
+  height: 150px;
+  background: var(--bg-primary);
   pointer-events: none;
-  z-index: -1;
+  z-index: 1;
 }
+
+/* Tech stack section uses clean solid background */
+
+/* Removed grid overlay for cleaner look */
 
 .tech-stack-section::after {
   content: '';
@@ -793,25 +911,13 @@ section {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 150px;
-  background: linear-gradient(to bottom, transparent 0%, var(--bg-primary) 100%);
+  height: var(--section-transition-height);
+  background: var(--bg-primary);
   pointer-events: none;
   z-index: 2;
 }
 
-.tech-stack-section .blurred-orb {
-  position: absolute;
-  bottom: -30%;
-  left: -5%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(79, 70, 229, 0.18) 0%, rgba(124, 58, 237, 0.14) 40%, transparent 65%);
-  border-radius: 50%;
-  filter: blur(100px);
-  pointer-events: none;
-  z-index: -1;
-  animation: float 20s ease-in-out infinite reverse;
-}
+/* Removed blurred-orb for clean solid background */
 
 .tech-stack-description {
   text-align: center;
@@ -836,13 +942,31 @@ section {
 
 .tech-card {
   background: var(--bg-card);
-  padding: 27px 18px;
-  border-radius: 14px;
+  padding: 24px 16px;
+  border-radius: 16px;
   text-align: center;
   border: 1px solid var(--border-primary);
   transition: var(--transition);
   cursor: pointer;
   box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--solid-primary), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.tech-card:hover::after {
+  opacity: 1;
 }
 
 .tech-card:hover {
@@ -893,12 +1017,13 @@ section {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(342px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 32px;
   max-width: 1260px;
   margin: 0 auto;
   position: relative;
   z-index: 1;
+  padding-bottom: 30px; /* Tambahkan padding bawah */
 }
 
 .project-card {
@@ -958,9 +1083,10 @@ section {
 }
 
 .project-card-content {
-  padding: 25px;
+  padding: 20px 25px 25px;
   position: relative;
   z-index: 1;
+  height: auto; /* Pastikan tinggi konten menyesuaikan isi */
 }
 
 .project-card-header {
@@ -985,15 +1111,16 @@ section {
 
 .project-card-description {
   color: var(--text-primary);
-  line-height: 1.7;
+  line-height: 1.5;
   margin-bottom: 20px;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
+  -webkit-line-clamp: 2; /* Mengurangi jumlah baris maksimum */
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+  max-height: 2.8rem; /* Menentukan tinggi maksimum */
 }
 
 .project-card-tags {
@@ -1006,12 +1133,13 @@ section {
 .project-card-tag {
   background: rgba(85, 81, 255, 0.15);
   color: var(--solid-primary);
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 0.8rem;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.75rem;
   font-weight: 500;
   border: 1px solid rgba(85, 81, 255, 0.3);
   transition: all 0.3s ease;
+  white-space: nowrap; /* Mencegah tag terpotong */
 }
 
 .project-card:hover .project-card-tag {
@@ -1025,8 +1153,10 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 20px;
+  padding-top: 15px;
   border-top: 1px solid var(--border-primary);
+  flex-wrap: wrap; /* Memungkinkan untuk wrapping pada layar kecil */
+  gap: 10px; /* Menambahkan gap jika terjadi wrapping */
 }
 
 .project-card-status {
@@ -1077,18 +1207,19 @@ section {
 .project-card-view-btn {
   background: transparent;
   color: var(--primary-color);
-  border: 2px solid var(--primary-color);
-  padding: 8px 18px;
+  border: 1px solid var(--primary-color);
+  padding: 6px 14px;
   border-radius: 50px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 0.9rem;
+  gap: 6px;
+  font-size: 0.8rem;
   position: relative;
   overflow: hidden;
+  white-space: nowrap; /* Mencegah teks button terpotong */
 }
 
 .project-card-view-btn::before {
@@ -1524,22 +1655,37 @@ body.panel-open {
   z-index: 0;
   padding: 90px 5%;
   margin-top: 0;
+  /* Menambahkan class untuk menandai section dengan background solid */
+  --section-style: solid;
 }
 
-.contact-section::before {
+/* Add top gradient for smooth transition from previous section */
+.contact-section .top-gradient {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-  background:
-    radial-gradient(ellipse at bottom center, rgba(124, 58, 237, 0.24) 0%, transparent 60%),
-    radial-gradient(circle at top left, rgba(79, 70, 229, 0.20) 0%, transparent 50%),
-    radial-gradient(circle at top right, rgba(37, 99, 235, 0.18) 0%, transparent 50%),
-    radial-gradient(ellipse at center, rgba(79, 70, 229, 0.12) 0%, transparent 55%);
+  height: 150px;
+  background: var(--bg-primary);
   pointer-events: none;
-  z-index: -1;
+  z-index: 1;
+}
+
+/* Contact section uses clean solid background */
+
+/* Removed wave pattern for cleaner look */
+
+.contact-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 150px;
+  background: var(--bg-primary);
+  pointer-events: none;
+  z-index: 2;
 }
 
 .contact-section .blurred-top {
@@ -1565,11 +1711,25 @@ body.panel-open {
 }
 
 .contact-title {
-  font-size: 3rem;
+  text-align: center;
+  font-size: 2.6rem;
   font-weight: 700;
-  color: var(--solid-primary);
-  margin-bottom: 20px;
+  color: var(--text-heading);
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
   letter-spacing: -0.02em;
+}
+
+.contact-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--solid-primary);
+  margin: 15px auto 0;
+  border-radius: 2px;
+  opacity: 0.7;
 }
 
 .contact-tagline {

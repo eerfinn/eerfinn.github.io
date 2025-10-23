@@ -1,0 +1,125 @@
+/* Base styles and variables */
+:root {
+  /* Base colors - universally used in both themes */
+  --primary-color: #4f46e5;
+  --primary-light: #6366f1;
+  --primary-dark: #4338ca;
+  --secondary-color: #7c3aed;
+  --secondary-light: #8b5cf6;
+  --secondary-dark: #6d28d9;
+  --accent-color: #2563eb;
+  --accent-light: #3b82f6;
+  --accent-dark: #1d4ed8;
+  
+  /* Dark theme (default) */
+  --bg-primary: #070809;
+  --bg-secondary: #0e1015;
+  --bg-card: #13151d;
+  --bg-primary-rgb: 7, 8, 9;
+  --bg-secondary-rgb: 14, 16, 21;
+  --bg-card-rgb: 19, 21, 29;
+  
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-heading: #f8fafc;
+  
+  --border-primary: #2d3748;
+  --border-primary-rgb: 45, 55, 72;
+  --border-secondary: #4a5568;
+  --border-secondary-rgb: 74, 85, 104;
+  --hover-bg: #1e293b;
+  
+  /* Common solid colors */
+  --solid-primary: #5551ff;
+  --solid-secondary: #7c3aed;
+  --solid-accent: #3b82f6;
+  --solid-cta: #6d28d9;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px -1px rgba(0, 0, 0, 0.15), 0 2px 8px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.25), 0 8px 16px -4px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 20px 40px -5px rgba(0, 0, 0, 0.3), 0 12px 20px -6px rgba(0, 0, 0, 0.2);
+  
+  /* Transitions */
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.2s ease;
+  --transition-slow: all 0.5s ease;
+}
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 90%;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--solid-primary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color);
+}
+
+::selection {
+  background: var(--primary-color);
+  color: white;
+}
+
+::-moz-selection {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* Light theme overrides */
+body:not(.dark-mode) {
+  --bg-primary: #edf2f7;
+  --bg-secondary: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-primary-rgb: 237, 242, 247;
+  --bg-secondary-rgb: 248, 250, 252;
+  --bg-card-rgb: 255, 255, 255;
+  
+  --text-primary: #334155;
+  --text-secondary: #64748b;
+  --text-heading: #1e293b;
+  
+  --border-primary: #e2e8f0;
+  --border-primary-rgb: 226, 232, 240;
+  --border-secondary: #cbd5e1;
+  --border-secondary-rgb: 203, 213, 225;
+  --hover-bg: #f1f5f9;
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 4px 12px -1px rgba(15, 23, 42, 0.08), 0 2px 8px -2px rgba(15, 23, 42, 0.05);
+  --shadow-lg: 0 10px 25px -3px rgba(15, 23, 42, 0.12), 0 8px 16px -4px rgba(15, 23, 42, 0.07);
+  --shadow-xl: 0 20px 40px -5px rgba(15, 23, 42, 0.1), 0 12px 20px -6px rgba(15, 23, 42, 0.05);
+  
+  --gradient-bg: var(--bg-primary);
+}

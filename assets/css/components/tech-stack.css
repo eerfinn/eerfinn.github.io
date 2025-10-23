@@ -1,0 +1,88 @@
+/* Tech stack section styles */
+.tech-stack-section {
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  padding-top: 90px;
+  margin-top: 0;
+}
+
+.tech-stack-description {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 30px;
+  color: var(--text-primary);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(126px, 1fr));
+  gap: 22px;
+  max-width: 990px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.tech-card {
+  background: var(--bg-card);
+  padding: 24px 16px;
+  border-radius: 16px;
+  text-align: center;
+  border: 1px solid var(--border-primary);
+  transition: var(--transition);
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-icon {
+  font-size: 3.15rem;
+  margin-bottom: 13px;
+  color: var(--solid-primary);
+  transition: var(--transition);
+}
+
+.tech-card h3 {
+  color: var(--text-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Hover effects */
+.tech-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--primary-color);
+}
+
+.tech-card:hover .tech-icon {
+  transform: scale(1.1);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .tech-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+  }
+
+  .tech-card {
+    padding: 25px 15px;
+  }
+
+  .tech-icon {
+    font-size: 3rem;
+  }
+
+  .tech-card h3 {
+    font-size: 0.9rem;
+  }
+}

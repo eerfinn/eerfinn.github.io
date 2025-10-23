@@ -1,0 +1,72 @@
+/* About section styles */
+.about-section {
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  padding-top: 90px;
+  margin-top: 0;
+}
+
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.about-text p {
+  color: var(--text-primary);
+  line-height: 1.8;
+  margin-bottom: 20px;
+  font-size: 1.05rem;
+}
+
+.about-actions {
+  margin-top: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.btn-linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--gradient-primary);
+  color: white;
+  padding: 16px 40px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-decoration: none;
+  box-shadow: var(--shadow-lg);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.linkedin-note {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-style: italic;
+  text-align: center;
+  margin: 0;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .about-section {
+    padding: 60px 5%;
+  }
+  
+  .about-text p {
+    font-size: 1rem;
+  }
+  
+  .btn-linkedin {
+    padding: 14px 30px;
+    font-size: 1rem;
+  }
+}
