@@ -27,9 +27,6 @@
   <!-- Navbar -->
   <nav class="navbar">
     <div class="navbar-container">
-      <div class="navbar-brand">
-        <div class="navbar-name"><a href="#home" class="navbar-link-name">Hi I'm Welcome </a></div>
-      </div>
       <ul class="navbar-list">
         <li class="navbar-item"><a href="#home" class="navbar-link" data-section="home">Home</a></li>
         <li class="navbar-item"><a href="#about" class="navbar-link" data-section="about">About Me</a></li>
@@ -37,7 +34,17 @@
         <li class="navbar-item"><a href="#projects" class="navbar-link" data-section="projects">Projects</a></li>
         <li class="navbar-item"><a href="#contact" class="navbar-link" data-section="contact">Contact</a></li>
       </ul>
-      <button class="menu-btn" id="menu-btn"><i class="fas fa-bars"></i></button>
+      <div class="navbar-right">
+        <a href="./assets/files/CV.pdf" target="_blank" class="download-cv">
+          <i class="fas fa-download"></i>
+          <span>Download CV</span>
+        </a>
+        <button class="theme-toggle" id="themeToggle">
+          <i class="fas fa-sun"></i>
+          <i class="fas fa-moon"></i>
+        </button>
+        <button class="menu-btn" id="menu-btn"><i class="fas fa-bars"></i></button>
+      </div>
     </div>
   </nav>
 

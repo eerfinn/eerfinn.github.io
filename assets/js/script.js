@@ -345,7 +345,47 @@ if (document.readyState === 'loading') {
 }
 
 
+// Theme Toggle Functionality
+const themeToggle = document.getElementById('themeToggle');
+
+// Check for saved theme preference or use default
+function getThemePreference() {
+  return localStorage.getItem('theme') || 'dark';
+}
+
+// Apply theme to the body element
+function applyTheme(theme) {
+  if (theme === 'light') {
+    document.body.classList.remove('dark-mode');
+  } else {
+    document.body.classList.add('dark-mode');
+  }
+  localStorage.setItem('theme', theme);
+}
+
+// Toggle between light and dark themes
+function toggleTheme() {
+  const currentTheme = getThemePreference();
+  const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+  applyTheme(newTheme);
+}
+
+// Initialize theme on page load
+function initializeTheme() {
+  const savedTheme = getThemePreference();
+  applyTheme(savedTheme);
+}
+
+// Add event listener to the theme toggle button
+if (themeToggle) {
+  themeToggle.addEventListener('click', toggleTheme);
+}
+
 window.addEventListener('load', function() {
+  // Initialize theme
+  initializeTheme();
+
+  // Initialize projects
   const projectsGrid = document.getElementById('projectsGrid');
   if (projectsGrid && projectsGrid.children.length === 0) {
     initializeProjects();
