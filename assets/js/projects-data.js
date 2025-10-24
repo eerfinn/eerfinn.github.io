@@ -1,4 +1,5 @@
 
+// Project data dengan format export untuk ES modules
 const projectsData = [
   {
     id: 1,
@@ -62,6 +63,5 @@ const projectsData = [
   }
 ];
 
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = projectsData;
-}
+// Export for ES modules
+export default projectsData;

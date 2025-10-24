@@ -1,3 +1,6 @@
+// Import project data dari file terpisah
+import projectsData from './projects-data.js';
+
 const menuBtn = document.getElementById("menu-btn");
 const closeBtn = document.getElementById("close-btn");
 const sidebar = document.getElementById("sidebar");
@@ -62,42 +65,34 @@ const heroTexts = [
   "Problem Solver"
 ];
 
-// Array style untuk rotasi tampilan
-const subtitleStyles = [
-  'subtitle-badge', 
-  'subtitle-gradient',
-  'subtitle-highlight',
-  'subtitle-slide-in'
-];
+// Gunakan style konsisten - subtitle-gradient 
+const subtitleStyle = 'subtitle-gradient';
 
 let currentTextIndex = 0;
-let currentStyleIndex = 0;
 
-// Fungsi untuk rotasi teks dan gaya subtitle
+// Fungsi untuk rotasi teks dengan gaya subtitle yang konsisten
 function rotateSubtitle() {
   const heroSubtitle = document.querySelector('.hero-subtitle');
   const text = heroTexts[currentTextIndex];
-  const style = subtitleStyles[currentStyleIndex];
   
-  // Hapus kelas sebelumnya
-  heroSubtitle.className = 'hero-subtitle';
-  heroSubtitle.style.opacity = '0';
+  // Tambahkan class untuk transisi fade out
+  heroSubtitle.classList.add('fade-out');
   
   setTimeout(() => {
-    // Tambahkan style baru
-    heroSubtitle.className = `hero-subtitle ${style}`;
+    // Update text dengan style yang sama
+    heroSubtitle.textContent = text;
     
-    if (style === 'subtitle-slide-in') {
-      heroSubtitle.innerHTML = `<span class="subtitle-text">${text}</span>`;
-    } else {
-      heroSubtitle.textContent = text;
-    }
+    // Hapus class fade-out dan tambahkan fade-in untuk efek transisi halus
+    heroSubtitle.classList.remove('fade-out');
+    heroSubtitle.classList.add('fade-in');
     
-    heroSubtitle.style.opacity = '1';
-    
-    // Increment indeks
+    // Increment indeks teks saja
     currentTextIndex = (currentTextIndex + 1) % heroTexts.length;
-    currentStyleIndex = (currentStyleIndex + 1) % subtitleStyles.length;
+    
+    // Hapus class fade-in setelah transisi selesai
+    setTimeout(() => {
+      heroSubtitle.classList.remove('fade-in');
+    }, 1000);
   }, 500);
 }
 
@@ -200,7 +195,8 @@ contactCards.forEach(card => {
 function renderProjects() {
   const projectsGrid = document.getElementById('projectsGrid');
   
-  if (!projectsGrid || typeof projectsData === 'undefined') {
+  if (!projectsGrid) {
+    console.warn('Projects grid not found');
     return;
   }
   
@@ -344,11 +340,7 @@ function switchTab(tabName) {
 }
 
 function initializeProjects() {
-  if (typeof projectsData !== 'undefined') {
-    renderProjects();
-  } else {
-    setTimeout(initializeProjects, 100);
-  }
+  renderProjects();
 }
 
 if (document.readyState === 'loading') {
@@ -363,7 +355,7 @@ const themeToggle = document.getElementById('themeToggle');
 
 // Check for saved theme preference or use default
 function getThemePreference() {
-  return localStorage.getItem('theme') || 'dark';
+  return localStorage.getItem('theme') || 'light';
 }
 
 // Apply theme to the body element
@@ -400,7 +392,7 @@ window.addEventListener('load', function() {
 
   // Initialize projects
   const projectsGrid = document.getElementById('projectsGrid');
-  if (projectsGrid && projectsGrid.children.length === 0) {
+  if (projectsGrid) {
     initializeProjects();
   }
   
