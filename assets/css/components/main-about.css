@@ -1,0 +1,440 @@
+/* About section styles */
+.about-section {
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  padding: 80px 5%;
+  margin-top: 0;
+}
+
+/* Decorative border accent */
+.about-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 1px;
+  background: var(--border-primary);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.about-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 1px;
+  background: var(--border-primary);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.about-content {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.about-section .blurred-orb {
+  display: none;
+}
+
+/* Left Column - Floating Avatar Design */
+.about-visual {
+  position: sticky;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  padding: 20px;
+}
+
+/* Decorative Shapes */
+.decorative-shapes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.shape {
+  position: absolute;
+  opacity: 0.12;
+  filter: blur(1.5px);
+}
+
+.shape-square {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #8B5CF6, var(--solid-primary));
+  border-radius: 16px;
+  bottom: 0%;
+  left: 10%;
+  animation: float 9s ease-in-out infinite reverse;
+  transform: rotate(15deg);
+}
+
+.shape-ring {
+  width: 90px;
+  height: 90px;
+  border: 4px solid var(--solid-primary);
+  border-radius: 50%;
+  opacity: 0.10;
+  bottom: 20%;
+  right: 25%;
+  animation: float 10s ease-in-out infinite;
+}
+
+/* Small variants */
+.shape-circle-small {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #8B5CF6, var(--solid-primary));
+  border-radius: 50%;
+  top: 20%;
+  left: 15%;
+  animation: float 5s ease-in-out infinite;
+}
+
+.shape-circle-medium {
+  width: 75px;
+  height: 75px;
+  background: linear-gradient(135deg, var(--solid-primary), #8B5CF6);
+  border-radius: 50%;
+  bottom: 35%;
+  right: 8%;
+  animation: float 8.5s ease-in-out infinite reverse;
+}
+
+.shape-square-small {
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(135deg, var(--solid-primary), #8B5CF6);
+  border-radius: 12px;
+  top: 40%;
+  right: 20%;
+  animation: float 6.5s ease-in-out infinite;
+  transform: rotate(-20deg);
+}
+
+.shape-triangle-small {
+  width: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 50px solid var(--solid-primary);
+  opacity: 0.09;
+  top: 5%;
+  right:1%;
+  animation: float 7s ease-in-out infinite reverse;
+}
+
+.shape-ring-small {
+  width: 60px;
+  height: 60px;
+  border: 3px solid var(--solid-primary);
+  border-radius: 50%;
+  opacity: 0.11;
+  top: 50%;
+  left: 30%;
+  animation: float 9s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-25px) rotate(8deg);
+  }
+}
+
+/* Floating Avatar - Large & Centered */
+.floating-avatar {
+  position: relative;
+  z-index: 2;
+}
+
+.avatar-image {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  border: 3px solid var(--solid-primary);
+  padding: 8px;
+  background: var(--bg-primary);
+  object-fit: cover;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 30px rgba(85, 81, 255, 0.15);
+}
+
+.avatar-image:hover {
+  transform: scale(1.05);
+  border-color: #8B5CF6;
+  box-shadow: 0 12px 40px rgba(85, 81, 255, 0.25);
+}
+
+.avatar-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(85, 81, 255, 0.4) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: 1;
+  animation: pulse 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.15);
+    opacity: 0.7;
+  }
+}
+
+/* Removed visual-info and visual-stats - Pure avatar design */
+
+/* Right Column - Content */
+.about-text {
+  padding-top: 0;
+  margin-top: 50px;
+}
+
+.about-text p {
+  color: var(--text-primary);
+  line-height: 1.9;
+  margin-bottom: 25px;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.about-text p:first-of-type {
+  font-size: 1.15rem;
+  line-height: 2;
+}
+
+.about-actions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+  margin-top: 40px;
+}
+
+.btn-linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--solid-primary);
+  color: white;
+  padding: 14px 32px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  border: 2px solid var(--solid-primary);
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.btn-linkedin:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-xl);
+  background: #6d64ff;
+  border-color: #6d64ff;
+}
+
+.btn-linkedin:active {
+  transform: translateY(-1px);
+}
+
+.btn-linkedin i {
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+}
+
+.btn-linkedin:hover i {
+  transform: scale(1.1);
+}
+
+/* CV Button */
+.btn-cv {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: transparent;
+  color: var(--text-heading);
+  padding: 14px 32px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  border: 2px solid var(--border-primary);
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.btn-cv:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--solid-primary);
+  background: var(--solid-primary);
+  color: white;
+}
+
+.btn-cv:active {
+  transform: translateY(-1px);
+}
+
+.btn-cv i {
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+}
+
+.btn-cv:hover i {
+  transform: scale(1.1);
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .about-content {
+    grid-template-columns: 300px 1fr;
+    gap: 40px;
+    padding: 0 30px;
+  }
+
+  .about-visual {
+    min-height: 350px;
+  }
+
+  .avatar-image {
+    width: 220px;
+    height: 220px;
+  }
+
+  .avatar-glow {
+    width: 260px;
+    height: 260px;
+  }
+
+  .shape-circle {
+    width: 70px;
+    height: 70px;
+  }
+
+  .shape-circle-small {
+    width: 40px;
+    height: 40px;
+  }
+
+  .shape-circle-medium {
+    width: 55px;
+    height: 55px;
+  }
+
+  .shape-square {
+    width: 50px;
+    height: 50px;
+  }
+
+  .shape-square-small {
+    width: 35px;
+    height: 35px;
+  }
+
+  .shape-triangle {
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+    border-bottom: 60px solid var(--solid-primary);
+  }
+
+  .shape-triangle-small {
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 40px solid var(--solid-primary);
+  }
+
+  .shape-ring {
+    width: 65px;
+    height: 65px;
+    border-width: 3px;
+  }
+
+  .shape-ring-small {
+    width: 50px;
+    height: 50px;
+    border-width: 2px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 0 20px;
+  }
+
+  .about-visual {
+    position: static;
+    min-height: 280px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .avatar-image {
+    width: 200px;
+    height: 200px;
+  }
+
+  .avatar-glow {
+    width: 240px;
+    height: 240px;
+  }
+
+  .decorative-shapes {
+    display: none;
+  }
+
+  .about-text {
+    padding-top: 0;
+  }
+
+  .about-text p {
+    font-size: 1rem;
+  }
+
+  .about-text p:first-of-type {
+    font-size: 1.05rem;
+  }
+
+  .about-actions {
+    justify-content: center;
+  }
+}

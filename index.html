@@ -11,186 +11,150 @@
 </head>
 
 <body>
-  <!-- Sidebar -->
+  <!-- Sidebar For Mobile -->
   <div class="sidebar" id="sidebar">
     <button class="close-btn" id="close-btn">&times;</button>
     <ul class="sidebar-list">
       <li class="sidebar-item"><a href="#home" class="sidebar-link">Home</a></li>
       <li class="sidebar-item"><a href="#about" class="sidebar-link">About Me</a></li>
-      <li class="sidebar-item"><a href="#tech-stack" class="sidebar-link">Tech Stack</a></li>
       <li class="sidebar-item"><a href="#projects" class="sidebar-link">Projects</a></li>
       <li class="sidebar-item"><a href="#contact" class="sidebar-link">Contact</a></li>
     </ul>
   </div>
 
-
-  <!-- Navbar -->
+  <!-- Navbar For Destop -->
   <nav class="navbar">
     <div class="navbar-container">
+      <button class="menu-btn" id="menu-btn"><i class="fas fa-bars"></i></button>
       <ul class="navbar-list">
         <li class="navbar-item"><a href="#home" class="navbar-link" data-section="home">Home</a></li>
         <li class="navbar-item"><a href="#about" class="navbar-link" data-section="about">About Me</a></li>
-        <li class="navbar-item"><a href="#tech-stack" class="navbar-link" data-section="tech-stack">Tech Stack</a></li>
         <li class="navbar-item"><a href="#projects" class="navbar-link" data-section="projects">Projects</a></li>
         <li class="navbar-item"><a href="#contact" class="navbar-link" data-section="contact">Contact</a></li>
       </ul>
-      <div class="navbar-right">
-        <a href="./assets/files/CV.pdf" target="_blank" class="download-cv">
-          <i class="fas fa-download"></i>
-          <span>Download CV</span>
-        </a>
-        <button class="theme-toggle" id="themeToggle">
-          <i class="fas fa-sun"></i>
-          <i class="fas fa-moon"></i>
-        </button>
-        <button class="menu-btn" id="menu-btn"><i class="fas fa-bars"></i></button>
-      </div>
+      <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-sun"></i>
+        <i class="fas fa-moon"></i>
+      </button>
     </div>
   </nav>
 
-  <!-- Main Content Sections -->
+  <!-- Main Content -->
   <main>
     <!-- Hero Section -->
     <section id="home" class="hero-section fade-in">
-      <div class="hero-content">
-        <h1 class="hero-title">Lorem Ipsum</h1>
-        <p class="hero-subtitle typing-text"></p>
-        <div class="social-links">
-          <a href="https://github.com/eerfinn" target="_blank" class="social-link" style="--i:1; text-decoration: none;"><i class="fa-brands fa-github"></i></a>
-          <a href="https://x.com/eerfinn_" target="_blank" class="social-link" style="--i:2; text-decoration: none;"><i class="fa-brands fa-twitter"></i></a>
-          <a href="https://www.youtube.com/@eerfinn" target="_blank" class="social-link" style="--i:3; text-decoration: none;"><i class="fa-brands fa-youtube"></i></a>
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            Hi! welcome, I'm <span class="hero-name">Erfin Jauhari Dwi Brian</span>
+          </h1>
+          <p class="hero-description">
+            Curious about everything technology and always learning something new.
+            Let's connect and create something amazing!
+          </p>
+          <div class="hero-cta">
+            <a href="#about" class="btn btn-secondary">
+              <span>Discover Me</span>
+            </a>
+          </div>
         </div>
-        <a href="#about" class="btn btn-primary">Discover More</a>
+
+        <div class="hero-image">
+          <div class="image-wrapper">
+            <div class="code-window">
+              <div class="window-header">
+                <div class="window-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <div class="window-title">portfolio.js</div>
+              </div>
+              <div class="window-content">
+                <div class="code-line"><span class="keyword">const</span> <span class="variable">profile</span> = {
+                </div>
+                <div class="code-line indent">name: <span class="string">'Erfin Jauhari Dwi Brian'</span>,</div>
+                <div class="code-line indent">from: <span class="string">'Malang, Indonesia'</span>,</div>
+                <div class="code-line indent">interest: [<span class="string">'Web Development'</span>, <span
+                    class="string">'Continuous Learning'</span>],</div>
+                <div class="code-line indent">hobbies: [<span class="string">'Drawing'</span>, <span
+                    class="string">'Playing games'</span>],</div>
+                <div class="code-line">};</div>
+              </div>
+            </div>
+            <div class="floating-element element-1">
+              <i class="fab fa-react"></i>
+            </div>
+            <div class="floating-element element-2">
+              <i class="fab fa-node-js"></i>
+            </div>
+            <div class="floating-element element-3">
+              <i class="fab fa-js"></i>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="hero-shape"></div>
     </section>
-    
+
     <!-- About Section -->
     <section id="about" class="about-section fade-in">
       <div class="blurred-orb"></div>
       <h2 class="section-title">About Me</h2>
       <div class="about-content">
+        <!-- Left Column - Visual/Image -->
+        <div class="about-visual">
+          <!-- Decorative Elements -->
+          <div class="decorative-shapes">
+            <div class="shape shape-circle-small"></div>
+            <div class="shape shape-circle-medium"></div>
+            <div class="shape shape-square"></div>
+            <div class="shape shape-square-small"></div>
+            <div class="shape shape-triangle-small"></div>
+            <div class="shape shape-ring"></div>
+            <div class="shape shape-ring-small"></div>
+          </div>
+
+          <!-- Floating Avatar -->
+          <div class="floating-avatar">
+            <img src="./assets/images/avatar.svg" alt="Erfin Jauhari Avatar" class="avatar-image">
+            <div class="avatar-glow"></div>
+          </div>
+        </div>
+
+        <!-- Right Column - Content -->
         <div class="about-text">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+          <p>Hi! I’m Erfin, a student who loves exploring creativity through technology, design, and coding. I enjoy
+            learning new things and turning ideas into something real. Every project I work on is a chance to grow,
+            discover new approaches, and express my passion for creating. I believe that learning never stops, and
+            that’s what keeps me inspired.
+          </p>
+          <p>I also love collaborating with others and sharing ideas to create something even better. Working with
+            different people and perspectives helps me see things in new ways and improve both my technical and creative
+            skills. I’m always open to new opportunities, challenges, and experiences that help me grow and contribute
+            to meaningful projects.</p>
+
           <div class="about-actions">
             <a href="https://www.linkedin.com/in/eerfinn" class="btn-linkedin" target="_blank" rel="noopener">
               <i class="fab fa-linkedin"></i>
               <span>Connect on LinkedIn</span>
             </a>
-            <p class="linkedin-note">Kunjungi LinkedIn saya untuk melihat milestone dan pengalaman lengkap</p>
+            <a href="./assets/files/CV.pdf" target="_blank" class="btn-cv">
+              <i class="fas fa-download"></i>
+              <span>Download CV</span>
+            </a>
           </div>
         </div>
       </div>
     </section>
-    
-    <!-- Tech Stack Section -->
-    <section id="tech-stack" class="tech-stack-section fade-in">
-      <div class="blurred-orb"></div>
-      <h2 class="section-title">Tech Stack</h2>
-      <p class="tech-stack-description">Technologies and tools I work with to bring ideas to life</p>
-      
-      <div class="tech-grid">
-        <!-- Frontend -->
-        <div class="tech-card">
-          <div class="tech-icon">
-            <i class="fab fa-html5"></i>
-          </div>
-          <h3>HTML5</h3>
-        </div>
 
-        <div class="tech-card">
-          <div class="tech-icon">
-            <i class="fab fa-css3-alt"></i>
-          </div>
-          <h3>CSS3</h3>
-        </div>
-
-        <div class="tech-card">
-          <div class="tech-icon">
-            <i class="fab fa-js"></i>
-          </div>
-          <h3>JavaScript</h3>
-        </div>
-
-        <div class="tech-card">
-          <div class="tech-icon">
-            <i class="fab fa-react"></i>
-          </div>
-          <h3>React</h3>
-        </div>
-
-        <div class="tech-card">
-          <div class="tech-icon">
-            <i class="fab fa-vuejs"></i>
-          </div>
-          <h3>Vue.js</h3>
-        </div>
-
-        <div class="tech-card">
-          <div class="tech-icon">
-            <i class="fab fa-node"></i>
-          </div>
-          <h3>Node.js</h3>
-        </div>
-
-        <div class="tech-card">
-          <div class="tech-icon">
-            <i class="fab fa-python"></i>
-          </div>
-          <h3>Python</h3>
-        </div>
-
-        <div class="tech-card">
-          <div class="tech-icon">
-            <i class="fab fa-git-alt"></i>
-          </div>
-          <h3>Git</h3>
-        </div>
-
-        <div class="tech-card">
-          <div class="tech-icon">
-            <i class="fab fa-github"></i>
-          </div>
-          <h3>GitHub</h3>
-        </div>
-
-        <div class="tech-card">
-          <div class="tech-icon">
-            <i class="fab fa-figma"></i>
-          </div>
-          <h3>Figma</h3>
-        </div>
-
-        <div class="tech-card">
-          <div class="tech-icon">
-            <i class="fab fa-docker"></i>
-          </div>
-          <h3>Docker</h3>
-        </div>
-
-        <div class="tech-card">
-          <div class="tech-icon">
-            <i class="fas fa-database"></i>
-          </div>
-          <h3>MongoDB</h3>
-        </div>
-      </div>
-    </section>
-    
-    
     <!-- Projects Section -->
     <section id="projects" class="projects-section fade-in">
       <div class="floating-orb"></div>
       <h2 class="section-title">Featured Projects</h2>
-      <p class="projects-description">Explore my latest work and creative solutions</p>
-      
-      <!-- Projects Grid -->
       <div class="projects-grid" id="projectsGrid">
-        <!-- Project cards will be loaded here -->
       </div>
     </section>
-    
+
     <!-- Project Detail Side Panel -->
     <div class="side-panel-overlay" id="projectPanel">
       <div class="side-panel">
@@ -217,49 +181,53 @@
             </button>
           </div>
         </div>
-        
+
         <div class="panel-content">
           <!-- Overview Tab -->
           <div class="tab-content active" id="overview-tab">
-            <div class="project-hero">
-              <img class="panel-image" id="panelImage" src="" alt="">
-              <div class="project-info">
-                <h2 class="panel-title" id="panelTitle"></h2>
-                <div class="project-meta">
-                  <span class="meta-item" id="panelCategory">
-                    <i class="fas fa-folder"></i>
-                    <span></span>
-                  </span>
-                  <span class="meta-item" id="panelDuration">
-                    <i class="fas fa-clock"></i>
-                    <span></span>
-                  </span>
-                  <span class="meta-item" id="panelStatus">
-                    <i class="fas fa-check-circle"></i>
-                    <span></span>
-                  </span>
-                </div>
-                <div class="panel-tags" id="panelTags"></div>
+            <div class="project-info">
+              <h2 class="panel-title" id="panelTitle"></h2>
+              <div class="project-meta">
+                <span class="meta-item" id="panelCategory">
+                  <i class="fas fa-folder"></i>
+                  <span></span>
+                </span>
+                <span class="meta-item" id="panelDuration">
+                  <i class="fas fa-clock"></i>
+                  <span></span>
+                </span>
+                <span class="meta-item" id="panelStatus">
+                  <i class="fas fa-check-circle"></i>
+                  <span></span>
+                </span>
               </div>
+              <div class="panel-tags" id="panelTags"></div>
             </div>
+            
+            <!-- Thumbnail Grid -->
+            <div class="project-gallery">
+              <h3><i class="fas fa-images"></i> Project Screenshots</h3>
+              <div class="gallery-thumbnails" id="galleryThumbnails"></div>
+            </div>
+            
             <div class="project-description">
               <h3><i class="fas fa-file-alt"></i> Project Description</h3>
               <p id="panelDescription"></p>
             </div>
           </div>
-          
+
           <!-- Features Tab -->
           <div class="tab-content" id="features-tab">
             <h3><i class="fas fa-star"></i> Key Features</h3>
             <div class="features-grid" id="panelFeatures"></div>
           </div>
-          
+
           <!-- Tech Stack Tab -->
           <div class="tab-content" id="tech-tab">
             <h3><i class="fas fa-code"></i> Technology Stack</h3>
             <div class="tech-stack-panel" id="panelTechStack"></div>
           </div>
-          
+
           <!-- Links Tab -->
           <div class="tab-content" id="links-tab">
             <h3><i class="fas fa-link"></i> Project Links</h3>
@@ -268,41 +236,43 @@
         </div>
       </div>
     </div>
-    
-    
+
+    <!-- Image Lightbox -->
+    <div class="lightbox-overlay" id="lightboxOverlay">
+      <div class="lightbox-container">
+        <button class="lightbox-close" id="lightboxClose">
+          <i class="fas fa-times"></i>
+        </button>
+        <img class="lightbox-image" id="lightboxImage" src="" alt="">
+      </div>
+    </div>
+
     <!-- Contact Section -->
     <section id="contact" class="contact-section fade-in">
       <div class="blurred-top"></div>
       <div class="contact-container">
         <h2 class="contact-title">Let’s Connect</h2>
-        <p class="contact-tagline">Have a project or idea you’d like to discuss? <br> I’m always open to new opportunities and collaborations.</p>
-        
+        <p class="contact-tagline">Have a project or idea you’d like to discuss? <br> I’m always open to new
+          opportunities and collaborations.</p>
+
         <a href="mailto:kamajayajauhari@gmail.com" class="contact-cta-button">
-          <i class="fas fa-envelope"></i> 
+          <i class="fas fa-envelope"></i>
           <span>Send Me an Email</span>
           <i class="fas fa-arrow-right"></i>
         </a>
-        
+
         <div class="contact-divider">
           <span>or connect with me on</span>
         </div>
-        
+
         <div class="contact-social-links">
           <a href="https://github.com/eerfinn" target="_blank" class="contact-social-link" title="GitHub">
             <i class="fab fa-github"></i>
             <span>GitHub</span>
           </a>
-          <a href="https://x.com/eerfinn_" target="_blank" class="contact-social-link" title="Twitter">
-            <i class="fab fa-twitter"></i>
-            <span>Twitter</span>
-          </a>
           <a href="https://www.linkedin.com/in/eerfinn" target="_blank" class="contact-social-link" title="LinkedIn">
             <i class="fab fa-linkedin"></i>
             <span>LinkedIn</span>
-          </a>
-          <a href="https://www.youtube.com/@eerfinn" target="_blank" class="contact-social-link" title="YouTube">
-            <i class="fab fa-youtube"></i>
-            <span>YouTube</span>
           </a>
         </div>
       </div>
@@ -314,9 +284,9 @@
     <i class="fas fa-arrow-up"></i>
   </button>
 
-
   <script src="./assets/js/projects-data.js"></script>
-  <script src="./assets/js/script.js"></script>
+  <script type="module" src="./assets/js/main.js"></script>
+
 </body>
 
 </html>

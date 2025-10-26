@@ -1,0 +1,206 @@
+/* Contact section styles */
+.contact-section {
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  padding: 90px 5%;
+  margin-top: 0;
+}
+
+.contact-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 1px;
+  background: var(--border-primary);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Decorative circle accent */
+.contact-section .circle-decoration {
+  position: absolute;
+  top: 15%;
+  left: 5%;
+  width: 250px;
+  height: 250px;
+  border: 1px solid rgba(var(--border-primary-rgb), 0.2);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.contact-container {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--solid-primary);
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+
+.contact-tagline {
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  line-height: 1.8;
+  margin-bottom: 35px;
+  opacity: 0.9;
+}
+
+.contact-cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  padding: 18px 45px;
+  background: var(--solid-primary);
+  color: white;
+  text-decoration: none;
+  border-radius: 54px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+.contact-cta-button:hover {
+  transform: translateY(-3px);
+  background: var(--primary-light);
+  box-shadow: var(--shadow-lg);
+}
+
+.contact-cta-button i:first-child {
+  font-size: 1.3rem;
+}
+
+.contact-cta-button i:last-child {
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+}
+
+.contact-cta-button:hover i:last-child {
+  transform: translateX(5px);
+}
+
+.contact-divider {
+  margin: 35px 0 30px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-divider::before,
+.contact-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-primary);
+}
+
+.contact-divider span {
+  padding: 0 20px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.contact-social-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.contact-social-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  text-decoration: none;
+  border-radius: 30px;
+  border: 1px solid var(--border-primary);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-social-link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--solid-secondary);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.contact-social-link:hover::before {
+  opacity: 1;
+}
+
+.contact-social-link:hover {
+  color: white;
+  border-color: transparent;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.3);
+}
+
+.contact-social-link i {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.contact-social-link:hover i {
+  transform: scale(1.1);
+}
+
+/* Removed pulseBlurred animation - not needed in clean design */
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .contact-title {
+    font-size: 2.2rem;
+  }
+
+  .contact-tagline {
+    font-size: 1rem;
+    margin-bottom: 35px;
+  }
+
+  .contact-cta-button {
+    padding: 16px 35px;
+    font-size: 1rem;
+    gap: 12px;
+  }
+
+  .contact-divider {
+    margin: 35px 0 25px;
+  }
+
+  .contact-social-links {
+    gap: 10px;
+  }
+
+  .contact-social-link {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+  }
+}

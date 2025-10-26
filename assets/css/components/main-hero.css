@@ -1,0 +1,372 @@
+/* Hero section styles */
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 5%;
+  position: relative;
+  background: var(--bg-primary);
+  overflow: hidden;
+}
+
+/* Clean section divider */
+.hero-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 1px;
+  background: var(--border-primary);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Clean design - no decorative backgrounds */
+
+/* Hero Container - Split Layout */
+.hero-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content {
+  text-align: left;
+  z-index: 1;
+}
+
+/* Hero Title */
+.hero-title {
+  font-size: 3.6rem;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  color: var(--text-heading);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.hero-name {
+  color: var(--solid-primary);
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+.hero-name::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--solid-primary);
+  opacity: 0.2;
+  transition: opacity 0.3s ease;
+}
+
+.hero-title:hover .hero-name::after {
+  opacity: 0.4;
+}
+
+/* Hero Description */
+.hero-description {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 25px;
+  margin-left: 3px;
+  max-width: 560px;
+  font-weight: 400;
+}
+
+/* Hero CTA Buttons */
+.hero-cta {
+  display: flex;
+  justify-content: flex-start;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 36px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--solid-primary);
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+  background: var(--primary-light);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-heading);
+  border: 2px solid var(--text-secondary);
+}
+
+.btn-secondary:hover {
+  background: var(--solid-primary);
+  border-color: var(--solid-primary);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-secondary);
+  border-color: var(--border-primary);
+}
+
+.btn-outline:hover {
+  background: var(--bg-card);
+  border-color: var(--text-secondary);
+  color: var(--text-heading);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Hero Image Section */
+.hero-image {
+  position: relative;
+  z-index: 1;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Code Window */
+.code-window {
+  position: relative;
+  width: 90%;
+  max-width: 450px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  z-index: 2;
+}
+
+.window-header {
+  background: var(--bg-secondary);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.window-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.window-dots span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: block;
+}
+
+.window-dots span:nth-child(1) {
+  background: #ff5f57;
+}
+
+.window-dots span:nth-child(2) {
+  background: #ffbd2e;
+}
+
+.window-dots span:nth-child(3) {
+  background: #28ca42;
+}
+
+.window-title {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.window-content {
+  padding: 24px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.code-line {
+  color: var(--text-primary);
+  margin: 4px 0;
+}
+
+.code-line.indent {
+  padding-left: 24px;
+}
+
+.keyword {
+  color: #c792ea;
+}
+
+.variable {
+  color: #82aaff;
+}
+
+.string {
+  color: #c3e88d;
+}
+
+.boolean {
+  color: #ff5370;
+}
+
+/* Floating Tech Icons */
+.floating-element {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  box-shadow: var(--shadow-md);
+  animation: float 3s ease-in-out infinite;
+}
+
+.floating-element.element-1 {
+  top: 10%;
+  right: 10%;
+  color: #61dafb;
+  animation-delay: 0s;
+}
+
+.floating-element.element-2 {
+  bottom: 15%;
+  left: 5%;
+  color: #68a063;
+  animation-delay: 1s;
+}
+
+.floating-element.element-3 {
+  top: 50%;
+  right: -5%;
+  color: #f7df1e;
+  animation-delay: 2s;
+}
+
+/* Old subtitle animations removed - using word reveal now */
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .hero-container {
+    gap: 40px;
+    padding: 0 30px;
+  }
+  
+  .code-window {
+    max-width: 380px;
+  }
+  
+  .floating-element {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 100px 5% 60px;
+  }
+  
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 0 20px;
+  }
+  
+  .hero-content {
+    text-align: center;
+    order: 1;
+  }
+  
+  .hero-image {
+    order: 2;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-description {
+    font-size: 0.95rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-cta {
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+  
+  .code-window {
+    max-width: 320px;
+  }
+  
+  .window-content {
+    padding: 16px;
+    font-size: 0.85rem;
+  }
+  
+  .floating-element {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
+  
+  .floating-element.element-3 {
+    right: 0;
+  }
+}

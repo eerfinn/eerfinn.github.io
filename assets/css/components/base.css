@@ -1,0 +1,272 @@
+/* Base styles and variables */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+:root {
+  /* Base colors - universally used in both themes */
+  --primary-color: #4f46e5;
+  --primary-light: #6366f1;
+  --primary-dark: #4338ca;
+  --secondary-color: #7c3aed;
+  --secondary-light: #8b5cf6;
+  --secondary-dark: #6d28d9;
+  --accent-color: #2563eb;
+  --accent-light: #3b82f6;
+  --accent-dark: #1d4ed8;
+  
+  /* Dark theme (default) */
+  --bg-primary: #0a0e1a;
+  --bg-secondary: #1a1f2e;
+  --bg-card: #151922;
+  --bg-primary-rgb: 10, 14, 26;
+  --bg-secondary-rgb: 26, 31, 46;
+  --bg-card-rgb: 21, 25, 34;
+  
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-heading: #f8fafc;
+  
+  --border-primary: #2d3748;
+  --border-primary-rgb: 45, 55, 72;
+  --border-secondary: #4a5568;
+  --border-secondary-rgb: 74, 85, 104;
+  --hover-bg: #1e293b;
+  
+  /* Common solid colors */
+  --solid-primary: #5551ff;
+  --solid-secondary: #7c3aed;
+  --solid-accent: #3b82f6;
+  --solid-cta: #6d28d9;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #2563eb 100%);
+  --gradient-secondary: linear-gradient(135deg, #2563eb 0%, #4f46e5 50%, #6d28d9 100%);
+  --gradient-accent: linear-gradient(135deg, #7c3aed 0%, #4f46e5 50%, #2563eb 100%);
+  --gradient-bg: linear-gradient(180deg, var(--bg-primary) 0%, rgba(10, 14, 26, 0.95) 50%, var(--bg-primary) 100%);
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px -1px rgba(0, 0, 0, 0.15), 0 2px 8px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.25), 0 8px 16px -4px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 20px 40px -5px rgba(0, 0, 0, 0.3), 0 12px 20px -6px rgba(0, 0, 0, 0.2);
+  
+  /* Transitions */
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.2s ease;
+  --transition-slow: all 0.5s ease;
+}
+
+/* Theme variables */
+/* Dark mode is default, light mode is applied when .dark-mode is not present */
+body:not(.dark-mode) {
+  /* Light theme */
+  --bg-primary: #f5f7fa;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-primary-rgb: 245, 247, 250;
+  --bg-secondary-rgb: 255, 255, 255;
+  --bg-card-rgb: 255, 255, 255;
+  
+  /* Text colors */
+  --text-primary: #334155;
+  --text-secondary: #64748b;
+  --text-heading: #1e293b;
+  
+  /* Borders and hover states */
+  --border-primary: #e2e8f0;
+  --border-primary-rgb: 226, 232, 240;
+  --border-secondary: #cbd5e1;
+  --border-secondary-rgb: 203, 213, 225;
+  --hover-bg: #f1f5f9;
+  
+  /* Adjust shadow colors for light theme */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 4px 12px -1px rgba(15, 23, 42, 0.08), 0 2px 8px -2px rgba(15, 23, 42, 0.05);
+  --shadow-lg: 0 10px 25px -3px rgba(15, 23, 42, 0.12), 0 8px 16px -4px rgba(15, 23, 42, 0.07);
+  --shadow-xl: 0 20px 40px -5px rgba(15, 23, 42, 0.1), 0 12px 20px -6px rgba(15, 23, 42, 0.05);
+  
+  /* Adjusted gradient for light theme */
+  --gradient-bg: linear-gradient(180deg, var(--bg-primary) 0%, rgba(245, 247, 250, 0.95) 50%, var(--bg-primary) 100%);
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Scale down everything by approximately 10% */
+  font-size: 90%;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--solid-primary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-light);
+}
+
+::selection {
+  background: var(--primary-color);
+  color: white;
+}
+
+::-moz-selection {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* Common section styles */
+section {
+  min-height: 100vh;
+  padding: 80px 5%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.section-title {
+  font-size: 2.5em;
+  margin-bottom: 50px;
+  text-align: center;
+  position: relative;
+  color: var(--text-heading);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 4px;
+  background: var(--solid-primary);
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+/* Common Button Styles */
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+
+.btn-primary {
+  background: var(--solid-primary);
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+  background: var(--solid-secondary);
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-submit {
+  background: var(--solid-primary);
+  color: white;
+  width: 100%;
+  box-shadow: var(--shadow-md);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Back to top button */
+.back-to-top {
+  position: fixed;
+  bottom: 27px;
+  right: 27px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--solid-primary);
+  color: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: var(--shadow-xl);
+}
+
+.back-to-top:active {
+  transform: translateY(-3px) scale(1.05);
+}
+
+/* Responsive spacing */
+@media (max-width: 768px) {
+  section {
+    padding: 60px 5%;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+}
+
+/* Common fade-in animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
