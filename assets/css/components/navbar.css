@@ -265,6 +265,16 @@ body:not(.dark-mode) .navbar-container {
 }
 
 /* Responsive Navbar */
+@media (max-width: 1024px) {
+  .navbar {
+    width: 94%;
+  }
+  
+  .navbar-container {
+    padding: 14px 25px;
+  }
+}
+
 @media (max-width: 768px) {
   .navbar {
     top: 10px;
@@ -285,5 +295,52 @@ body:not(.dark-mode) .navbar-container {
 
   .menu-btn {
     display: flex;
+  }
+  
+  .theme-toggle {
+    width: 55px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    top: 8px;
+    width: 96%;
+  }
+  
+  .navbar-container {
+    padding: 10px 15px;
+  }
+  
+  .navbar-name {
+    font-size: 0.9rem;
+  }
+  
+  .theme-toggle {
+    width: 50px;
+    height: 28px;
+    padding: 0 5px;
+  }
+  
+  .theme-toggle i {
+    font-size: 0.75rem;
+  }
+  
+  .theme-toggle::before {
+    width: 20px;
+    height: 20px;
+    top: 3px;
+    left: 4px;
+  }
+  
+  .dark-mode .theme-toggle::before {
+    left: calc(100% - 24px);
+  }
+  
+  .menu-btn {
+    width: 40px;
+    height: 30px;
+    font-size: 0.9rem;
   }
 }

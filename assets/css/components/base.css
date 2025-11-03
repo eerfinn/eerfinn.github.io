@@ -248,6 +248,16 @@ section {
 }
 
 /* Responsive spacing */
+@media (max-width: 1024px) {
+  section {
+    padding: 70px 5%;
+  }
+  
+  .section-title {
+    font-size: 2.2rem;
+  }
+}
+
 @media (max-width: 768px) {
   section {
     padding: 60px 5%;
@@ -256,6 +266,25 @@ section {
   .section-title {
     font-size: 2rem;
     margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  section {
+    padding: 50px 4%;
+  }
+  
+  .section-title {
+    font-size: 1.7rem;
+    margin-bottom: 30px;
+  }
+  
+  .back-to-top {
+    width: 45px;
+    height: 45px;
+    bottom: 20px;
+    right: 20px;
+    font-size: 1rem;
   }
 }
 

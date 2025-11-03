@@ -283,44 +283,7 @@
   transform: scale(1.1);
 }
 
-/* CV Button */
-.btn-cv {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  background: transparent;
-  color: var(--text-heading);
-  padding: 14px 32px;
-  border-radius: 12px;
-  font-weight: 600;
-  font-size: 1rem;
-  text-decoration: none;
-  border: 2px solid var(--border-primary);
-  box-shadow: var(--shadow-md);
-  transition: all 0.3s ease;
-  position: relative;
-}
 
-.btn-cv:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-xl);
-  border-color: var(--solid-primary);
-  background: var(--solid-primary);
-  color: white;
-}
-
-.btn-cv:active {
-  transform: translateY(-1px);
-}
-
-.btn-cv i {
-  font-size: 1.1rem;
-  transition: transform 0.3s ease;
-}
-
-.btn-cv:hover i {
-  transform: scale(1.1);
-}
 
 /* Responsive Styles */
 @media (max-width: 1024px) {
@@ -435,6 +398,45 @@
   }
 
   .about-actions {
+    justify-content: center;
+  }
+  
+  .btn-linkedin {
+    padding: 12px 24px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-section {
+    padding: 60px 5% 80px;
+  }
+  
+  .about-content {
+    padding: 0 15px;
+    gap: 30px;
+  }
+  
+  .avatar-image {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .avatar-glow {
+    width: 220px;
+    height: 220px;
+  }
+  
+  .about-text p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+  
+  .btn-linkedin {
+    padding: 11px 20px;
+    font-size: 0.9rem;
+    width: 100%;
+    max-width: 100%;
     justify-content: center;
   }
 }

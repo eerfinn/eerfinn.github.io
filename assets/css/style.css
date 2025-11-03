@@ -11,6 +11,5 @@
 /* Import section components */
 @import './components/main-hero.css';
 @import './components/main-about.css';
-@import './components/main-tech.css';
 @import './components/main-project.css';
 @import './components/main-contact.css';

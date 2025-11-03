@@ -35,18 +35,21 @@ export function renderProjects() {
     const icon = iconMap[project.category] || 'fa-code';
     
     projectCard.innerHTML = `
-      <div class="project-card-image-wrapper">
+      <div class="project-card-image-wrapper" onclick="openLightbox('${project.image}')" style="cursor: pointer;">
         <img src="${project.image}" alt="${project.title}" class="project-card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/6366f1/ffffff?text=Image+Not+Found'" />
         <div class="project-card-badge">${project.category}</div>
+        <div class="gallery-thumbnail-overlay">
+          <i class="fas fa-search-plus"></i>
+        </div>
       </div>
       <div class="project-card-content">
         <div class="project-card-header">
           <h3 class="project-card-title">
             <i class="fas ${icon}"></i>
-            ${project.title}
+            <span class="project-card-title-text">${project.title}</span>
           </h3>
         </div>
-        <p class="project-card-description">${project.shortDescription}</p>
+        <p class="project-card-description">${project.description}</p>
         <div class="project-card-tags">
           ${tagsHTML}
         </div>
@@ -81,7 +84,7 @@ export function openProjectModal(projectId) {
   document.getElementById('panelCategory').querySelector('span').textContent = project.category;
   document.getElementById('panelDuration').querySelector('span').textContent = project.duration;
   document.getElementById('panelStatus').querySelector('span').textContent = project.status;
-  document.getElementById('panelDescription').textContent = project.fullDescription;
+  document.getElementById('panelDescription').textContent = project.description;
   
   // Set tags
   const panelTags = document.getElementById('panelTags');
@@ -133,17 +136,37 @@ export function openProjectModal(projectId) {
   
   // Set links
   const panelLinks = document.getElementById('panelLinks');
-  panelLinks.innerHTML = `
-    <a href="${project.links.github}" target="_blank" class="project-link github">
-      <i class="fab fa-github"></i> View on GitHub
-    </a>
-    <a href="${project.links.live}" target="_blank" class="project-link">
-      <i class="fas fa-external-link-alt"></i> Live Demo
-    </a>
-    <a href="${project.links.documentation}" target="_blank" class="project-link documentation">
-      <i class="fas fa-book"></i> Documentation
-    </a>
-  `;
+  let linksHTML = '';
+  
+  if (project.links.github) {
+    linksHTML += `
+      <a href="${project.links.github}" target="_blank" class="project-link github">
+        <i class="fab fa-github"></i> View on GitHub
+      </a>
+    `;
+  }
+  
+  if (project.links.live) {
+    linksHTML += `
+      <a href="${project.links.live}" target="_blank" class="project-link">
+        <i class="fas fa-external-link-alt"></i> Live Demo
+      </a>
+    `;
+  }
+  
+  if (project.links.documentation) {
+    linksHTML += `
+      <a href="${project.links.documentation}" target="_blank" class="project-link documentation">
+        <i class="fas fa-book"></i> Documentation
+      </a>
+    `;
+  }
+  
+  if (!linksHTML) {
+    linksHTML = '<p class="no-links-message">No public links available for this project.</p>';
+  }
+  
+  panelLinks.innerHTML = linksHTML;
   
   // Show panel
   switchTab('overview');

@@ -5,7 +5,7 @@
 
 // Import all modules
 import { initNavigation, initSmoothScroll } from './modules/navigation.js';
-import { initFadeInAnimations, initContactCardsAnimation } from './modules/animations.js';
+import { initFadeInAnimations } from './modules/animations.js';
 import { initBackToTop, initScrollEffects } from './modules/scroll-effects.js';
 import { initTheme } from './modules/theme.js';
 import { initProjects, setupProjectModalListeners, openProjectModal, closeProjectModal, switchTab, openLightbox, closeLightbox } from './modules/projects.js';
@@ -23,7 +23,6 @@ function init() {
   
   // Initialize animations
   initFadeInAnimations();
-  initContactCardsAnimation();
   
   // Initialize scroll effects
   initBackToTop();
