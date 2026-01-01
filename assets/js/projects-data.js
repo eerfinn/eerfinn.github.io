@@ -4,7 +4,7 @@ const projectsData = [
     title: "Website Sistem Akreditasi (SiAkred)",
     description:
       "A Project Based Learning (PBL) project developed using the Laravel framework, serving as an information and documentation portal for the accreditation of the D4 Business Information Systems Program at Politeknik Negeri Malang.",
-    image: "./assets/images/siakred/home-view.png",
+    image: "./assets/images/siakred/siakred.png",
     screenshots: ["./assets/images/siakred/home.png"],
     tags: ["Laravel", "PHP", "MySQL", "JavaScript", "Bootstrap", "CSS"],
     category: "Full Stack",
@@ -52,7 +52,7 @@ const projectsData = [
     links: {
       github: "https://github.com/eerfinn/SistemAkreditasi-PBL",
       documentation:
-        "https://www.notion.so/eerfinn/Website-Platform-Sistem-Akreditasi-SiAkred-298980390ee080be85d9db81777b4df1?source=copy_link",
+        "https://www.notion.so/eerfinn/Website-Platform-Sistem-Akreditasi-SiAkred-298980390ee080be85d9db81777b4df1",
     },
   },
   {
@@ -60,7 +60,7 @@ const projectsData = [
     title: "Personal Portfolio Website",
     description:
       "A personal portfolio website built from scratch using modern web technologies. The site features a clean and intuitive design with smooth transitions and animations. Key highlights include a dynamic dark/light theme system, responsive layout that works perfectly across all devices, interactive project showcase with detailed modal views, and performant image handling with lazy loading. The modular JavaScript architecture ensures maintainable and scalable code.",
-    image: "./assets/images/portofolio/home-section.png",
+    image: "./assets/images/portofolio/portofolio.png",
     screenshots: [
       "./assets/images/portofolio/fullpage-dark.png",
       "./assets/images/portofolio/fullpage-light.png",
@@ -93,7 +93,7 @@ const projectsData = [
     title: "Website Sistem Bebas Tanggungan (SiBesT)",
     description:
       "A Project Based Learning (PBL) project focused on developing a PHP-based student clearance service portal, implementing a comprehensive system for managing academic requirements clearance. The system features user authentication, document submission workflows, administrative verification processes, and integrated communication between students and department administrators.",
-    image: "./assets/images/sibest/home-view.png",
+    image: "./assets/images/sibest/sibest.png",
     screenshots: [
       "./assets/images/sibest/home.png",
       "./assets/images/sibest/login.png",
@@ -125,7 +125,54 @@ const projectsData = [
     },
     links: {
       documentation:
-        "https://www.notion.so/eerfinn/Website-Platform-Sistem-Bebas-Tanggungan-SiBesT-298980390ee08066965acb259bb25be8?source=copy_link",
+        "https://www.notion.so/eerfinn/Website-Platform-Sistem-Bebas-Tanggungan-SiBesT-298980390ee08066965acb259bb25be8",
+    },
+  },
+  {
+    id: 4,
+    title: "StrawSmart Farming",
+    description:
+      "A Project Based Learning (PBL) project developing a mobile-based smart farming application designed for strawberry cultivation, utilizing IoT technology with Wokwi simulation. The system integrates sensors for light, temperature, soil moisture, and humidity, communicating via Firebase. It features Fuzzy Logic for automated irrigation and a comprehensive batch management system to track the 4-month growth cycle of strawberries.",
+    image: "./assets/images/strawsmart/strawsmart.png",
+    screenshots: [
+      "./assets/images/strawsmart/home1.png",
+      "./assets/images/strawsmart/home.jpg",
+      "./assets/images/strawsmart/greenhouse.jpg",
+      "./assets/images/strawsmart/notif.jpg",
+      "./assets/images/strawsmart/batch1.jpg",
+      "./assets/images/strawsmart/batch2.jpg",
+      "./assets/images/strawsmart/batch3.jpg",
+      "./assets/images/strawsmart/batch4.jpg",
+      "./assets/images/strawsmart/monitoring.jpg",
+      "./assets/images/strawsmart/report.jpg",
+      "./assets/images/strawsmart/report2.jpg",
+      "./assets/images/strawsmart/settings.jpg",
+      "./assets/images/strawsmart/profile.jpg",
+      "./assets/images/strawsmart/notif-setting.jpg",
+      "./assets/images/strawsmart/management-setting.jpg",
+    ],
+    tags: ["Mobile", "IoT", "Flutter", "Firebase", "Fuzzy Logic"],
+    category: "Mobile Dev",
+    duration: "4 Months",
+    status: "Completed",
+    features: [
+      "Secure Authentication (Login, Register, Forgot Password)",
+      "Real-time Dashboard with Sensor Widgets",
+      "Automated Pump Control with Fuzzy Logic",
+      "Environmental Monitoring & History Graphs",
+      "Crop Cycle (Batch) Management System",
+      "Smart Notifications (Watering, Alerts)",
+      "Data Reporting (PDF/CSV Export)",
+      "Dark/Light Theme & Admin Role Management",
+    ],
+    techStack: {
+      frontend: ["Flutter", "Dart"],
+      backend: ["Firebase Realtime Database", "Firebase Authentication"],
+      iot: ["ESP32 Wokwi Simulation", "DHT Sensor", "LDR", "Soil Moisture"],
+      tools: ["VS Code", "GitHub"],
+    },
+    links: {
+      github: "https://github.com/eerfinn/strawsmart_farming",
     },
   },
 ];
