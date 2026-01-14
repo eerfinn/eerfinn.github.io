@@ -7,7 +7,11 @@
  * Get saved theme preference from localStorage
  */
 function getThemePreference() {
-  return localStorage.getItem('theme') || 'dark';
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    return savedTheme;
+  }
+  return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
 }
 
 /**
@@ -37,9 +41,9 @@ function toggleTheme() {
 export function initTheme() {
   const savedTheme = getThemePreference();
   applyTheme(savedTheme);
-  
+
   const themeToggle = document.getElementById('themeToggle');
-  
+
   if (themeToggle) {
     themeToggle.addEventListener('click', toggleTheme);
   }

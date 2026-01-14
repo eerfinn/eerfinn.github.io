@@ -3,6 +3,10 @@
  * Handles project rendering, modal, and filtering
  */
 
+// State for lightbox slider
+let currentImages = [];
+let currentImageIndex = 0;
+
 /**
  * Render all projects to the grid
  */
@@ -35,7 +39,7 @@ export function renderProjects() {
     const icon = iconMap[project.category] || 'fa-code';
     
     projectCard.innerHTML = `
-      <div class="project-card-image-wrapper" onclick="openLightbox('${project.image}')" style="cursor: pointer;">
+      <div class="project-card-image-wrapper" onclick="openLightboxFromProject(${project.id})" style="cursor: pointer;">
         <img src="${project.image}" alt="${project.title}" class="project-card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/6366f1/ffffff?text=Image+Not+Found'" />
         <div class="project-card-badge">${project.category}</div>
         <div class="gallery-thumbnail-overlay">
@@ -96,7 +100,7 @@ export function openProjectModal(projectId) {
   const galleryThumbnails = document.getElementById('galleryThumbnails');
   if (project.screenshots && project.screenshots.length > 0) {
     galleryThumbnails.innerHTML = project.screenshots.map((screenshot, index) => 
-      `<div class="gallery-thumbnail" onclick="openLightbox('${screenshot}')">
+      `<div class="gallery-thumbnail" onclick="openLightboxFromProject(${project.id}, ${index})">
         <img src="${screenshot}" alt="${project.title} Screenshot ${index + 1}" loading="lazy" />
         <div class="gallery-thumbnail-overlay">
           <i class="fas fa-search-plus"></i>
@@ -257,14 +261,102 @@ export function setupProjectModalListeners() {
 /**
  * Open lightbox with image
  */
-export function openLightbox(imageSrc) {
+export function openLightbox(imageSrc, imageList = []) {
   const lightbox = document.getElementById('lightboxOverlay');
-  const lightboxImage = document.getElementById('lightboxImage');
   
-  if (lightbox && lightboxImage) {
-    lightboxImage.src = imageSrc;
-    lightbox.classList.add('active');
+  if (!lightbox) return;
+
+  // Set current images list
+  if (imageList && imageList.length > 0) {
+    currentImages = imageList;
+    currentImageIndex = currentImages.indexOf(imageSrc);
+    if (currentImageIndex === -1) currentImageIndex = 0;
+  } else {
+    currentImages = [imageSrc];
+    currentImageIndex = 0;
   }
+  
+  updateLightboxUI();
+  lightbox.classList.add('active');
+  document.body.classList.add('panel-open'); // Prevent scroll
+}
+
+/**
+ * Open lightbox for a specific project
+ */
+export function openLightboxFromProject(projectId, startIndex = -1) {
+  const project = projectsData.find(p => p.id === projectId);
+  if (!project) return;
+
+  let images = [];
+  
+  // Combine thumbnail and screenshots
+  if (project.image) images.push(project.image);
+  if (project.screenshots && project.screenshots.length > 0) {
+    images = [...images, ...project.screenshots];
+  }
+
+  // If we clicked a specific screenshot, find its index in the combined list
+  let actualStartIndex = 0;
+  if (startIndex !== -1) {
+    // If thumbnails start after project image
+    actualStartIndex = project.image ? startIndex + 1 : startIndex;
+  }
+
+  const lightbox = document.getElementById('lightboxOverlay');
+  if (lightbox) {
+    currentImages = images;
+    currentImageIndex = actualStartIndex;
+    
+    updateLightboxUI();
+    lightbox.classList.add('active');
+    document.body.classList.add('panel-open');
+  }
+}
+
+/**
+ * Update lightbox UI (image, counter, button visibility)
+ */
+function updateLightboxUI() {
+  const lightboxImage = document.getElementById('lightboxImage');
+  const lightboxCounter = document.getElementById('lightboxCounter');
+  const prevBtn = document.getElementById('lightboxPrev');
+  const nextBtn = document.getElementById('lightboxNext');
+
+  if (lightboxImage && currentImages[currentImageIndex]) {
+    lightboxImage.src = currentImages[currentImageIndex];
+  }
+
+  if (lightboxCounter) {
+    lightboxCounter.textContent = `${currentImageIndex + 1} / ${currentImages.length}`;
+    lightboxCounter.style.display = currentImages.length > 1 ? 'block' : 'none';
+  }
+
+  if (prevBtn) {
+    prevBtn.style.display = currentImages.length > 1 ? 'flex' : 'none';
+  }
+
+  if (nextBtn) {
+    nextBtn.style.display = currentImages.length > 1 ? 'flex' : 'none';
+  }
+}
+
+/**
+ * Navigate to next image
+ */
+export function nextImage() {
+  if (currentImages.length <= 1) return;
+  currentImageIndex = (currentImageIndex + 1) % currentImages.length;
+  updateLightboxUI();
+}
+
+/**
+ * Navigate to previous image
+ */
+export function prevImage() {
+  if (currentImages.length <= 1) return;
+  currentImageIndex = (currentImageIndex - 1 + currentImages.length) % currentImages.length;
+  updateLightboxUI();
 }
 
 /**
@@ -275,6 +367,11 @@ export function closeLightbox() {
   
   if (lightbox) {
     lightbox.classList.remove('active');
+    // Only remove panel-open if project modal is NOT open
+    const panel = document.getElementById('projectPanel');
+    if (!panel || !panel.classList.contains('active')) {
+      document.body.classList.remove('panel-open');
+    }
   }
 }
 
@@ -284,9 +381,25 @@ export function closeLightbox() {
 function setupLightboxListeners() {
   const lightboxClose = document.getElementById('lightboxClose');
   const lightboxOverlay = document.getElementById('lightboxOverlay');
+  const prevBtn = document.getElementById('lightboxPrev');
+  const nextBtn = document.getElementById('lightboxNext');
   
   if (lightboxClose) {
     lightboxClose.addEventListener('click', closeLightbox);
+  }
+  
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      prevImage();
+    });
+  }
+  
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      nextImage();
+    });
   }
   
   if (lightboxOverlay) {
@@ -296,4 +409,16 @@ function setupLightboxListeners() {
       }
     });
   }
+  
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    const lightbox = document.getElementById('lightboxOverlay');
+    if (lightbox && lightbox.classList.contains('active')) {
+      if (e.key === 'ArrowRight') {
+        nextImage();
+      } else if (e.key === 'ArrowLeft') {
+        prevImage();
+      }
+    }
+  });
 }

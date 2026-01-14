@@ -140,7 +140,7 @@
   border-bottom: 50px solid var(--solid-primary);
   opacity: 0.09;
   top: 5%;
-  right:1%;
+  right: 1%;
   animation: float 7s ease-in-out infinite reverse;
 }
 
@@ -156,9 +156,12 @@
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0) rotate(0deg);
   }
+
   50% {
     transform: translateY(-25px) rotate(8deg);
   }
@@ -205,10 +208,13 @@
 }
 
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translate(-50%, -50%) scale(1);
     opacity: 0.4;
   }
+
   50% {
     transform: translate(-50%, -50%) scale(1.15);
     opacity: 0.7;
@@ -382,7 +388,10 @@
   }
 
   .decorative-shapes {
-    display: none;
+    display: block;
+    opacity: 0.6;
+    transform: scale(0.7);
+    transform-origin: center;
   }
 
   .about-text {
@@ -400,7 +409,7 @@
   .about-actions {
     justify-content: center;
   }
-  
+
   .btn-linkedin {
     padding: 12px 24px;
     font-size: 0.95rem;
@@ -411,27 +420,27 @@
   .about-section {
     padding: 60px 5% 80px;
   }
-  
+
   .about-content {
     padding: 0 15px;
     gap: 30px;
   }
-  
+
   .avatar-image {
     width: 180px;
     height: 180px;
   }
-  
+
   .avatar-glow {
     width: 220px;
     height: 220px;
   }
-  
+
   .about-text p {
     font-size: 0.95rem;
     line-height: 1.7;
   }
-  
+
   .btn-linkedin {
     padding: 11px 20px;
     font-size: 0.9rem;

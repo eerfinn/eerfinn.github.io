@@ -8,7 +8,7 @@ import { initNavigation, initSmoothScroll } from './modules/navigation.js';
 import { initFadeInAnimations } from './modules/animations.js';
 import { initBackToTop, initScrollEffects } from './modules/scroll-effects.js';
 import { initTheme } from './modules/theme.js';
-import { initProjects, setupProjectModalListeners, openProjectModal, closeProjectModal, switchTab, openLightbox, closeLightbox } from './modules/projects.js';
+import { initProjects, setupProjectModalListeners, openProjectModal, closeProjectModal, switchTab, openLightbox, closeLightbox, openLightboxFromProject } from './modules/projects.js';
 
 /**
  * Initialize all modules when DOM is ready
@@ -16,18 +16,18 @@ import { initProjects, setupProjectModalListeners, openProjectModal, closeProjec
 function init() {
   // Initialize theme first (to prevent flash)
   initTheme();
-  
+
   // Initialize navigation
   initNavigation();
   initSmoothScroll();
-  
+
   // Initialize animations
   initFadeInAnimations();
-  
+
   // Initialize scroll effects
   initBackToTop();
   initScrollEffects();
-  
+
   // Initialize projects
   initProjects();
   setupProjectModalListeners();
@@ -41,6 +41,7 @@ window.closeProjectModal = closeProjectModal;
 window.switchTab = switchTab;
 window.openLightbox = openLightbox;
 window.closeLightbox = closeLightbox;
+window.openLightboxFromProject = openLightboxFromProject;
 
 /**
  * Start initialization
