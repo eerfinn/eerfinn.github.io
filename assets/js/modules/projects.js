@@ -12,32 +12,32 @@ let currentImageIndex = 0;
  */
 export function renderProjects() {
   const projectsGrid = document.getElementById('projectsGrid');
-  
+
   if (!projectsGrid || typeof projectsData === 'undefined') {
     return;
   }
-  
+
   projectsGrid.innerHTML = '';
-  
+
   projectsData.forEach((project, index) => {
     const projectCard = document.createElement('div');
     projectCard.className = 'project-card fade-in';
     projectCard.dataset.category = project.category;
     projectCard.style.animationDelay = `${index * 0.1}s`;
-    
-    const tagsHTML = project.tags.slice(0, 4).map(tag => 
+
+    const tagsHTML = project.tags.slice(0, 4).map(tag =>
       `<span class="project-card-tag">${tag}</span>`
     ).join('');
-    
+
     const statusClass = project.status.toLowerCase().replace(' ', '-');
-    
+
     const iconMap = {
       'Full Stack': 'fa-layer-group',
       'Frontend': 'fa-palette',
       'Backend': 'fa-server'
     };
     const icon = iconMap[project.category] || 'fa-code';
-    
+
     projectCard.innerHTML = `
       <div class="project-card-image-wrapper" onclick="openLightboxFromProject(${project.id})" style="cursor: pointer;">
         <img src="${project.image}" alt="${project.title}" class="project-card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/6366f1/ffffff?text=Image+Not+Found'" />
@@ -69,7 +69,7 @@ export function renderProjects() {
         </div>
       </div>
     `;
-    
+
     projectsGrid.appendChild(projectCard);
   });
 }
@@ -80,40 +80,66 @@ export function renderProjects() {
 export function openProjectModal(projectId) {
   const project = projectsData.find(p => p.id === projectId);
   if (!project) return;
-  
+
   const panel = document.getElementById('projectPanel');
-  
+
   // Set project details
   document.getElementById('panelTitle').textContent = project.title;
   document.getElementById('panelCategory').querySelector('span').textContent = project.category;
   document.getElementById('panelDuration').querySelector('span').textContent = project.duration;
   document.getElementById('panelStatus').querySelector('span').textContent = project.status;
   document.getElementById('panelDescription').textContent = project.description;
-  
+
   // Set tags
   const panelTags = document.getElementById('panelTags');
-  panelTags.innerHTML = project.tags.map(tag => 
+  panelTags.innerHTML = project.tags.map(tag =>
     `<span class="panel-tag">${tag}</span>`
   ).join('');
-  
+
   // Set thumbnail gallery
   const galleryThumbnails = document.getElementById('galleryThumbnails');
+
+  // Clear previous load more button if exists
+  const existingLoadMore = galleryThumbnails.parentNode.querySelector('.gallery-load-more');
+  if (existingLoadMore) {
+    existingLoadMore.remove();
+  }
+
   if (project.screenshots && project.screenshots.length > 0) {
-    galleryThumbnails.innerHTML = project.screenshots.map((screenshot, index) => 
-      `<div class="gallery-thumbnail" onclick="openLightboxFromProject(${project.id}, ${index})">
-        <img src="${screenshot}" alt="${project.title} Screenshot ${index + 1}" loading="lazy" />
-        <div class="gallery-thumbnail-overlay">
-          <i class="fas fa-search-plus"></i>
+    const INITIAL_VISIBLE_COUNT = 4;
+
+    galleryThumbnails.innerHTML = project.screenshots.map((screenshot, index) => {
+      const isHidden = index >= INITIAL_VISIBLE_COUNT ? 'hidden' : '';
+      return `
+        <div class="gallery-thumbnail ${isHidden}" onclick="openLightboxFromProject(${project.id}, ${index})">
+          <img src="${screenshot}" alt="${project.title} Screenshot ${index + 1}" loading="lazy" />
+          <div class="gallery-thumbnail-overlay">
+            <i class="fas fa-search-plus"></i>
+          </div>
         </div>
-      </div>`
-    ).join('');
+      `;
+    }).join('');
+
+    // Add load more button if needed
+    if (project.screenshots.length > INITIAL_VISIBLE_COUNT) {
+      const remainingCount = project.screenshots.length - INITIAL_VISIBLE_COUNT;
+      const loadMoreContainer = document.createElement('div');
+      loadMoreContainer.className = 'gallery-load-more';
+      loadMoreContainer.innerHTML = `
+        <button class="gallery-load-more-btn" onclick="this.parentElement.previousElementSibling.querySelectorAll('.hidden').forEach(el => el.classList.remove('hidden')); this.parentElement.remove();">
+          <i class="fas fa-images"></i>
+          <span>View ${remainingCount} More Photos</span>
+        </button>
+      `;
+      galleryThumbnails.parentNode.appendChild(loadMoreContainer);
+    }
   } else {
     galleryThumbnails.innerHTML = '<p style="color: var(--text-secondary); font-size: 0.9rem;">No screenshots available</p>';
   }
-  
+
   // Set features
   const panelFeatures = document.getElementById('panelFeatures');
-  panelFeatures.innerHTML = project.features.map((feature, index) => 
+  panelFeatures.innerHTML = project.features.map((feature, index) =>
     `<div class="feature-item">
       <div class="feature-icon">
         <i class="fas fa-check"></i>
@@ -121,11 +147,11 @@ export function openProjectModal(projectId) {
       <div class="feature-text">${feature}</div>
     </div>`
   ).join('');
-  
+
   // Set tech stack
   const panelTechStack = document.getElementById('panelTechStack');
   panelTechStack.innerHTML = '';
-  
+
   Object.entries(project.techStack).forEach(([category, technologies]) => {
     const techCategory = document.createElement('div');
     techCategory.className = 'tech-category';
@@ -137,11 +163,11 @@ export function openProjectModal(projectId) {
     `;
     panelTechStack.appendChild(techCategory);
   });
-  
+
   // Set links
   const panelLinks = document.getElementById('panelLinks');
   let linksHTML = '';
-  
+
   if (project.links.github) {
     linksHTML += `
       <a href="${project.links.github}" target="_blank" class="project-link github">
@@ -149,7 +175,7 @@ export function openProjectModal(projectId) {
       </a>
     `;
   }
-  
+
   if (project.links.live) {
     linksHTML += `
       <a href="${project.links.live}" target="_blank" class="project-link">
@@ -157,7 +183,7 @@ export function openProjectModal(projectId) {
       </a>
     `;
   }
-  
+
   if (project.links.documentation) {
     linksHTML += `
       <a href="${project.links.documentation}" target="_blank" class="project-link documentation">
@@ -165,18 +191,18 @@ export function openProjectModal(projectId) {
       </a>
     `;
   }
-  
+
   if (!linksHTML) {
     linksHTML = '<p class="no-links-message">No public links available for this project.</p>';
   }
-  
+
   panelLinks.innerHTML = linksHTML;
-  
+
   // Show panel
   switchTab('overview');
   panel.classList.add('active');
   document.body.classList.add('panel-open');
-  
+
   // Scroll to top of panel content
   const panelContent = document.querySelector('.panel-content');
   if (panelContent) {
@@ -199,11 +225,11 @@ export function closeProjectModal() {
 export function switchTab(tabName) {
   const navBtns = document.querySelectorAll('.nav-btn');
   const tabContents = document.querySelectorAll('.tab-content');
-  
+
   navBtns.forEach(btn => {
     btn.classList.toggle('active', btn.dataset.tab === tabName);
   });
-  
+
   tabContents.forEach(content => {
     content.classList.toggle('active', content.id === `${tabName}-tab`);
   });
@@ -226,11 +252,11 @@ export function initProjects() {
 export function setupProjectModalListeners() {
   const panelClose = document.getElementById('panelClose');
   const projectPanel = document.getElementById('projectPanel');
-  
+
   if (panelClose) {
     panelClose.addEventListener('click', closeProjectModal);
   }
-  
+
   if (projectPanel) {
     projectPanel.addEventListener('click', (e) => {
       if (e.target === projectPanel) {
@@ -238,17 +264,17 @@ export function setupProjectModalListeners() {
       }
     });
   }
-  
+
   const navBtns = document.querySelectorAll('.nav-btn');
   navBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       switchTab(btn.dataset.tab);
     });
   });
-  
+
   // Setup lightbox listeners
   setupLightboxListeners();
-  
+
   // Close modal on Escape key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
@@ -263,7 +289,7 @@ export function setupProjectModalListeners() {
  */
 export function openLightbox(imageSrc, imageList = []) {
   const lightbox = document.getElementById('lightboxOverlay');
-  
+
   if (!lightbox) return;
 
   // Set current images list
@@ -275,7 +301,7 @@ export function openLightbox(imageSrc, imageList = []) {
     currentImages = [imageSrc];
     currentImageIndex = 0;
   }
-  
+
   updateLightboxUI();
   lightbox.classList.add('active');
   document.body.classList.add('panel-open'); // Prevent scroll
@@ -289,7 +315,7 @@ export function openLightboxFromProject(projectId, startIndex = -1) {
   if (!project) return;
 
   let images = [];
-  
+
   // Combine thumbnail and screenshots
   if (project.image) images.push(project.image);
   if (project.screenshots && project.screenshots.length > 0) {
@@ -307,7 +333,7 @@ export function openLightboxFromProject(projectId, startIndex = -1) {
   if (lightbox) {
     currentImages = images;
     currentImageIndex = actualStartIndex;
-    
+
     updateLightboxUI();
     lightbox.classList.add('active');
     document.body.classList.add('panel-open');
@@ -364,7 +390,7 @@ export function prevImage() {
  */
 export function closeLightbox() {
   const lightbox = document.getElementById('lightboxOverlay');
-  
+
   if (lightbox) {
     lightbox.classList.remove('active');
     // Only remove panel-open if project modal is NOT open
@@ -383,25 +409,25 @@ function setupLightboxListeners() {
   const lightboxOverlay = document.getElementById('lightboxOverlay');
   const prevBtn = document.getElementById('lightboxPrev');
   const nextBtn = document.getElementById('lightboxNext');
-  
+
   if (lightboxClose) {
     lightboxClose.addEventListener('click', closeLightbox);
   }
-  
+
   if (prevBtn) {
     prevBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       prevImage();
     });
   }
-  
+
   if (nextBtn) {
     nextBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       nextImage();
     });
   }
-  
+
   if (lightboxOverlay) {
     lightboxOverlay.addEventListener('click', (e) => {
       if (e.target === lightboxOverlay) {
@@ -409,7 +435,7 @@ function setupLightboxListeners() {
       }
     });
   }
-  
+
   // Keyboard navigation
   document.addEventListener('keydown', (e) => {
     const lightbox = document.getElementById('lightboxOverlay');

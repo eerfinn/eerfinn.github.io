@@ -173,6 +173,7 @@ const projectsData = [
     },
     links: {
       github: "https://github.com/eerfinn/strawsmart_farming",
+      documentation: "https://www.notion.so/eerfinn/Mobile-Platform-StrawSmart-Farming-2dd980390ee080d896cedab00c7aa4fa",
     },
   },
 ];
