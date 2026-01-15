@@ -237,11 +237,6 @@
   font-weight: 400;
 }
 
-.about-text p:first-of-type {
-  font-size: 1.15rem;
-  line-height: 2;
-}
-
 .about-actions {
   display: flex;
   flex-direction: row;
@@ -400,10 +395,6 @@
 
   .about-text p {
     font-size: 1rem;
-  }
-
-  .about-text p:first-of-type {
-    font-size: 1.05rem;
   }
 
   .about-actions {

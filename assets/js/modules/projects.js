@@ -34,7 +34,8 @@ export function renderProjects() {
     const iconMap = {
       'Full Stack': 'fa-layer-group',
       'Frontend': 'fa-palette',
-      'Backend': 'fa-server'
+      'Backend': 'fa-server',
+      'Mobile': 'fa-mobile-screen-button'
     };
     const icon = iconMap[project.category] || 'fa-code';
 

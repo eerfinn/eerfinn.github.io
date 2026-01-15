@@ -100,6 +100,11 @@ body:not(.dark-mode) .project-card:hover {
   border-radius: 12px;
 }
 
+/* Light mode: darker background for images with transparent/white backgrounds */
+body:not(.dark-mode) .project-card-image-wrapper {
+  background: #e2e8f0;
+}
+
 .project-card-image {
   width: 100%;
   height: 100%;
@@ -493,6 +498,11 @@ body.panel-open {
   border: 2px solid var(--border-primary);
   transition: all 0.3s ease;
   background: var(--bg-secondary);
+}
+
+/* Light mode: darker background for images with transparent/white backgrounds */
+body:not(.dark-mode) .gallery-thumbnail {
+  background: #e2e8f0;
 }
 
 .gallery-thumbnail.hidden {
@@ -1024,18 +1034,22 @@ body.panel-open {
   }
 
   .project-card-footer {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 15px;
-    align-items: stretch;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .project-card-view-btn {
-    width: 100%;
-    justify-content: center;
+    width: auto;
+    padding: 8px 16px;
+    font-size: 0.85rem;
   }
 
   .project-card-status {
-    justify-content: center;
+    justify-content: flex-start;
+    font-size: 0.85rem;
   }
 
   .gallery-thumbnails {

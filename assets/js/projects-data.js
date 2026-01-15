@@ -152,7 +152,7 @@ const projectsData = [
       "./assets/images/strawsmart/management-setting.jpg",
     ],
     tags: ["Mobile", "IoT", "Flutter", "Firebase", "Fuzzy Logic"],
-    category: "Mobile Dev",
+    category: "Mobile",
     duration: "4 Months",
     status: "Completed",
     features: [
