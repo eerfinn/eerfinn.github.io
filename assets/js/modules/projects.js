@@ -306,11 +306,51 @@ export function switchTab(tabName) {
  */
 export function initProjects() {
   if (typeof projectsData !== 'undefined') {
+    renderFilterButtons();
     renderProjects();
     setupFilterListeners();
   } else {
     setTimeout(initProjects, 100);
   }
+}
+
+/**
+ * Render filter buttons dynamically based on available categories
+ */
+function renderFilterButtons() {
+  const filterContainer = document.getElementById('projectsFilter');
+  if (!filterContainer || typeof projectsData === 'undefined') return;
+
+  // Get unique categories from projects
+  const categories = [...new Set(projectsData.map(p => p.category))];
+  
+  // Icon mapping for categories
+  const iconMap = {
+    'Full Stack': 'fa-layer-group',
+    'Frontend': 'fa-palette',
+    'Backend': 'fa-server',
+    'Mobile': 'fa-mobile-screen-button'
+  };
+
+  // Build filter buttons HTML
+  let filtersHTML = `
+    <button class="filter-btn active" data-filter="all">
+      <i class="fas fa-th-large"></i>
+      <span>All</span>
+    </button>
+  `;
+
+  categories.forEach(category => {
+    const icon = iconMap[category] || 'fa-code';
+    filtersHTML += `
+      <button class="filter-btn" data-filter="${category}">
+        <i class="fas ${icon}"></i>
+        <span>${category}</span>
+      </button>
+    `;
+  });
+
+  filterContainer.innerHTML = filtersHTML;
 }
 
 /**
