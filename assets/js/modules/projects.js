@@ -6,20 +6,36 @@
 // State for lightbox slider
 let currentImages = [];
 let currentImageIndex = 0;
+let currentFilter = 'all';
+let visibleProjects = 6; // Initial number of visible projects
+const projectsPerLoad = 6; // Number of projects to load on each click
 
 /**
  * Render all projects to the grid
  */
-export function renderProjects() {
+export function renderProjects(filter = 'all', reset = true) {
   const projectsGrid = document.getElementById('projectsGrid');
 
   if (!projectsGrid || typeof projectsData === 'undefined') {
     return;
   }
 
-  projectsGrid.innerHTML = '';
+  // Reset visible count when filter changes
+  if (reset) {
+    visibleProjects = 6;
+  }
 
-  projectsData.forEach((project, index) => {
+  projectsGrid.innerHTML = '';
+  
+  // Filter projects based on category
+  const filteredProjects = filter === 'all' 
+    ? projectsData 
+    : projectsData.filter(project => project.category === filter);
+
+  // Get only visible projects
+  const projectsToShow = filteredProjects.slice(0, visibleProjects);
+
+  projectsToShow.forEach((project, index) => {
     const projectCard = document.createElement('div');
     projectCard.className = 'project-card fade-in';
     projectCard.dataset.category = project.category;
@@ -73,6 +89,55 @@ export function renderProjects() {
 
     projectsGrid.appendChild(projectCard);
   });
+
+  // Update Load More button visibility
+  updateLoadMoreButton(filteredProjects.length);
+}
+
+/**
+ * Update Load More button state
+ */
+function updateLoadMoreButton(totalProjects) {
+  let loadMoreContainer = document.getElementById('loadMoreContainer');
+  
+  // Create container if it doesn't exist
+  if (!loadMoreContainer) {
+    loadMoreContainer = document.createElement('div');
+    loadMoreContainer.id = 'loadMoreContainer';
+    loadMoreContainer.className = 'load-more-container';
+    
+    const projectsGrid = document.getElementById('projectsGrid');
+    if (projectsGrid) {
+      projectsGrid.parentNode.insertBefore(loadMoreContainer, projectsGrid.nextSibling);
+    }
+  }
+
+  // Show/hide based on remaining projects
+  if (visibleProjects < totalProjects) {
+    loadMoreContainer.innerHTML = `
+      <button class="load-more-btn" id="loadMoreBtn">
+        <i class="fas fa-plus"></i>
+        <span>Load More</span>
+      </button>
+    `;
+    loadMoreContainer.style.display = 'flex';
+    
+    // Add click listener
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    if (loadMoreBtn) {
+      loadMoreBtn.addEventListener('click', loadMoreProjects);
+    }
+  } else {
+    loadMoreContainer.style.display = 'none';
+  }
+}
+
+/**
+ * Load more projects
+ */
+export function loadMoreProjects() {
+  visibleProjects += projectsPerLoad;
+  renderProjects(currentFilter, false);
 }
 
 /**
@@ -242,9 +307,44 @@ export function switchTab(tabName) {
 export function initProjects() {
   if (typeof projectsData !== 'undefined') {
     renderProjects();
+    setupFilterListeners();
   } else {
     setTimeout(initProjects, 100);
   }
+}
+
+/**
+ * Setup filter button listeners
+ */
+function setupFilterListeners() {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Update active state
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      
+      // Filter projects
+      const filter = btn.dataset.filter;
+      currentFilter = filter;
+      renderProjects(filter);
+    });
+  });
+}
+
+/**
+ * Export filter function for external use
+ */
+export function filterProjects(category) {
+  currentFilter = category;
+  renderProjects(category);
+  
+  // Update button active state
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  filterBtns.forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.filter === category);
+  });
 }
 
 /**
