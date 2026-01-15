@@ -103,7 +103,7 @@
   color: white;
   background: var(--solid-primary);
   font-weight: 600;
-  box-shadow: 0 4px 15px rgba(85, 81, 255, 0.3);
+  box-shadow: var(--shadow-primary-sm);
   transform: translateX(5px);
 }
 
@@ -136,7 +136,7 @@
   color: white;
   border-color: var(--solid-primary);
   transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(85, 81, 255, 0.4);
+  box-shadow: var(--shadow-primary-md);
 }
 
 .sidebar-overlay {

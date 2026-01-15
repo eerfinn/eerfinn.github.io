@@ -98,59 +98,26 @@
   flex-wrap: wrap;
 }
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
+/* Hero-specific button enhancements */
+.hero-cta .btn {
   padding: 16px 36px;
   font-size: 1rem;
-  font-weight: 600;
-  text-decoration: none;
   border-radius: 12px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: 2px solid transparent;
-  position: relative;
-  overflow: hidden;
 }
 
-.btn-primary {
-  background: var(--solid-primary);
-  color: white;
-  box-shadow: var(--shadow-md);
-}
-
-.btn-primary:hover {
-  background: var(--primary-light);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lg);
-}
-
-.btn-secondary {
+.hero-cta .btn-secondary {
   background: transparent;
   color: var(--text-heading);
   border: 2px solid var(--text-secondary);
 }
 
-.btn-secondary:hover {
+.hero-cta .btn-secondary:hover {
   background: var(--solid-primary);
   border-color: var(--solid-primary);
   color: white;
   transform: translateY(-3px);
   box-shadow: var(--shadow-lg);
-}
-
-.btn-outline {
-  background: transparent;
-  color: var(--text-secondary);
-  border-color: var(--border-primary);
-}
-
-.btn-outline:hover {
-  background: var(--bg-card);
-  border-color: var(--text-secondary);
-  color: var(--text-heading);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-sm);
 }
 
 /* Hero Image Section */

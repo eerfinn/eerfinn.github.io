@@ -160,7 +160,7 @@
   color: white;
   border-color: transparent;
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(85, 81, 255, 0.3);
+  box-shadow: var(--shadow-primary-lg);
 }
 
 .contact-social-link i {

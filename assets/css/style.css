@@ -13,3 +13,6 @@
 @import './components/main-about.css';
 @import './components/main-project.css';
 @import './components/main-contact.css';
+
+/* Import UI components */
+@import './components/music-player.css';

@@ -22,6 +22,16 @@
   }
 }
 
+/* Float with rotation animation (for decorative shapes) */
+@keyframes floatRotate {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg); 
+  }
+  50% { 
+    transform: translateY(-25px) rotate(8deg); 
+  }
+}
+
 /* Gradient shift animation */
 @keyframes gradient-shift {
   0%, 100% { 

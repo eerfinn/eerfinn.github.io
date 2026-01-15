@@ -38,7 +38,9 @@
   
   /* Common solid colors */
   --solid-primary: #5551ff;
+  --solid-primary-rgb: 85, 81, 255;
   --solid-secondary: #7c3aed;
+  --solid-secondary-rgb: 124, 58, 237;
   --solid-accent: #3b82f6;
   --solid-cta: #6d28d9;
   
@@ -46,7 +48,13 @@
   --gradient-primary: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #2563eb 100%);
   --gradient-secondary: linear-gradient(135deg, #2563eb 0%, #4f46e5 50%, #6d28d9 100%);
   --gradient-accent: linear-gradient(135deg, #7c3aed 0%, #4f46e5 50%, #2563eb 100%);
+  --gradient-decorative: linear-gradient(135deg, var(--solid-secondary), var(--solid-primary));
   --gradient-bg: linear-gradient(180deg, var(--bg-primary) 0%, rgba(10, 14, 26, 0.95) 50%, var(--bg-primary) 100%);
+  
+  /* Primary color shadows */
+  --shadow-primary-sm: 0 4px 12px rgba(var(--solid-primary-rgb), 0.3);
+  --shadow-primary-md: 0 4px 12px rgba(var(--solid-primary-rgb), 0.4);
+  --shadow-primary-lg: 0 6px 20px rgba(var(--solid-primary-rgb), 0.3);
   
   /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -286,16 +294,4 @@ section {
     right: 20px;
     font-size: 1rem;
   }
-}
-
-/* Common fade-in animation */
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.fade-in.show {
-  opacity: 1;
-  transform: translateY(0);
 }

@@ -78,7 +78,7 @@
   background: var(--solid-primary);
   border-color: var(--solid-primary);
   color: white;
-  box-shadow: 0 4px 12px rgba(85, 81, 255, 0.3);
+  box-shadow: var(--shadow-primary-sm);
 }
 
 /* Light mode filter buttons */
@@ -92,7 +92,7 @@ body:not(.dark-mode) .filter-btn:hover {
 }
 
 body:not(.dark-mode) .filter-btn.active {
-  box-shadow: 0 4px 12px rgba(85, 81, 255, 0.25);
+  box-shadow: 0 4px 12px rgba(var(--solid-primary-rgb), 0.25);
 }
 
 .projects-description {
@@ -129,23 +129,12 @@ body:not(.dark-mode) .filter-btn.active {
   animation: fadeInUp 0.4s ease forwards;
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .project-card:hover {
   transform: translateY(-8px);
   box-shadow:
-    0 12px 24px -8px rgba(85, 81, 255, 0.15),
+    0 12px 24px -8px rgba(var(--solid-primary-rgb), 0.15),
     var(--shadow-sm);
-  border-color: rgba(85, 81, 255, 0.3);
+  border-color: rgba(var(--solid-primary-rgb), 0.3);
 }
 
 /* Light mode consistency */
@@ -155,9 +144,9 @@ body:not(.dark-mode) .project-card {
 }
 
 body:not(.dark-mode) .project-card:hover {
-  border-color: rgba(85, 81, 255, 0.4);
+  border-color: rgba(var(--solid-primary-rgb), 0.4);
   box-shadow:
-    0 12px 24px -8px rgba(85, 81, 255, 0.15),
+    0 12px 24px -8px rgba(var(--solid-primary-rgb), 0.15),
     0 4px 8px -2px rgba(15, 23, 42, 0.1);
 }
 

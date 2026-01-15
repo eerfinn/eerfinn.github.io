@@ -9,6 +9,7 @@ import { initFadeInAnimations } from './modules/animations.js';
 import { initBackToTop, initScrollEffects } from './modules/scroll-effects.js';
 import { initTheme } from './modules/theme.js';
 import { initProjects, setupProjectModalListeners, openProjectModal, closeProjectModal, switchTab, openLightbox, closeLightbox, openLightboxFromProject } from './modules/projects.js';
+import { initMusicPlayer } from './modules/music-player.js';
 
 /**
  * Initialize all modules when DOM is ready
@@ -31,6 +32,9 @@ function init() {
   // Initialize projects
   initProjects();
   setupProjectModalListeners();
+
+  // Initialize music player
+  initMusicPlayer();
 }
 
 /**

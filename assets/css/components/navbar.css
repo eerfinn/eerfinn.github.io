@@ -169,7 +169,7 @@ body:not(.dark-mode) .navbar-container {
 .navbar-link.active {
   color: white;
   background: var(--solid-primary);
-  box-shadow: 0 4px 12px rgba(85, 81, 255, 0.4);
+  box-shadow: var(--shadow-primary-md);
   position: relative;
 }
 
