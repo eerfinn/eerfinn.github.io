@@ -42,7 +42,6 @@ export function initMusicPlayer() {
   const playlist = [
     './assets/music/Den Basito - Anak Alam.mp3',
     './assets/music/Bob Marley and The Chineke! Orchestra - Turn Your Lights Down Low (Visualiser).mp3',
-    './assets/music/Crazy Rasta - Di Dekatmu (Odenk Accoustic Solo Version).mp3',
     './assets/music/Den Basito - Sang Penari (Official Video) (320 KBps).mp3'
   ];
 
