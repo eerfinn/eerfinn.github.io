@@ -220,6 +220,15 @@ export function initMusicPlayer() {
     }
   });
 
+  // Auto play next track when current track ends
+  audio.addEventListener('ended', () => {
+    console.log('Track ended, moving to next...'); // Debug log
+    const nextIndex = (currentTrackIndex + 1) % playlist.length;
+    loadTrack(nextIndex);
+    // Always play the next track automatically
+    audio.play().catch(e => console.log('Audio play failed:', e));
+  });
+
   // Progress bar controls
   if (progressBar) {
     progressBar.addEventListener('click', (e) => {
@@ -341,15 +350,4 @@ export function initMusicPlayer() {
 
   // Initialize with first track
   loadTrack(0);
-  
-  // Auto next when track ends
-  audio.addEventListener('ended', () => {
-    if (playlist.length > 1) {
-      nextTrack();
-    } else {
-      // If only one track, restart it
-      audio.currentTime = 0;
-      audio.play().catch(e => console.log('Audio play failed:', e));
-    }
-  });
 }
