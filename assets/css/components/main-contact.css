@@ -21,6 +21,11 @@
   z-index: -1;
 }
 
+/* Make separator more visible in light mode */
+body:not(.dark-mode) .contact-section::before {
+  background: rgba(45, 55, 72, 0.3);
+}
+
 /* Decorative circle accent */
 .contact-section .circle-decoration {
   position: absolute;
@@ -107,6 +112,12 @@
   flex: 1;
   height: 1px;
   background: var(--border-primary);
+}
+
+/* Make divider lines more visible in light mode */
+body:not(.dark-mode) .contact-divider::before,
+body:not(.dark-mode) .contact-divider::after {
+  background: rgba(45, 55, 72, 0.25);
 }
 
 .contact-divider span {

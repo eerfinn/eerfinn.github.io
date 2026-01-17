@@ -25,6 +25,11 @@
   z-index: 1;
 }
 
+/* Make separator more visible in light mode */
+body:not(.dark-mode) .hero-section::after {
+  background: rgba(45, 55, 72, 0.3);
+}
+
 /* Clean design - no decorative backgrounds */
 
 /* Hero Container - Split Layout */

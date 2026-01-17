@@ -33,6 +33,12 @@
   z-index: 2;
 }
 
+/* Make separators more visible in light mode */
+body:not(.dark-mode) .projects-section::before,
+body:not(.dark-mode) .projects-section::after {
+  background: rgba(45, 55, 72, 0.3);
+}
+
 .projects-section .floating-orb {
   display: none;
 }

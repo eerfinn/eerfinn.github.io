@@ -35,6 +35,12 @@
   z-index: 2;
 }
 
+/* Make separators more visible in light mode */
+body:not(.dark-mode) .about-section::before,
+body:not(.dark-mode) .about-section::after {
+  background: rgba(45, 55, 72, 0.3);
+}
+
 .about-content {
   max-width: 1300px;
   margin: 0 auto;
