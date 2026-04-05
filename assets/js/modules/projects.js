@@ -48,17 +48,19 @@ export function renderProjects(filter = 'all', reset = true) {
     const statusClass = project.status.toLowerCase().replace(' ', '-');
 
     const iconMap = {
-      'Full Stack': 'fa-layer-group',
-      'Frontend': 'fa-palette',
-      'Backend': 'fa-server',
-      'Mobile': 'fa-mobile-screen-button'
+      'Website': 'fa-globe',
+      'Mobile': 'fa-mobile-screen-button',
+      'Game': 'fa-gamepad',
+      'Desktop': 'fa-desktop',
+      'IoT': 'fa-microchip',
+      'API': 'fa-server'
     };
     const icon = iconMap[project.category] || 'fa-code';
 
     projectCard.innerHTML = `
       <div class="project-card-image-wrapper" onclick="openLightboxFromProject(${project.id})" style="cursor: pointer;">
         <img src="${project.image}" alt="${project.title}" class="project-card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/6366f1/ffffff?text=Image+Not+Found'" />
-        <div class="project-card-badge">${project.category}</div>
+        <div class="project-card-badge">${project.category} • ${project.role || 'Fullstack'}</div>
         <div class="gallery-thumbnail-overlay">
           <i class="fas fa-search-plus"></i>
         </div>
@@ -151,7 +153,7 @@ export function openProjectModal(projectId) {
 
   // Set project details
   document.getElementById('panelTitle').textContent = project.title;
-  document.getElementById('panelCategory').querySelector('span').textContent = project.category;
+  document.getElementById('panelCategory').querySelector('span').textContent = project.category + (project.role ? ' • ' + project.role : '');
   document.getElementById('panelDuration').querySelector('span').textContent = project.duration;
   document.getElementById('panelStatus').querySelector('span').textContent = project.status;
   document.getElementById('panelDescription').textContent = project.description;
@@ -324,12 +326,14 @@ function renderFilterButtons() {
   // Get unique categories from projects
   const categories = [...new Set(projectsData.map(p => p.category))];
   
-  // Icon mapping for categories
+  // Icon mapping for categories (Platform now)
   const iconMap = {
-    'Full Stack': 'fa-layer-group',
-    'Frontend': 'fa-palette',
-    'Backend': 'fa-server',
-    'Mobile': 'fa-mobile-screen-button'
+    'Website': 'fa-globe',
+    'Mobile': 'fa-mobile-screen-button',
+    'Game': 'fa-gamepad',
+    'Desktop': 'fa-desktop',
+    'IoT': 'fa-microchip',
+    'API': 'fa-server'
   };
 
   // Build filter buttons HTML

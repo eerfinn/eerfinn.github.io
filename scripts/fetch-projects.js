@@ -38,12 +38,12 @@ const getVal = (page, propName, type) => {
 
 async function fetchProjects() {
   if (!DATABASE_ID || !process.env.NOTION_API_KEY) {
-    console.error("❌ ERROR: NOTION_API_KEY and NOTION_DATABASE_ID must be set in .env file.");
+    console.error("ERROR: NOTION_API_KEY and NOTION_DATABASE_ID must be set in .env file.");
     process.exit(1);
   }
 
-  console.log('🔄 Fetching projects from Notion...');
-  
+  console.log('Fetching projects from Notion...');
+
   try {
     const response = await notion.databases.query({
       database_id: DATABASE_ID,
@@ -60,22 +60,17 @@ async function fetchProjects() {
     const projects = response.results.map((page, index) => {
       // Basic mappings
       const title = getVal(page, 'Name', 'title') || 'Untitled Project';
-      
-      // We map "Tag" to Category based on user's Notion setup (if it's array take first item)
-      let rawTags = getVal(page, 'Tag', 'multi_select') || [];
-      let category = '';
-      if(rawTags.length > 0) {
-          category = rawTags[0];
-      } else {
-          category = getVal(page, 'Category', 'select') || 'Uncategorized'; // Fallback
-      }
+
+      // New structural mapping: Platform & Role
+      let category = getVal(page, 'Platform', 'select') || 'Website';
+      let role = getVal(page, 'Role', 'select') || 'Fullstack';
 
       const description = getVal(page, 'Short Description', 'rich_text');
-      
+
       // Extract links
       const liveLink = getVal(page, 'URL Demo', 'url');
       const githubLink = getVal(page, 'URL Source Code', 'url');
-      
+
       // Auto-discover images based on "Folder Name" (previously Thumbnail Image)
       let finalImage = '';
       let finalScreenshots = [];
@@ -85,18 +80,18 @@ async function fetchProjects() {
       if (folderNameVal) {
         const folderName = folderNameVal.trim().replace(/^\.?\/?/, ''); // Clean up any trailing dots or slashes
         const projectImagesDir = path.resolve(__dirname, `../assets/images/${folderName}`);
-        
+
         if (fs.existsSync(projectImagesDir)) {
           const files = fs.readdirSync(projectImagesDir);
           const imageFiles = files.filter(f => f.match(/\.(png|jpe?g|gif|webp)$/i));
-          
+
           if (imageFiles.length > 0) {
             // Find thumbnail (prioritize file named same as folder, or starting with 'thumb', else first)
             let thumb = imageFiles.find(f => f.startsWith(folderName) || f.startsWith('thumb'));
             if (!thumb) thumb = imageFiles[0];
-            
+
             finalImage = `./assets/images/${folderName}/${thumb}`;
-            
+
             // The rest are screenshots
             finalScreenshots = imageFiles
               .filter(f => f !== thumb)
@@ -104,17 +99,17 @@ async function fetchProjects() {
           }
         }
       }
-      
+
       // Parse features
       const featuresStr = getVal(page, 'Features', 'rich_text') || '';
       const features = featuresStr ? featuresStr.split(',').map(s => s.trim()).filter(Boolean) : [];
-      
+
       const techStackFrontend = getVal(page, 'Tech Stack', 'multi_select') || [];
-      
+
       const status = getVal(page, 'Status & Duration', 'rich_text') || 'Completed'; // Fallback logic
       let finalStatus = 'Completed';
       let finalDuration = 'Unknown';
-      if(status.includes('-')) {
+      if (status.includes('-')) {
         const parts = status.split('-');
         finalStatus = parts[0].trim();
         finalDuration = parts[1].trim();
@@ -130,6 +125,7 @@ async function fetchProjects() {
         screenshots: finalScreenshots,
         tags: techStackFrontend, // Using tech stack as tags for the card tags
         category,
+        role,
         duration: finalDuration,
         status: finalStatus,
         features: features.length > 0 ? features : ["Feature 1", "Feature 2"], // fallback
@@ -143,18 +139,18 @@ async function fetchProjects() {
       };
     });
 
-    console.log(`✅ successfully fetched ${projects.length} projects.`);
+    console.log(`successfully fetched ${projects.length} projects.`);
 
     // Write to assets/js/projects-data.js
     const outputPath = path.resolve(__dirname, '../assets/js/projects-data.js');
     const fileContent = `const projectsData = ${JSON.stringify(projects, null, 2)};\n\nif (typeof module !== "undefined" && module.exports) {\n  module.exports = projectsData;\n}\n`;
 
     fs.writeFileSync(outputPath, fileContent, 'utf-8');
-    
-    console.log(`✅ Updated js data file at: ${outputPath}`);
-    
+
+    console.log(`Updated js data file at: ${outputPath}`);
+
   } catch (error) {
-    console.error("❌ Error fetching from Notion:", error.message);
+    console.error("Error fetching from Notion:", error.message);
   }
 }
 
