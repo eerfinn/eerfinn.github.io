@@ -1,0 +1,12 @@
+{
+  "name": "portfolio-notion-sync",
+  "version": "1.0.0",
+  "description": "Script to fetch projects from Notion and update static JS data.",
+  "scripts": {
+    "sync": "node scripts/fetch-projects.js"
+  },
+  "dependencies": {
+    "@notionhq/client": "^2.2.14",
+    "dotenv": "^16.4.5"
+  }
+}

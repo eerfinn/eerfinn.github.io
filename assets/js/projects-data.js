@@ -1,181 +1,160 @@
 const projectsData = [
   {
-    id: 1,
-    title: "Website Sistem Akreditasi (SiAkred)",
-    description:
-      "A Project Based Learning (PBL) project developed using the Laravel framework, serving as an information and documentation portal for the accreditation of the D4 Business Information Systems Program at Politeknik Negeri Malang.",
-    image: "./assets/images/siakred/siakred.png",
-    screenshots: ["./assets/images/siakred/home.png"],
-    tags: ["Laravel", "PHP", "MySQL", "JavaScript", "Bootstrap", "CSS"],
-    category: "Full Stack",
-    duration: "4 Months",
-    status: "Completed",
-    features: [
-      "Multi-role User Authentication",
-      "PPEPP Document Management System",
-      "Hierarchical Verification Workflow",
-      "Real-time Document Status Tracking",
-      "Automated Email Notifications",
-      "In-app Real-time Notifications",
-      "User Profile and Photo Management",
-      "Document History and Activity Logs",
-      "Export Activity Logs to Excel",
-      "Document Template Management",
-      "Task Management System",
-      "Document Commenting Feature",
-      "Password Reset Function",
-      "Access Control and Permissions",
-      "Criteria-based User Access",
-      "Role-based Dashboard",
+    "id": 1,
+    "title": "Webstie Platform - Quran Recitation",
+    "description": "comming soon.",
+    "image": "",
+    "screenshots": [],
+    "tags": [],
+    "category": "Website Development",
+    "duration": "Unknown",
+    "status": "Completed",
+    "features": [
+      "Feature 1",
+      "Feature 2"
     ],
-    techStack: {
-      frontend: [
-        "HTML",
-        "CSS",
-        "JavaScript",
-        "jQuery",
-        "Bootstrap 5",
-        "DataTables",
-        "TinyMCE",
-        "SweetAlert2",
-        "Font Awesome",
-      ],
-      backend: ["PHP 8.1", "Laravel 10", "SQL Server"],
-      tools: [
-        "PHPSpreadsheet",
-        "PHPWord",
-        "TinyMCE",
-        "Laravel Sanctum",
-        "Laravel Mail",
-      ],
+    "techStack": {
+      "technologies": []
     },
-    links: {
-      github: "https://github.com/eerfinn/SistemAkreditasi-PBL",
-      documentation:
-        "https://www.notion.so/eerfinn/Website-Platform-Sistem-Akreditasi-SiAkred-298980390ee080be85d9db81777b4df1",
-    },
+    "links": {
+      "github": "https://github.com/eerfinn/quran-recitation-web"
+    }
   },
   {
-    id: 2,
-    title: "Personal Portfolio Website",
-    description:
-      "A personal portfolio website built from scratch using modern web technologies. The site features a clean and intuitive design with smooth transitions and animations. Key highlights include a dynamic dark/light theme system, responsive layout that works perfectly across all devices, interactive project showcase with detailed modal views, and performant image handling with lazy loading. The modular JavaScript architecture ensures maintainable and scalable code.",
-    image: "./assets/images/portofolio/portofolio.png",
-    screenshots: [
-      "./assets/images/portofolio/fullpage-dark.png",
-      "./assets/images/portofolio/fullpage-light.png",
+    "id": 2,
+    "title": "Website Platform - Sistem Manajemen Presensi GUPDI Tulungagung",
+    "description": "coming soon.",
+    "image": "",
+    "screenshots": [],
+    "tags": [],
+    "category": "Website Development",
+    "duration": "Unknown",
+    "status": "Completed",
+    "features": [
+      "Feature 1",
+      "Feature 2"
     ],
-    tags: ["HTML", "CSS", "JavaScript"],
-    category: "Frontend",
-    duration: "2 weeks",
-    status: "Completed",
-    features: [
-      "Responsive UI Design",
-      "Dynamic Project Cards",
-      "Dark/Light Theme Toggle",
-      "Smooth Animations & Transitions",
-      "Interactive Project Modal",
-      "Image Lightbox Gallery",
-    ],
-    techStack: {
-      frontend: ["HTML5", "CSS3", "Vanilla JavaScript"],
-      tools: ["Font Awesome", "Google Fonts"],
+    "techStack": {
+      "technologies": []
     },
-    links: {
-      github: "https://github.com/eerfinn/eerfinn.github.io",
-      live: "https://eerfinn.github.io",
-      documentation:
-        "https://www.notion.so/eerfinn/Website-Platform-Portofolio-298980390ee08017950eefc0dce02465",
-    },
+    "links": {}
   },
   {
-    id: 3,
-    title: "Website Sistem Bebas Tanggungan (SiBesT)",
-    description:
-      "A Project Based Learning (PBL) project focused on developing a PHP-based student clearance service portal, implementing a comprehensive system for managing academic requirements clearance. The system features user authentication, document submission workflows, administrative verification processes, and integrated communication between students and department administrators.",
-    image: "./assets/images/sibest/sibest.png",
-    screenshots: [
-      "./assets/images/sibest/home.png",
-      "./assets/images/sibest/login.png",
-      "./assets/images/sibest/dashboard.png",
-      "./assets/images/sibest/profile.png",
-      "./assets/images/sibest/announcement.png",
-      "./assets/images/sibest/tanggungan-prodi.png",
-      "./assets/images/sibest/pengajuan-document.png",
-      "./assets/images/sibest/detail-document.png",
+    "id": 3,
+    "title": "Mobile Platform - StrawSmart Farming",
+    "description": "A PBL project focuses on the development of a Flutter-based mobile smart farming application for strawberry cultivation using IoT technology with Wokwi simulation. The system integrates sensors for light intensity, temperature, soil moisture, and humidity, which communicate through Firebase. It also implements Fuzzy Logic for automated irrigation and includes a batch management system to monitor and manage the strawberry growth cycle.",
+    "image": "",
+    "screenshots": [],
+    "tags": [],
+    "category": "Mobile Development",
+    "duration": "Unknown",
+    "status": "Completed",
+    "features": [
+      "Feature 1",
+      "Feature 2"
     ],
-    tags: ["PHP", "SQL Server", "JavaScript", "Bootstrap", "CSS"],
-    category: "Full Stack",
-    duration: "4 Months",
-    status: "Completed",
-    features: [
-      "Multi-role User Authentication",
-      "Document Upload and Management System",
-      "Administrative Verification Workflow",
-      "Real-time Status Tracking",
-      "Email Notifications",
-      "Announcement Management System",
-      "User Profile Management",
-      "Document History and Reporting",
-    ],
-    techStack: {
-      frontend: ["HTML", "CSS", "JavaScript", "Bootstrap 5", "Font Awesome"],
-      backend: ["PHP", "SQL Server"],
-      tools: ["PHPMailer", "FPDF"],
+    "techStack": {
+      "technologies": []
     },
-    links: {
-      documentation:
-        "https://www.notion.so/eerfinn/Website-Platform-Sistem-Bebas-Tanggungan-SiBesT-298980390ee08066965acb259bb25be8",
-    },
+    "links": {}
   },
   {
-    id: 4,
-    title: "StrawSmart Farming",
-    description:
-      "A Project Based Learning (PBL) project developing a mobile-based smart farming application designed for strawberry cultivation, utilizing IoT technology with Wokwi simulation. The system integrates sensors for light, temperature, soil moisture, and humidity, communicating via Firebase. It features Fuzzy Logic for automated irrigation and a comprehensive batch management system to track the 4-month growth cycle of strawberries.",
-    image: "./assets/images/strawsmart/strawsmart.png",
-    screenshots: [
-      "./assets/images/strawsmart/home1.png",
-      "./assets/images/strawsmart/home.jpg",
-      "./assets/images/strawsmart/greenhouse.jpg",
-      "./assets/images/strawsmart/notif.jpg",
-      "./assets/images/strawsmart/batch1.jpg",
-      "./assets/images/strawsmart/batch2.jpg",
-      "./assets/images/strawsmart/batch3.jpg",
-      "./assets/images/strawsmart/batch4.jpg",
-      "./assets/images/strawsmart/monitoring.jpg",
-      "./assets/images/strawsmart/report.jpg",
-      "./assets/images/strawsmart/report2.jpg",
-      "./assets/images/strawsmart/settings.jpg",
-      "./assets/images/strawsmart/profile.jpg",
-      "./assets/images/strawsmart/notif-setting.jpg",
-      "./assets/images/strawsmart/management-setting.jpg",
+    "id": 4,
+    "title": "Website Platform - Sistem Akreditasi (SiAkred)",
+    "description": "A PBL project developed using the Laravel framework, serving as an information and documentation portal for the accreditation of the D4 Business Information Systems Program at Politeknik Negeri Malang. The system provides centralized access to program profiles, national and international accreditation data, vision and mission, and official contact information.",
+    "image": "",
+    "screenshots": [],
+    "tags": [],
+    "category": "Website Development",
+    "duration": "Unknown",
+    "status": "Completed",
+    "features": [
+      "Feature 1",
+      "Feature 2"
     ],
-    tags: ["Mobile", "IoT", "Flutter", "Firebase", "Fuzzy Logic"],
-    category: "Mobile",
-    duration: "4 Months",
-    status: "Completed",
-    features: [
-      "Secure Authentication (Login, Register, Forgot Password)",
-      "Real-time Dashboard with Sensor Widgets",
-      "Automated Pump Control with Fuzzy Logic",
-      "Environmental Monitoring & History Graphs",
-      "Crop Cycle (Batch) Management System",
-      "Smart Notifications (Watering, Alerts)",
-      "Data Reporting (PDF/CSV Export)",
-      "Dark/Light Theme & Admin Role Management",
-    ],
-    techStack: {
-      frontend: ["Flutter", "Dart"],
-      backend: ["Firebase Realtime Database", "Firebase Authentication"],
-      iot: ["ESP32 Wokwi Simulation", "DHT Sensor", "LDR", "Soil Moisture"],
-      tools: ["VS Code", "GitHub"],
+    "techStack": {
+      "technologies": []
     },
-    links: {
-      github: "https://github.com/eerfinn/strawsmart_farming",
-      documentation: "https://www.notion.so/eerfinn/Mobile-Platform-StrawSmart-Farming-2dd980390ee080d896cedab00c7aa4fa",
-    },
+    "links": {
+      "github": "https://github.com/eerfinn/SistemAkreditasi-PBL"
+    }
   },
+  {
+    "id": 5,
+    "title": "Website Platform - Sistem Bebas Tanggungan (SiBesT)",
+    "description": "A PBL project focused on developing a PHP-based student clearance service portal, featuring announcements, administrative completion guidelines, and integrated contact access for each type of clearance requirement.",
+    "image": "",
+    "screenshots": [],
+    "tags": [],
+    "category": "Website Development",
+    "duration": "Unknown",
+    "status": "Completed",
+    "features": [
+      "Feature 1",
+      "Feature 2"
+    ],
+    "techStack": {
+      "technologies": []
+    },
+    "links": {}
+  },
+  {
+    "id": 6,
+    "title": "Website Platform - Portofolio",
+    "description": "A modern and responsive personal portfolio website built with HTML, CSS, and JavaScript. It features both dark and light themes, showcasing projects, skills, and experiences in an interactive and visually appealing way. Designed to highlight creativity and professionalism.\n\n",
+    "image": "",
+    "screenshots": [],
+    "tags": [],
+    "category": "Website Development",
+    "duration": "Unknown",
+    "status": "Completed",
+    "features": [
+      "Feature 1",
+      "Feature 2"
+    ],
+    "techStack": {
+      "technologies": []
+    },
+    "links": {}
+  },
+  {
+    "id": 7,
+    "title": "Mobile Game Platform - Pumkin Adventure",
+    "description": "Pumpkin Adventure is a simple 2D platformer developed with Construct 2. Inspired by classic Super Mario gameplay, the player controls a pumpkin character to jump and avoid obstacles.",
+    "image": "",
+    "screenshots": [],
+    "tags": [],
+    "category": "Mobile Development",
+    "duration": "Unknown",
+    "status": "Completed",
+    "features": [
+      "Feature 1",
+      "Feature 2"
+    ],
+    "techStack": {
+      "technologies": []
+    },
+    "links": {}
+  },
+  {
+    "id": 8,
+    "title": "Website Platform - Safari Dakwah 2024",
+    "description": "Website provides an integrated platform for social and religious activities, offering centralized information on events, donations, and documentation. Built on Google Sites, it ensures accessibility across devices, supports lightweight content management, and enables the community to easily engage, contribute, and spread kindness.",
+    "image": "",
+    "screenshots": [],
+    "tags": [],
+    "category": "Website Development",
+    "duration": "Unknown",
+    "status": "Completed",
+    "features": [
+      "Feature 1",
+      "Feature 2"
+    ],
+    "techStack": {
+      "technologies": []
+    },
+    "links": {}
+  }
 ];
 
 if (typeof module !== "undefined" && module.exports) {
