@@ -76,12 +76,34 @@ async function fetchProjects() {
       const liveLink = getVal(page, 'URL Demo', 'url');
       const githubLink = getVal(page, 'URL Source Code', 'url');
       
-      // Newly added properties (you manually created these)
-      const image = getVal(page, 'Thumbnail Image', 'rich_text') || '';
-      
-      // Parse screenshots (comma separated strings)
-      const screenshotsStr = getVal(page, 'Screenshots', 'rich_text') || '';
-      const screenshots = screenshotsStr ? screenshotsStr.split(',').map(s => s.trim()).filter(Boolean) : [];
+      // Auto-discover images based on "Folder Name" (previously Thumbnail Image)
+      let finalImage = '';
+      let finalScreenshots = [];
+
+      const folderNameVal = getVal(page, 'Thumbnail Image', 'rich_text') || '';
+
+      if (folderNameVal) {
+        const folderName = folderNameVal.trim().replace(/^\.?\/?/, ''); // Clean up any trailing dots or slashes
+        const projectImagesDir = path.resolve(__dirname, `../assets/images/${folderName}`);
+        
+        if (fs.existsSync(projectImagesDir)) {
+          const files = fs.readdirSync(projectImagesDir);
+          const imageFiles = files.filter(f => f.match(/\.(png|jpe?g|gif|webp)$/i));
+          
+          if (imageFiles.length > 0) {
+            // Find thumbnail (prioritize file named same as folder, or starting with 'thumb', else first)
+            let thumb = imageFiles.find(f => f.startsWith(folderName) || f.startsWith('thumb'));
+            if (!thumb) thumb = imageFiles[0];
+            
+            finalImage = `./assets/images/${folderName}/${thumb}`;
+            
+            // The rest are screenshots
+            finalScreenshots = imageFiles
+              .filter(f => f !== thumb)
+              .map(f => `./assets/images/${folderName}/${f}`);
+          }
+        }
+      }
       
       // Parse features
       const featuresStr = getVal(page, 'Features', 'rich_text') || '';
@@ -104,8 +126,8 @@ async function fetchProjects() {
         id: index + 1, // sequential ID or parse from Notion if you created an ID property
         title,
         description,
-        image,
-        screenshots,
+        image: finalImage,
+        screenshots: finalScreenshots,
         tags: techStackFrontend, // Using tech stack as tags for the card tags
         category,
         duration: finalDuration,
