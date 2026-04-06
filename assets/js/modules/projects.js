@@ -45,7 +45,7 @@ export function renderProjects(filter = 'all', reset = true) {
       `<span class="project-card-tag">${tag}</span>`
     ).join('');
 
-    const statusClass = project.status.toLowerCase().replace(' ', '-');
+
 
     const iconMap = {
       'Website': 'fa-globe',
@@ -77,9 +77,9 @@ export function renderProjects(filter = 'all', reset = true) {
           ${tagsHTML}
         </div>
         <div class="project-card-footer">
-          <div class="project-card-status">
-            <span class="project-card-status-dot ${statusClass}"></span>
-            <span>${project.status}</span>
+          <div class="project-card-date" style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-secondary); font-size: 0.85rem; font-weight: 500;">
+            <i class="far fa-calendar-alt"></i>
+            <span>${project.duration}</span>
           </div>
           <button class="project-card-view-btn" onclick="openProjectModal(${project.id})">
             <span>View Details</span>
@@ -151,11 +151,9 @@ export function openProjectModal(projectId) {
 
   const panel = document.getElementById('projectPanel');
 
-  // Set project details
   document.getElementById('panelTitle').textContent = project.title;
   document.getElementById('panelCategory').querySelector('span').textContent = project.category + (project.role ? ' • ' + project.role : '');
   document.getElementById('panelDuration').querySelector('span').textContent = project.duration;
-  document.getElementById('panelStatus').querySelector('span').textContent = project.status;
   document.getElementById('panelDescription').textContent = project.description;
 
   // Set tags

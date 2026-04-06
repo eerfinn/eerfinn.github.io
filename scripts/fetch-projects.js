@@ -27,6 +27,8 @@ const getVal = (page, propName, type) => {
         return prop.url || '';
       case 'number':
         return prop.number || 0;
+      case 'date':
+        return prop.date ? prop.date : null;
       default:
         return null;
     }
@@ -105,16 +107,21 @@ async function fetchProjects() {
       const features = featuresStr ? featuresStr.split(',').map(s => s.trim()).filter(Boolean) : [];
 
       const techStackFrontend = getVal(page, 'Tech Stack', 'multi_select') || [];
-
-      const status = getVal(page, 'Status & Duration', 'rich_text') || 'Completed'; // Fallback logic
-      let finalStatus = 'Completed';
-      let finalDuration = 'Unknown';
-      if (status.includes('-')) {
-        const parts = status.split('-');
-        finalStatus = parts[0].trim();
-        finalDuration = parts[1].trim();
+      
+      const dateObj = getVal(page, 'Date', 'date');
+      let finalDuration = '';
+      
+      if (dateObj && dateObj.start) {
+        const formatOptions = { month: 'short', year: 'numeric' };
+        const startStr = new Date(dateObj.start).toLocaleDateString('en-US', formatOptions);
+        if (dateObj.end && dateObj.start !== dateObj.end) {
+          const endStr = new Date(dateObj.end).toLocaleDateString('en-US', formatOptions);
+          finalDuration = `${startStr} - ${endStr}`;
+        } else {
+          finalDuration = startStr;
+        }
       } else {
-        finalStatus = status;
+        finalDuration = 'Ongoing / Unknown';
       }
 
       return {
@@ -127,7 +134,6 @@ async function fetchProjects() {
         category,
         role,
         duration: finalDuration,
-        status: finalStatus,
         features: features.length > 0 ? features : ["Feature 1", "Feature 2"], // fallback
         techStack: {
           technologies: techStackFrontend

@@ -1,15 +1,14 @@
 const projectsData = [
   {
     "id": 1,
-    "title": "Quran Recitation",
+    "title": "\n",
     "description": "comming soon.",
     "image": "",
     "screenshots": [],
     "tags": [],
     "category": "Frontend",
     "role": "Fullstack",
-    "duration": "Unknown",
-    "status": "Completed",
+    "duration": "Ongoing / Unknown",
     "features": [
       "Feature 1",
       "Feature 2"
@@ -30,8 +29,7 @@ const projectsData = [
     "tags": [],
     "category": "Frontend",
     "role": "Fullstack",
-    "duration": "Unknown",
-    "status": "Completed",
+    "duration": "Ongoing / Unknown",
     "features": [
       "Feature 1",
       "Feature 2"
@@ -43,7 +41,7 @@ const projectsData = [
   },
   {
     "id": 3,
-    "title": "StrawSmart: Farming App ",
+    "title": "StrawSmart: IoT Smart Farming App",
     "description": "A PBL project focuses on the development of a Flutter-based mobile smart farming application for strawberry cultivation using IoT technology with Wokwi simulation. The system integrates sensors for light intensity, temperature, soil moisture, and humidity, which communicate through Firebase. It also implements Fuzzy Logic for automated irrigation and includes a batch management system to monitor and manage the strawberry growth cycle.",
     "image": "./assets/images/strawsmart/strawsmart.png",
     "screenshots": [
@@ -68,8 +66,7 @@ const projectsData = [
     ],
     "category": "Mobile",
     "role": "Fullstack",
-    "duration": "Unknown",
-    "status": "Completed",
+    "duration": "Ongoing / Unknown",
     "features": [
       "Feature 1",
       "Feature 2"
@@ -93,8 +90,7 @@ const projectsData = [
     "tags": [],
     "category": "Full Stack",
     "role": "Fullstack",
-    "duration": "Unknown",
-    "status": "Completed",
+    "duration": "Ongoing / Unknown",
     "features": [
       "Feature 1",
       "Feature 2"
@@ -127,8 +123,7 @@ const projectsData = [
     ],
     "category": "Full Stack",
     "role": "Fullstack",
-    "duration": "Unknown",
-    "status": "Completed",
+    "duration": "Ongoing / Unknown",
     "features": [
       "asd"
     ],
@@ -141,7 +136,7 @@ const projectsData = [
   },
   {
     "id": 6,
-    "title": "Website Portofolio",
+    "title": "Personal Web Portfolio",
     "description": "A modern and responsive personal portfolio website built with HTML, CSS, and JavaScript. It features both dark and light themes, showcasing projects, skills, and experiences in an interactive and visually appealing way. Designed to highlight creativity and professionalism.\n\n",
     "image": "./assets/images/portofolio/portofolio.png",
     "screenshots": [
@@ -152,8 +147,7 @@ const projectsData = [
     "tags": [],
     "category": "Frontend",
     "role": "Fullstack",
-    "duration": "Unknown",
-    "status": "Completed",
+    "duration": "Ongoing / Unknown",
     "features": [
       "Feature 1",
       "Feature 2"
@@ -165,15 +159,14 @@ const projectsData = [
   },
   {
     "id": 7,
-    "title": "Pumkin Adventure",
+    "title": "Pumpkin Adventure: 2D Platformer",
     "description": "Pumpkin Adventure is a simple 2D platformer developed with Construct 2. Inspired by classic Super Mario gameplay, the player controls a pumpkin character to jump and avoid obstacles.",
     "image": "",
     "screenshots": [],
     "tags": [],
-    "category": "Mobile",
+    "category": "Game",
     "role": "Fullstack",
-    "duration": "Unknown",
-    "status": "Completed",
+    "duration": "Ongoing / Unknown",
     "features": [
       "Feature 1",
       "Feature 2"
@@ -192,8 +185,7 @@ const projectsData = [
     "tags": [],
     "category": "Frontend",
     "role": "Fullstack",
-    "duration": "Unknown",
-    "status": "Completed",
+    "duration": "Ongoing / Unknown",
     "features": [
       "Feature 1",
       "Feature 2"
