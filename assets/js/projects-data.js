@@ -159,7 +159,7 @@ const projectsData = [
   },
   {
     "id": 7,
-    "title": "Pumpkin Adventure: 2D Platformer",
+    "title": "Pumpkin Adventure: 2D Platforme",
     "description": "Pumpkin Adventure is a simple 2D platformer developed with Construct 2. Inspired by classic Super Mario gameplay, the player controls a pumpkin character to jump and avoid obstacles.",
     "image": "",
     "screenshots": [],

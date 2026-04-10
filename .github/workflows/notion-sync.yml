@@ -1,39 +1,43 @@
-name: Sync Notion Projects
+name: Notion Project Sync
 
 on:
-  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
   schedule:
-    - cron: '0 0 * * *' # Un-comment to run automatically every midnight (UTC). Currently set for manual trigger mostly.
+    # Runs every day at midnight UTC
+    - cron: '0 0 * * *'
+  workflow_dispatch: # Allows manual triggering
 
 jobs:
-  sync_notion_data:
+  sync:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Repository
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Setup Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'npm'
 
-      - name: Install Dependencies
-        run: npm install
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Fetch from Notion
+      - name: Run Notion sync script
         env:
           NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
           NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
         run: npm run sync
 
-      - name: Setup Git identity
+      - name: Commit and push if changes
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-
-      - name: Commit and Push Changes
-        run: |
-          git diff --quiet || (git add assets/js/projects-data.js && git commit -m "🤖 Auto-sync projects from Notion" && git push)
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add assets/js/projects-data.js
+          if git diff --cached --quiet; then
+            echo "No changes in projects-data.js"
+          else
+            git commit -m "Auto-sync projects from Notion [skip ci]"
+            git push
+          fi

@@ -90,7 +90,7 @@ body:not(.dark-mode) .hero-section::after {
   color: var(--text-secondary);
   line-height: 1.8;
   margin-bottom: 25px;
-  margin-left: 3px;
+  margin-left: 1px;
   max-width: 560px;
   font-weight: 400;
 }
@@ -118,11 +118,11 @@ body:not(.dark-mode) .hero-section::after {
 }
 
 .hero-cta .btn-secondary:hover {
-  background: var(--solid-primary);
-  border-color: var(--solid-primary);
+  background: #4640ff;
+  border-color: #4640ff;
   color: white;
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
 }
 
 /* Hero Image Section */
@@ -222,6 +222,23 @@ body:not(.dark-mode) .hero-section::after {
 
 .boolean {
   color: #ff5370;
+}
+
+/* Light mode overrides for code window */
+body:not(.dark-mode) .keyword {
+  color: #af00db;
+}
+
+body:not(.dark-mode) .variable {
+  color: #001080;
+}
+
+body:not(.dark-mode) .string {
+  color: #22863a;
+}
+
+body:not(.dark-mode) .boolean {
+  color: #d73a49;
 }
 
 /* Floating Tech Icons */

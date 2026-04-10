@@ -11,6 +11,44 @@ let visibleProjects = 6; // Initial number of visible projects
 const projectsPerLoad = 6; // Number of projects to load on each click
 
 /**
+ * Render skeleton loading cards
+ */
+export function renderSkeletons(count = 6) {
+  const projectsGrid = document.getElementById('projectsGrid');
+  if (!projectsGrid) return;
+
+  projectsGrid.innerHTML = '';
+  
+  for (let i = 0; i < count; i++) {
+    const skeletonCard = document.createElement('div');
+    skeletonCard.className = 'project-card skeleton-card fade-in';
+    skeletonCard.style.animationDelay = `${i * 0.1}s`;
+    
+    skeletonCard.innerHTML = `
+      <div class="project-card-image-wrapper">
+        <div class="skeleton skeleton-img"></div>
+      </div>
+      <div class="project-card-content">
+        <div class="skeleton skeleton-title"></div>
+        <div class="skeleton skeleton-text"></div>
+        <div class="skeleton skeleton-text"></div>
+        <div class="skeleton skeleton-text short"></div>
+        <div class="skeleton-tags">
+          <div class="skeleton skeleton-tag"></div>
+          <div class="skeleton skeleton-tag"></div>
+          <div class="skeleton skeleton-tag"></div>
+        </div>
+        <div class="skeleton-footer">
+          <div class="skeleton" style="width: 100px; height: 16px;"></div>
+          <div class="skeleton" style="width: 120px; height: 36px; border-radius: 12px;"></div>
+        </div>
+      </div>
+    `;
+    projectsGrid.appendChild(skeletonCard);
+  }
+}
+
+/**
  * Render all projects to the grid
  */
 export function renderProjects(filter = 'all', reset = true) {
@@ -305,12 +343,14 @@ export function switchTab(tabName) {
  * Initialize projects module
  */
 export function initProjects() {
-  if (typeof projectsData !== 'undefined') {
+  if (typeof projectsData !== 'undefined' && projectsData.length > 0) {
     renderFilterButtons();
     renderProjects();
     setupFilterListeners();
-  } else {
-    setTimeout(initProjects, 100);
+  } else if (typeof projectsData === 'undefined' || projectsData.length === 0) {
+    renderSkeletons();
+    // Re-check after a brief delay
+    setTimeout(initProjects, 500);
   }
 }
 

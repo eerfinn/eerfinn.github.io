@@ -138,32 +138,26 @@ body:not(.dark-mode) .navbar-container {
   color: var(--text-heading);
   font-weight: 500;
   font-size: 0.92rem;
-  padding: 10px 18px;
-  border-radius: 24px;
+  padding: 10px 22px;
+  border-radius: 100px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   display: block;
   white-space: nowrap;
-}
-
-.navbar-link::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 24px;
-  background: var(--solid-primary);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: -1;
+  /* Reset border to use smooth shadow instead */
+  border: none;
+  box-shadow: inset 0 0 0 0px transparent;
 }
 
 .navbar-link:hover {
-  color: white;
-  transform: translateY(-2px);
+  color: var(--solid-primary);
+  transform: translateY(-4px);
+  /* Inset shadow produces a much smoother curvature than border */
+  box-shadow: inset 0 0 0 1.5px var(--solid-primary);
 }
 
 .navbar-link:hover::before {
-  opacity: 1;
+  display: none;
 }
 
 .navbar-link.active {

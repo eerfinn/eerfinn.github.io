@@ -71,7 +71,7 @@ body:not(.dark-mode) .contact-section::before {
   background: var(--solid-primary);
   color: white;
   text-decoration: none;
-  border-radius: 54px;
+  border-radius: 12px;
   font-size: 1rem;
   font-weight: 600;
   transition: all 0.3s ease;
@@ -80,8 +80,9 @@ body:not(.dark-mode) .contact-section::before {
 }
 
 .contact-cta-button:hover {
-  transform: translateY(-3px);
-  background: var(--primary-light);
+  transform: translateY(-4px);
+  background: #4640ff;
+  border-color: #4640ff;
   box-shadow: var(--shadow-lg);
 }
 
@@ -144,7 +145,7 @@ body:not(.dark-mode) .contact-divider::after {
   background: var(--bg-card);
   color: var(--text-primary);
   text-decoration: none;
-  border-radius: 30px;
+  border-radius: 12px;
   border: 1px solid var(--border-primary);
   font-size: 0.95rem;
   font-weight: 500;
@@ -153,11 +154,22 @@ body:not(.dark-mode) .contact-divider::after {
   overflow: hidden;
 }
 
+/* Light mode visibility improvement */
+body:not(.dark-mode) .contact-social-link {
+  border-color: rgba(30, 41, 59, 0.15);
+  background: #ffffff;
+  box-shadow: 0 2px 4px rgba(30, 41, 59, 0.05);
+}
+
+body:not(.dark-mode) .contact-social-link:hover {
+  border-color: var(--solid-primary);
+}
+
 .contact-social-link::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: var(--solid-primary);
+  background: #4640ff;
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: -1;
@@ -170,7 +182,7 @@ body:not(.dark-mode) .contact-divider::after {
 .contact-social-link:hover {
   color: white;
   border-color: transparent;
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   box-shadow: var(--shadow-primary-lg);
 }
 
