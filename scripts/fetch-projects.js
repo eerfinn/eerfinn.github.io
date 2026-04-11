@@ -7,7 +7,9 @@ const path = require('path');
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
 const DATABASE_ID = process.env.NOTION_DATABASE_ID;
 
-// Helper function to extract Notion property values safely
+/**
+ * Helper function to extract Notion property values safely
+ */
 const getVal = (page, propName, type) => {
   const prop = page.properties[propName];
   if (!prop) return null;
@@ -17,23 +19,19 @@ const getVal = (page, propName, type) => {
       case 'title':
         return prop.title?.[0]?.plain_text || '';
       case 'text':
-      case 'rich_text':
         return prop.rich_text?.map(t => t.plain_text).join('') || '';
       case 'select':
         return prop.select?.name || '';
-      case 'multi_select':
+      case 'multi':
         return prop.multi_select?.map(s => s.name) || [];
       case 'url':
         return prop.url || '';
-      case 'number':
-        return prop.number || 0;
       case 'date':
-        return prop.date ? prop.date : null;
+        return prop.date || null;
       default:
         return null;
     }
   } catch (error) {
-    console.warn(`Warning: Could not parse property "${propName}" for page ${page.id}`);
     return null;
   }
 };
@@ -49,111 +47,101 @@ async function fetchProjects() {
   try {
     const response = await notion.databases.query({
       database_id: DATABASE_ID,
-      // You can add sorts or filters here, for example only fetch published projects
-      // filter: { property: "Status", select: { equals: "Completed" } },
       sorts: [
         {
-          timestamp: 'created_time',
-          direction: 'descending',
-        },
+          property: 'Date',
+          direction: 'descending'
+        }
       ],
     });
 
     const projects = response.results.map((page, index) => {
-      // Basic mappings
-      const title = getVal(page, 'Name', 'title') || 'Untitled Project';
+      // Map properties based on new Notion structure
+      const title = getVal(page, 'Name', 'title');
+      const platform = getVal(page, 'Platform', 'select') || 'Project';
+      const role = getVal(page, 'Role', 'select') || '';
+      const description = getVal(page, 'Short Description', 'text');
+      const techStack = getVal(page, 'Tech Stack', 'multi');
+      const github = getVal(page, 'URL Source Code', 'url');
+      const demo = getVal(page, 'URL Demo', 'url');
+      const docs = getVal(page, 'URL Documentation', 'url');
+      const folderName = getVal(page, 'Thumbnail Folder', 'text');
+      const featText = getVal(page, 'Features', 'text');
+      const status = getVal(page, 'Status', 'select');
+      
+      // Parsing Date
+      const dateObj = getVal(page, 'Date', 'date');
+      let duration = 'Ongoing';
+      if (dateObj && dateObj.start) {
+        const formatOptions = { month: 'short', year: 'numeric' };
+        const startStr = new Date(dateObj.start).toLocaleDateString('en-US', formatOptions);
+        if (dateObj.end) {
+          const endStr = new Date(dateObj.end).toLocaleDateString('en-US', formatOptions);
+          duration = `${startStr} - ${endStr}`;
+        } else {
+          duration = startStr;
+        }
+      }
 
-      // New structural mapping: Platform & Role
-      let category = getVal(page, 'Platform', 'select') || 'Website';
-      let role = getVal(page, 'Role', 'select') || 'Fullstack';
-
-      const description = getVal(page, 'Short Description', 'rich_text');
-
-      // Extract links
-      const liveLink = getVal(page, 'URL Demo', 'url');
-      const githubLink = getVal(page, 'URL Source Code', 'url');
-
-      // Auto-discover images based on "Folder Name" (previously Thumbnail Image)
+      // Auto-discover images based on "Thumbnail Folder"
       let finalImage = '';
       let finalScreenshots = [];
 
-      const folderNameVal = getVal(page, 'Thumbnail Image', 'rich_text') || '';
-
-      if (folderNameVal) {
-        const folderName = folderNameVal.trim().replace(/^\.?\/?/, ''); // Clean up any trailing dots or slashes
-        const projectImagesDir = path.resolve(__dirname, `../assets/images/${folderName}`);
+      if (folderName) {
+        const folderPath = folderName.trim();
+        const projectImagesDir = path.resolve(__dirname, `../assets/images/${folderPath}`);
 
         if (fs.existsSync(projectImagesDir)) {
           const files = fs.readdirSync(projectImagesDir);
           const imageFiles = files.filter(f => f.match(/\.(png|jpe?g|gif|webp)$/i));
 
           if (imageFiles.length > 0) {
-            // Find thumbnail (prioritize file named same as folder, or starting with 'thumb', else first)
-            let thumb = imageFiles.find(f => f.startsWith(folderName) || f.startsWith('thumb'));
-            if (!thumb) thumb = imageFiles[0];
+            // Priority: 'cover' -> 'thumb' -> Folder Name -> First File
+            const thumb = imageFiles.find(f => 
+              f.toLowerCase().startsWith('cover.') || 
+              f.toLowerCase().includes('cover') ||
+              f.toLowerCase().includes('thumb') || 
+              f.toLowerCase().includes(folderPath.toLowerCase())
+            ) || imageFiles[0];
 
-            finalImage = `./assets/images/${folderName}/${thumb}`;
-
-            // The rest are screenshots
+            finalImage = `./assets/images/${folderPath}/${thumb}`;
+            
+            // Filter out the thumb image from the screenshots gallery to avoid duplication
             finalScreenshots = imageFiles
               .filter(f => f !== thumb)
-              .map(f => `./assets/images/${folderName}/${f}`);
+              .map(f => `./assets/images/${folderPath}/${f}`);
           }
         }
       }
 
-      // Parse features
-      const featuresStr = getVal(page, 'Features', 'rich_text') || '';
-      const features = featuresStr ? featuresStr.split(',').map(s => s.trim()).filter(Boolean) : [];
-
-      const techStackFrontend = getVal(page, 'Tech Stack', 'multi_select') || [];
-      
-      const dateObj = getVal(page, 'Date', 'date');
-      let finalDuration = '';
-      
-      if (dateObj && dateObj.start) {
-        const formatOptions = { month: 'short', year: 'numeric' };
-        const startStr = new Date(dateObj.start).toLocaleDateString('en-US', formatOptions);
-        if (dateObj.end && dateObj.start !== dateObj.end) {
-          const endStr = new Date(dateObj.end).toLocaleDateString('en-US', formatOptions);
-          finalDuration = `${startStr} - ${endStr}`;
-        } else {
-          finalDuration = startStr;
-        }
-      } else {
-        finalDuration = 'Ongoing / Unknown';
-      }
-
       return {
-        id: index + 1, // sequential ID or parse from Notion if you created an ID property
+        id: index + 1,
         title,
         description,
         image: finalImage,
         screenshots: finalScreenshots,
-        tags: techStackFrontend, // Using tech stack as tags for the card tags
-        category,
+        tags: techStack,
+        category: platform,
         role,
-        duration: finalDuration,
-        features: features.length > 0 ? features : ["Feature 1", "Feature 2"], // fallback
+        duration,
+        status: status || 'Completed',
+        features: featText ? featText.split(',').map(f => f.trim()) : [],
         techStack: {
-          technologies: techStackFrontend
+          technologies: techStack
         },
         links: {
-          github: githubLink || undefined,
-          live: liveLink || undefined,
+          github: github || undefined,
+          live: demo || undefined,
+          documentation: docs || page.url // Menggunakan field Notion jika ada, fallback ke URL Page
         }
       };
-    });
+    }).filter(project => project.status === 'Completed');
 
-    console.log(`successfully fetched ${projects.length} projects.`);
-
-    // Write to assets/js/projects-data.js
     const outputPath = path.resolve(__dirname, '../assets/js/projects-data.js');
-    const fileContent = `const projectsData = ${JSON.stringify(projects, null, 2)};\n\nif (typeof module !== "undefined" && module.exports) {\n  module.exports = projectsData;\n}\n`;
+    const fileContent = `const projectsData = ${JSON.stringify(projects, null, 2)};\n`;
 
     fs.writeFileSync(outputPath, fileContent, 'utf-8');
-
-    console.log(`Updated js data file at: ${outputPath}`);
+    console.log(`successfully synced ${projects.length} projects to assets/js/projects-data.js`);
 
   } catch (error) {
     console.error("Error fetching from Notion:", error.message);

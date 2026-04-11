@@ -11,44 +11,6 @@ let visibleProjects = 6; // Initial number of visible projects
 const projectsPerLoad = 6; // Number of projects to load on each click
 
 /**
- * Render skeleton loading cards
- */
-export function renderSkeletons(count = 6) {
-  const projectsGrid = document.getElementById('projectsGrid');
-  if (!projectsGrid) return;
-
-  projectsGrid.innerHTML = '';
-  
-  for (let i = 0; i < count; i++) {
-    const skeletonCard = document.createElement('div');
-    skeletonCard.className = 'project-card skeleton-card fade-in';
-    skeletonCard.style.animationDelay = `${i * 0.1}s`;
-    
-    skeletonCard.innerHTML = `
-      <div class="project-card-image-wrapper">
-        <div class="skeleton skeleton-img"></div>
-      </div>
-      <div class="project-card-content">
-        <div class="skeleton skeleton-title"></div>
-        <div class="skeleton skeleton-text"></div>
-        <div class="skeleton skeleton-text"></div>
-        <div class="skeleton skeleton-text short"></div>
-        <div class="skeleton-tags">
-          <div class="skeleton skeleton-tag"></div>
-          <div class="skeleton skeleton-tag"></div>
-          <div class="skeleton skeleton-tag"></div>
-        </div>
-        <div class="skeleton-footer">
-          <div class="skeleton" style="width: 100px; height: 16px;"></div>
-          <div class="skeleton" style="width: 120px; height: 36px; border-radius: 12px;"></div>
-        </div>
-      </div>
-    `;
-    projectsGrid.appendChild(skeletonCard);
-  }
-}
-
-/**
  * Render all projects to the grid
  */
 export function renderProjects(filter = 'all', reset = true) {
@@ -65,25 +27,28 @@ export function renderProjects(filter = 'all', reset = true) {
 
   projectsGrid.innerHTML = '';
   
-  // Filter projects based on category
+  // 1. Filter only Completed projects first
+  const completedProjects = projectsData.filter(project => project.status === 'Completed');
+
+  // 2. Then filter based on category
   const filteredProjects = filter === 'all' 
-    ? projectsData 
-    : projectsData.filter(project => project.category === filter);
+    ? completedProjects 
+    : completedProjects.filter(project => project.category === filter);
 
   // Get only visible projects
-  const projectsToShow = filteredProjects.slice(0, visibleProjects);
+  const projectsToShow = filteredProjects.slice(0, 6);
 
   projectsToShow.forEach((project, index) => {
     const projectCard = document.createElement('div');
     projectCard.className = 'project-card fade-in';
     projectCard.dataset.category = project.category;
     projectCard.style.animationDelay = `${index * 0.1}s`;
+    projectCard.onclick = () => openProjectModal(project.id);
+    projectCard.style.cursor = 'pointer';
 
     const tagsHTML = project.tags.slice(0, 4).map(tag =>
       `<span class="project-card-tag">${tag}</span>`
     ).join('');
-
-
 
     const iconMap = {
       'Website': 'fa-globe',
@@ -96,17 +61,16 @@ export function renderProjects(filter = 'all', reset = true) {
     const icon = iconMap[project.category] || 'fa-code';
 
     projectCard.innerHTML = `
-      <div class="project-card-image-wrapper" onclick="openLightboxFromProject(${project.id})" style="cursor: pointer;">
+      <div class="project-card-image-wrapper">
         <img src="${project.image}" alt="${project.title}" class="project-card-image" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/6366f1/ffffff?text=Image+Not+Found'" />
-        <div class="project-card-badge">${project.category} • ${project.role || 'Fullstack'}</div>
+        <div class="project-card-badge">${project.category}</div>
         <div class="gallery-thumbnail-overlay">
-          <i class="fas fa-search-plus"></i>
+          <i class="fas fa-expand-alt"></i>
         </div>
       </div>
       <div class="project-card-content">
         <div class="project-card-header">
           <h3 class="project-card-title">
-            <i class="fas ${icon}"></i>
             <span class="project-card-title-text">${project.title}</span>
           </h3>
         </div>
@@ -114,70 +78,11 @@ export function renderProjects(filter = 'all', reset = true) {
         <div class="project-card-tags">
           ${tagsHTML}
         </div>
-        <div class="project-card-footer">
-          <div class="project-card-date" style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-secondary); font-size: 0.85rem; font-weight: 500;">
-            <i class="far fa-calendar-alt"></i>
-            <span>${project.duration}</span>
-          </div>
-          <button class="project-card-view-btn" onclick="openProjectModal(${project.id})">
-            <span>View Details</span>
-            <i class="fas fa-arrow-right"></i>
-          </button>
-        </div>
       </div>
     `;
 
     projectsGrid.appendChild(projectCard);
   });
-
-  // Update Load More button visibility
-  updateLoadMoreButton(filteredProjects.length);
-}
-
-/**
- * Update Load More button state
- */
-function updateLoadMoreButton(totalProjects) {
-  let loadMoreContainer = document.getElementById('loadMoreContainer');
-  
-  // Create container if it doesn't exist
-  if (!loadMoreContainer) {
-    loadMoreContainer = document.createElement('div');
-    loadMoreContainer.id = 'loadMoreContainer';
-    loadMoreContainer.className = 'load-more-container';
-    
-    const projectsGrid = document.getElementById('projectsGrid');
-    if (projectsGrid) {
-      projectsGrid.parentNode.insertBefore(loadMoreContainer, projectsGrid.nextSibling);
-    }
-  }
-
-  // Show/hide based on remaining projects
-  if (visibleProjects < totalProjects) {
-    loadMoreContainer.innerHTML = `
-      <button class="load-more-btn" id="loadMoreBtn">
-        <i class="fas fa-plus"></i>
-        <span>Load More</span>
-      </button>
-    `;
-    loadMoreContainer.style.display = 'flex';
-    
-    // Add click listener
-    const loadMoreBtn = document.getElementById('loadMoreBtn');
-    if (loadMoreBtn) {
-      loadMoreBtn.addEventListener('click', loadMoreProjects);
-    }
-  } else {
-    loadMoreContainer.style.display = 'none';
-  }
-}
-
-/**
- * Load more projects
- */
-export function loadMoreProjects() {
-  visibleProjects += projectsPerLoad;
-  renderProjects(currentFilter, false);
 }
 
 /**
@@ -252,21 +157,6 @@ export function openProjectModal(projectId) {
     </div>`
   ).join('');
 
-  // Set tech stack
-  const panelTechStack = document.getElementById('panelTechStack');
-  panelTechStack.innerHTML = '';
-
-  Object.entries(project.techStack).forEach(([category, technologies]) => {
-    const techCategory = document.createElement('div');
-    techCategory.className = 'tech-category';
-    techCategory.innerHTML = `
-      <h4><i class="fas fa-layer-group"></i> ${category}</h4>
-      <div class="tech-list">
-        ${technologies.map(tech => `<span class="tech-item">${tech}</span>`).join('')}
-      </div>
-    `;
-    panelTechStack.appendChild(techCategory);
-  });
 
   // Set links
   const panelLinks = document.getElementById('panelLinks');
@@ -299,7 +189,6 @@ export function openProjectModal(projectId) {
   if (!linksHTML) {
     linksHTML = '<p class="no-links-message">No public links available for this project.</p>';
   }
-
   panelLinks.innerHTML = linksHTML;
 
   // Show panel
@@ -343,14 +232,12 @@ export function switchTab(tabName) {
  * Initialize projects module
  */
 export function initProjects() {
-  if (typeof projectsData !== 'undefined' && projectsData.length > 0) {
+  if (typeof projectsData !== 'undefined') {
     renderFilterButtons();
     renderProjects();
     setupFilterListeners();
-  } else if (typeof projectsData === 'undefined' || projectsData.length === 0) {
-    renderSkeletons();
-    // Re-check after a brief delay
-    setTimeout(initProjects, 500);
+  } else {
+    setTimeout(initProjects, 100);
   }
 }
 
@@ -361,11 +248,24 @@ function renderFilterButtons() {
   const filterContainer = document.getElementById('projectsFilter');
   if (!filterContainer || typeof projectsData === 'undefined') return;
 
-  // Get unique categories from projects
-  const categories = [...new Set(projectsData.map(p => p.category))];
+  // Get unique categories ONLY from projects that are "Completed"
+  const completedProjects = projectsData.filter(p => p.status === 'Completed');
+  const categories = [...new Set(completedProjects.map(p => p.category))];
   
+  // Mapping labels to short versions for UI
+  const labelMap = {
+    'Web Development': 'Website',
+    'Mobile Development': 'Mobile',
+    'Game Development': 'Game',
+    'UI/UX Design': 'UI/UX'
+  };
+
   // Icon mapping for categories (Platform now)
   const iconMap = {
+    'Web Development': 'fa-globe',
+    'Mobile Development': 'fa-mobile-screen-button',
+    'Game Development': 'fa-gamepad',
+    'UI/UX Design': 'fa-swatchbook',
     'Website': 'fa-globe',
     'Mobile': 'fa-mobile-screen-button',
     'Game': 'fa-gamepad',
@@ -384,10 +284,12 @@ function renderFilterButtons() {
 
   categories.forEach(category => {
     const icon = iconMap[category] || 'fa-code';
+    const displayLabel = labelMap[category] || category; // Use short label if available
+    
     filtersHTML += `
       <button class="filter-btn" data-filter="${category}">
         <i class="fas ${icon}"></i>
-        <span>${category}</span>
+        <span>${displayLabel}</span>
       </button>
     `;
   });

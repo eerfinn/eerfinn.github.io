@@ -1,49 +1,9 @@
 const projectsData = [
   {
-    "id": 1,
-    "title": "\n",
-    "description": "comming soon.",
-    "image": "",
-    "screenshots": [],
-    "tags": [],
-    "category": "Frontend",
-    "role": "Fullstack",
-    "duration": "Ongoing / Unknown",
-    "features": [
-      "Feature 1",
-      "Feature 2"
-    ],
-    "techStack": {
-      "technologies": []
-    },
-    "links": {
-      "github": "https://github.com/eerfinn/quran-recitation-web"
-    }
-  },
-  {
-    "id": 2,
-    "title": "Sistem Manajemen Presensi GUPDI Tulungagung",
-    "description": "coming soon.",
-    "image": "",
-    "screenshots": [],
-    "tags": [],
-    "category": "Frontend",
-    "role": "Fullstack",
-    "duration": "Ongoing / Unknown",
-    "features": [
-      "Feature 1",
-      "Feature 2"
-    ],
-    "techStack": {
-      "technologies": []
-    },
-    "links": {}
-  },
-  {
     "id": 3,
     "title": "StrawSmart: IoT Smart Farming App",
-    "description": "A PBL project focuses on the development of a Flutter-based mobile smart farming application for strawberry cultivation using IoT technology with Wokwi simulation. The system integrates sensors for light intensity, temperature, soil moisture, and humidity, which communicate through Firebase. It also implements Fuzzy Logic for automated irrigation and includes a batch management system to monitor and manage the strawberry growth cycle.",
-    "image": "./assets/images/strawsmart/strawsmart.png",
+    "description": "A smart farming ecosystem for strawberry cultivation, integrating IoT sensors with a Flutter mobile app for real-time environment monitoring and automated control.",
+    "image": "./assets/images/strawsmart/cover.png",
     "screenshots": [
       "./assets/images/strawsmart/batch1.jpg",
       "./assets/images/strawsmart/batch2.jpg",
@@ -62,141 +22,224 @@ const projectsData = [
       "./assets/images/strawsmart/settings.jpg"
     ],
     "tags": [
-      "Flutter"
+      "Flutter",
+      "Firebase",
+      "ESP32",
+      "C++"
     ],
-    "category": "Mobile",
-    "role": "Fullstack",
-    "duration": "Ongoing / Unknown",
+    "category": "Mobile Development",
+    "role": "Fullstack (IoT & Mobile)",
+    "duration": "Oct 2025 - Dec 2025",
+    "status": "Completed",
     "features": [
-      "Feature 1",
-      "Feature 2"
+      "Real-time Sensor Monitoring (Temp/Humidity)",
+      "Automated Irrigation System",
+      "Multi-Greenhouse Management",
+      "Batch Production Tracking",
+      "Push Notification Alerts"
     ],
     "techStack": {
       "technologies": [
-        "Flutter"
+        "Flutter",
+        "Firebase",
+        "ESP32",
+        "C++"
       ]
     },
-    "links": {}
-  },
-  {
-    "id": 4,
-    "title": "SiAkred: Sistem Akreditasi",
-    "description": "A PBL project developed using the Laravel framework, serving as an information and documentation portal for the accreditation of the D4 Business Information Systems Program at Politeknik Negeri Malang. The system provides centralized access to program profiles, national and international accreditation data, vision and mission, and official contact information.",
-    "image": "./assets/images/siakred/siakred.png",
-    "screenshots": [
-      "./assets/images/siakred/home-view.png",
-      "./assets/images/siakred/home.png"
-    ],
-    "tags": [],
-    "category": "Full Stack",
-    "role": "Fullstack",
-    "duration": "Ongoing / Unknown",
-    "features": [
-      "Feature 1",
-      "Feature 2"
-    ],
-    "techStack": {
-      "technologies": []
-    },
     "links": {
-      "github": "https://github.com/eerfinn/SistemAkreditasi-PBL"
+      "github": "https://github.com/eerfinn/strawsmart_farming",
+      "documentation": "https://eerfinn.notion.site/StrawSmart-IoT-Smart-Farming-App-2dd980390ee080d896cedab00c7aa4fa?source=copy_link"
     }
   },
   {
-    "id": 5,
-    "title": "SiBesT: Sistem Bebas Tanggungan",
-    "description": "A PBL project focused on developing a PHP-based student clearance service portal, featuring announcements, administrative completion guidelines, and integrated contact access for each type of clearance requirement.",
-    "image": "./assets/images/sibest/sibest.png",
-    "screenshots": [
-      "./assets/images/sibest/announcement.png",
-      "./assets/images/sibest/dashboard.png",
-      "./assets/images/sibest/detail-document.png",
-      "./assets/images/sibest/home-view.png",
-      "./assets/images/sibest/home.png",
-      "./assets/images/sibest/login.png",
-      "./assets/images/sibest/pengajuan-document.png",
-      "./assets/images/sibest/profile.png",
-      "./assets/images/sibest/tanggungan-prodi.png"
-    ],
-    "tags": [
-      "PHP"
-    ],
-    "category": "Full Stack",
-    "role": "Fullstack",
-    "duration": "Ongoing / Unknown",
-    "features": [
-      "asd"
-    ],
-    "techStack": {
-      "technologies": [
-        "PHP"
-      ]
-    },
-    "links": {}
-  },
-  {
-    "id": 6,
+    "id": 4,
     "title": "Personal Web Portfolio",
-    "description": "A modern and responsive personal portfolio website built with HTML, CSS, and JavaScript. It features both dark and light themes, showcasing projects, skills, and experiences in an interactive and visually appealing way. Designed to highlight creativity and professionalism.\n\n",
-    "image": "./assets/images/portofolio/portofolio.png",
+    "description": "A modern and responsive personal portfolio website built with HTML, CSS, and JavaScript. It features both dark and light themes, showcasing projects, skills, and experiences in an interactive and visually appealing way.",
+    "image": "./assets/images/portofolio/cover.png",
     "screenshots": [
       "./assets/images/portofolio/fullpage-dark.png",
       "./assets/images/portofolio/fullpage-light.png",
       "./assets/images/portofolio/home-section.png"
     ],
-    "tags": [],
-    "category": "Frontend",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "Notion API",
+      "NodeJS",
+      "JavaScript (Vanilla)"
+    ],
+    "category": "Web Development",
     "role": "Fullstack",
-    "duration": "Ongoing / Unknown",
+    "duration": "Oct 2025 - Oct 2025",
+    "status": "Completed",
     "features": [
-      "Feature 1",
-      "Feature 2"
+      "Notion CMS Integration",
+      "Automated Sync Script",
+      "Dynamic Theme Toggle",
+      "Interactive Project Cards",
+      "Fully Responsive UI"
     ],
     "techStack": {
-      "technologies": []
+      "technologies": [
+        "HTML5",
+        "CSS3",
+        "Notion API",
+        "NodeJS",
+        "JavaScript (Vanilla)"
+      ]
     },
-    "links": {}
+    "links": {
+      "github": "https://github.com/eerfinn/eerfinn.github.io",
+      "live": "https://eerfinn.github.io/",
+      "documentation": "https://eerfinn.notion.site/Personal-Web-Portfolio-298980390ee08017950eefc0dce02465?source=copy_link"
+    }
+  },
+  {
+    "id": 5,
+    "title": "SiAkred: Sistem Akreditasi",
+    "description": "A specialized accreditation portal for the D4 Business Information Systems Program at Polinema, centralizing critical documentation and program data for quality assurance.",
+    "image": "./assets/images/siakred/cover.png",
+    "screenshots": [
+      "./assets/images/siakred/home-view.png",
+      "./assets/images/siakred/home.png"
+    ],
+    "tags": [
+      "Laravel",
+      "MySQL",
+      "Bootstrap",
+      "PHP"
+    ],
+    "category": "Web Development",
+    "role": "Fullstack",
+    "duration": "Mar 2025 - Jun 2025",
+    "status": "Completed",
+    "features": [
+      "Digital Document Repository",
+      "Integrated Program Profile",
+      "National & International Data Indexing",
+      "Centralized Vision & Mission Management"
+    ],
+    "techStack": {
+      "technologies": [
+        "Laravel",
+        "MySQL",
+        "Bootstrap",
+        "PHP"
+      ]
+    },
+    "links": {
+      "github": "https://github.com/eerfinn/SistemAkreditasi-PBL",
+      "documentation": "https://eerfinn.notion.site/SiAkred-Sistem-Akreditasi-298980390ee080be85d9db81777b4df1?source=copy_link"
+    }
+  },
+  {
+    "id": 6,
+    "title": "Website Profile Safari Dakwah 2024",
+    "description": "An integrated platform for social and religious activities, providing centralized info on events, donations, and documentation for community engagement.",
+    "image": "./assets/images/safaridakwah24/cover.png",
+    "screenshots": [],
+    "tags": [
+      "Google Sites"
+    ],
+    "category": "Web Development",
+    "role": "Frontend",
+    "duration": "Nov 2024",
+    "status": "Completed",
+    "features": [
+      "Event Information Center",
+      "Digital Donation Access",
+      "Photo & Video Documentation",
+      "Responsive Layout"
+    ],
+    "techStack": {
+      "technologies": [
+        "Google Sites"
+      ]
+    },
+    "links": {
+      "documentation": "https://eerfinn.notion.site/Website-Profile-Safari-Dakwah-2024-266980390ee081c8ab8cd5de77e59e8e?source=copy_link"
+    }
   },
   {
     "id": 7,
-    "title": "Pumpkin Adventure: 2D Platforme",
-    "description": "Pumpkin Adventure is a simple 2D platformer developed with Construct 2. Inspired by classic Super Mario gameplay, the player controls a pumpkin character to jump and avoid obstacles.",
-    "image": "",
-    "screenshots": [],
-    "tags": [],
-    "category": "Game",
+    "title": "SiBesT: Sistem Bebas Tanggungan",
+    "description": "A PBL project focused on developing a PHP-based student clearance service portal, featuring announcements, administrative completion guidelines, and integrated contact access for each type of clearance requirement.",
+    "image": "./assets/images/bebas-tanggungan/cover.png",
+    "screenshots": [
+      "./assets/images/bebas-tanggungan/announcement.png",
+      "./assets/images/bebas-tanggungan/dashboard.png",
+      "./assets/images/bebas-tanggungan/detail-document.png",
+      "./assets/images/bebas-tanggungan/home-view.png",
+      "./assets/images/bebas-tanggungan/home.png",
+      "./assets/images/bebas-tanggungan/login.png",
+      "./assets/images/bebas-tanggungan/pengajuan-document.png",
+      "./assets/images/bebas-tanggungan/profile.png",
+      "./assets/images/bebas-tanggungan/tanggungan-prodi.png"
+    ],
+    "tags": [
+      "PHP",
+      "Bootstrap",
+      "SQL Server",
+      "FPDF",
+      "PHPMailer"
+    ],
+    "category": "Web Development",
     "role": "Fullstack",
-    "duration": "Ongoing / Unknown",
+    "duration": "Nov 2024 - Jan 2025",
+    "status": "Completed",
     "features": [
-      "Feature 1",
-      "Feature 2"
+      "Multi-role Authentication (Student & Admin)",
+      "Digital Document Uploads",
+      "Real-time Verification Status",
+      "Automated PDF Report Generation",
+      "Admin Monitoring Dashboard"
     ],
     "techStack": {
-      "technologies": []
+      "technologies": [
+        "PHP",
+        "Bootstrap",
+        "SQL Server",
+        "FPDF",
+        "PHPMailer"
+      ]
     },
-    "links": {}
+    "links": {
+      "documentation": "https://eerfinn.notion.site/SiBesT-Sistem-Bebas-Tanggungan-298980390ee08066965acb259bb25be8?source=copy_link"
+    }
   },
   {
     "id": 8,
-    "title": "Website Profile Safari Dakwah 2024",
-    "description": "Website provides an integrated platform for social and religious activities, offering centralized information on events, donations, and documentation. Built on Google Sites, it ensures accessibility across devices, supports lightweight content management, and enables the community to easily engage, contribute, and spread kindness.",
-    "image": "",
+    "title": "Pumpkin Adventure: 2D Platformer",
+    "description": "Pumpkin Adventure is a simple 2D platformer developed with Construct 2. Inspired by classic Super Mario gameplay, the player controls a pumpkin character to jump and avoid obstacles.",
+    "image": "./assets/images/pumpkin-adventure/cover.png",
     "screenshots": [],
-    "tags": [],
-    "category": "Frontend",
+    "tags": [
+      "Construct 2",
+      "HTML5",
+      "JavaScript (Vanilla)"
+    ],
+    "category": "Game Development",
     "role": "Fullstack",
-    "duration": "Ongoing / Unknown",
+    "duration": "Feb 2023",
+    "status": "Completed",
     "features": [
-      "Feature 1",
-      "Feature 2"
+      "Smooth 2D Movement",
+      "Shooting Mechanics (Fireball)",
+      "Enemy & Obstacle Systems",
+      "Integrated HUD (Coins & Items)",
+      "Cross-platform (Web & Android)"
     ],
     "techStack": {
-      "technologies": []
+      "technologies": [
+        "Construct 2",
+        "HTML5",
+        "JavaScript (Vanilla)"
+      ]
     },
-    "links": {}
+    "links": {
+      "github": "\thttps://github.com/eerfinn/Construct2-PumkinAdvendture",
+      "live": "https://eerfinn.github.io/Construct2-PumkinAdvendture/",
+      "documentation": "https://eerfinn.notion.site/Pumpkin-Adventure-2D-Platformer-26a980390ee0809280e7d5ebb924a44f?source=copy_link"
+    }
   }
 ];
-
-if (typeof module !== "undefined" && module.exports) {
-  module.exports = projectsData;
-}
