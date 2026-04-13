@@ -1,5 +1,39 @@
 const projectsData = [
   {
+    "id": 1,
+    "title": "Sistem Manajemen Presensi GUPDI Tulungagung",
+    "description": "A robust attendance management system for church services, featuring tiered worship sessions, role-based leader access, and real-time visualization.",
+    "image": "./assets/images/absensi-gupdi/cover.png",
+    "screenshots": [],
+    "tags": [
+      "NextJS",
+      "TypeScript",
+      "NodeJS",
+      "PostgreSQL"
+    ],
+    "category": "Web Development",
+    "role": "Frontend",
+    "duration": "Jan 2026 - Apr 2026",
+    "status": "Completed",
+    "features": [
+      "Session-based Attendance (Worship/Youth/Kids)",
+      "Leader-exclusive Dashboard",
+      "Automatic Session Revoke",
+      "Data Visualization Charts"
+    ],
+    "techStack": {
+      "technologies": [
+        "NextJS",
+        "TypeScript",
+        "NodeJS",
+        "PostgreSQL"
+      ]
+    },
+    "links": {
+      "documentation": "https://eerfinn.notion.site/Sistem-Manajemen-Presensi-GUPDI-Tulungagung-335980390ee080cdbeaef81ca32b3c07?source=copy_link"
+    }
+  },
+  {
     "id": 3,
     "title": "StrawSmart: IoT Smart Farming App",
     "description": "A smart farming ecosystem for strawberry cultivation, integrating IoT sensors with a Flutter mobile app for real-time environment monitoring and automated control.",
@@ -216,7 +250,8 @@ const projectsData = [
     "tags": [
       "Construct 2",
       "HTML5",
-      "JavaScript (Vanilla)"
+      "JavaScript (Vanilla)",
+      "CSS3"
     ],
     "category": "Game Development",
     "role": "Fullstack",
@@ -233,7 +268,8 @@ const projectsData = [
       "technologies": [
         "Construct 2",
         "HTML5",
-        "JavaScript (Vanilla)"
+        "JavaScript (Vanilla)",
+        "CSS3"
       ]
     },
     "links": {
