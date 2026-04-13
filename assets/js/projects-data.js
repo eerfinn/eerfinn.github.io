@@ -34,42 +34,6 @@ const projectsData = [
     }
   },
   {
-    "id": 2,
-    "title": "Quran Recitation Platform",
-    "description": "A modern web application built with Next.js to track and manage Quran recitation progress (tahfidz/setoran) with an intuitive student-teacher dashboard.",
-    "image": "./assets/images/quran-recitation/cover.png",
-    "screenshots": [],
-    "tags": [
-      "NextJS",
-      "TypeScript",
-      "Tailwind CSS",
-      "React"
-    ],
-    "category": "Web Development",
-    "role": "Frontend",
-    "duration": "Dec 2025",
-    "status": "Completed",
-    "features": [
-      "Recitation Log Management",
-      "Progress Tracking Dashboard",
-      "Integrated Surah List",
-      "Responsive Performance",
-      "Interactive UI with Tailwind"
-    ],
-    "techStack": {
-      "technologies": [
-        "NextJS",
-        "TypeScript",
-        "Tailwind CSS",
-        "React"
-      ]
-    },
-    "links": {
-      "github": "https://github.com/eerfinn/quran-recitation-web",
-      "documentation": "https://eerfinn.notion.site/Quran-Recitation-Platform-335980390ee080619ac6d84a448b218a?source=copy_link"
-    }
-  },
-  {
     "id": 3,
     "title": "StrawSmart: IoT Smart Farming App",
     "description": "A smart farming ecosystem for strawberry cultivation, integrating IoT sensors with a Flutter mobile app for real-time environment monitoring and automated control.",
