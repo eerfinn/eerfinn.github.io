@@ -7,7 +7,7 @@
 let currentImages = [];
 let currentImageIndex = 0;
 let currentFilter = 'all';
-let visibleProjects = 6; // Initial number of visible projects
+let visibleProjects = 9; // Initial number of visible projects
 const projectsPerLoad = 6; // Number of projects to load on each click
 
 /**
@@ -22,7 +22,7 @@ export function renderProjects(filter = 'all', reset = true) {
 
   // Reset visible count when filter changes
   if (reset) {
-    visibleProjects = 6;
+    visibleProjects = 9;
   }
 
   projectsGrid.innerHTML = '';
@@ -36,7 +36,7 @@ export function renderProjects(filter = 'all', reset = true) {
     : completedProjects.filter(project => project.category === filter);
 
   // Get only visible projects
-  const projectsToShow = filteredProjects.slice(0, 6);
+  const projectsToShow = filteredProjects.slice(0, visibleProjects);
 
   projectsToShow.forEach((project, index) => {
     const projectCard = document.createElement('div');
