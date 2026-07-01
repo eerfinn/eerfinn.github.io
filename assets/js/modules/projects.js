@@ -7,7 +7,7 @@
 let currentImages = [];
 let currentImageIndex = 0;
 let currentFilter = 'all';
-let visibleProjects = 9; // Initial number of visible projects
+let visibleProjects = 12; // Initial number of visible projects
 const projectsPerLoad = 6; // Number of projects to load on each click
 
 /**
@@ -22,7 +22,7 @@ export function renderProjects(filter = 'all', reset = true) {
 
   // Reset visible count when filter changes
   if (reset) {
-    visibleProjects = 9;
+    visibleProjects = 12;
   }
 
   projectsGrid.innerHTML = '';
