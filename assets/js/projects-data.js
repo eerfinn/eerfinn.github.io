@@ -1,44 +1,6 @@
 const projectsData = [
   {
     "id": 1,
-    "title": "Sistem Penerimaan Beasiswa (BeaSmart)",
-    "description": "A web-based Decision Support System that automates objective scholarship selection using the SAW method, featuring a complete multi-role workflow from student registration and document verification to final executive approval.",
-    "image": "./assets/images/beasmart/cover.png",
-    "screenshots": [
-      "./assets/images/beasmart/dashboard-mhs.png"
-    ],
-    "tags": [
-      "Laravel",
-      "Tailwind CSS",
-      "MySQL"
-    ],
-    "category": "Web Development",
-    "role": "Fullstack",
-    "duration": "Apr 2026 - Jun 2026",
-    "status": "Completed",
-    "features": [
-      "Automated SAW Ranking Algorithm",
-      "Multi-Role Access Control",
-      "Smart Scholarship Recommendations",
-      "End-to-End Registration Workflow",
-      "Side-by-Side Document Verification UI",
-      "Executive Approval Dashboard",
-      "PDF Export & Reporting"
-    ],
-    "techStack": {
-      "technologies": [
-        "Laravel",
-        "Tailwind CSS",
-        "MySQL"
-      ]
-    },
-    "links": {
-      "live": "https://beasmart.infinityfreeapp.com/",
-      "documentation": "https://www.notion.so/eerfinn/Sistem-Penerimaan-Beasiswa-BeaSmart-387980390ee08040ae40e95951075ef9"
-    }
-  },
-  {
-    "id": 2,
     "title": "Sistem Manajemen Presensi GUPDI Tulungagung",
     "description": "A robust attendance management system for church services, featuring tiered worship sessions, role-based leader access, and real-time visualization.",
     "image": "./assets/images/absensi-gupdi/cover.png",
@@ -205,7 +167,7 @@ const projectsData = [
     }
   },
   {
-    "id": 7,
+    "id": 6,
     "title": "Website Profile Safari Dakwah 2024",
     "description": "An integrated platform for social and religious activities, providing centralized info on events, donations, and documentation for community engagement.",
     "image": "./assets/images/safaridakwah24/cover.png",
@@ -233,7 +195,7 @@ const projectsData = [
     }
   },
   {
-    "id": 8,
+    "id": 7,
     "title": "SiBesT: Sistem Bebas Tanggungan",
     "description": "A PBL project focused on developing a PHP-based student clearance service portal, featuring announcements, administrative completion guidelines, and integrated contact access for each type of clearance requirement.",
     "image": "./assets/images/bebas-tanggungan/cover.png",
